@@ -7,16 +7,56 @@ import {
 
 interface TextProps extends RNTextProps {
   preset?: TextVariants;
+  bold?: boolean;
+  medium?: boolean;
+  italic?: boolean;
+}
+
+function getFontFamily(
+  preset: TextVariants,
+  bold?: boolean,
+  italic?: boolean,
+  medium?: boolean,
+) {
+  if (
+    preset === 'headingLarge' ||
+    preset === 'headingMedium' ||
+    preset === 'headingSmall'
+  ) {
+    return italic ? $fontFamily.boldItalic : $fontFamily.bold;
+  }
+
+  switch (true) {
+    case bold && italic:
+      return $fontFamily.boldItalic;
+    case bold:
+      return $fontFamily.bold;
+    case italic:
+      return $fontFamily.italic;
+    case medium && italic:
+      return $fontFamily.mediumItalic;
+    case medium:
+      return $fontFamily.medium;
+    default:
+      return $fontFamily.regular;
+  }
 }
 
 export function Text({
   children,
   preset = 'paragraphMedium',
+  bold,
+  italic,
+  medium,
   style,
   ...rest
 }: TextProps) {
+  const fontFamily = getFontFamily(preset, bold, italic, medium);
+
   return (
-    <RNText style={[$fontSizes[preset], style]} {...rest}>
+    <RNText
+      style={[$fontSizes[preset], { fontFamily: fontFamily }, style]}
+      {...rest}>
       {children}
     </RNText>
   );
@@ -43,4 +83,17 @@ const $fontSizes: Record<TextVariants, TextStyle> = {
 
   paragraphCaption: { fontSize: 12, lineHeight: 16.8 },
   paragraphCaptionSmall: { fontSize: 10, lineHeight: 14 },
+};
+
+const $fontFamily = {
+  black: 'Satoshi-Black',
+  blackItalic: 'Satoshi-BlackItalic',
+  bold: 'Satoshi-Bold',
+  boldItalic: 'Satoshi-BoldItalic',
+  italic: 'Satoshi-Italic',
+  light: 'Satoshi-Light',
+  lightItalic: 'Satoshi-LightItalic',
+  medium: 'Satoshi-Medium',
+  mediumItalic: 'SatoshiItalic',
+  regular: 'Satoshi-Regular',
 };
