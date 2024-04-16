@@ -1,22 +1,27 @@
 import React from 'react';
 import { ActivityIndicator } from 'react-native';
-import { Box } from '../Box/Box';
+import { ToucableOpacityBox, ToucableOpacityBoxProps } from '../Box/Box';
 import { Text } from '../Text/Text';
 
-interface ButtonProps {
+interface ButtonProps extends ToucableOpacityBoxProps {
   title: string;
   loading?: boolean;
 }
 
-export function Button({ title, loading }: ButtonProps) {
+export function Button({
+  title,
+  loading,
+  ...toucableOpacityBoxProps
+}: ButtonProps) {
   return (
-    <Box
+    <ToucableOpacityBox
       backgroundColor="buttonPrimary"
       paddingHorizontal="s20"
       height={50}
       alignItems="center"
       justifyContent="center"
-      borderRadius="s16">
+      borderRadius="s16"
+      {...toucableOpacityBoxProps}>
       <Text preset="paragraphMedium" bold style={{ color: '#fff' }}>
         {loading ? (
           <ActivityIndicator />
@@ -26,6 +31,6 @@ export function Button({ title, loading }: ButtonProps) {
           </Text>
         )}
       </Text>
-    </Box>
+    </ToucableOpacityBox>
   );
 }
