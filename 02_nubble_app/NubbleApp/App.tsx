@@ -5,7 +5,9 @@ import { Text } from './src/components/Text/Text';
 function App(): React.JSX.Element {
   return (
     <SafeAreaView>
-      <Text preset="headingLarge" style={{ color: 'purple' }}>
+      <Text
+        preset="headingLarge"
+        style={{ color: 'purple', fontFamily: 'Satoshi-Italic' }}>
         Hello World!
       </Text>
     </SafeAreaView>
