@@ -18,15 +18,11 @@ function getFontFamily(
   italic?: boolean,
   medium?: boolean,
 ) {
-  if (
-    preset === 'headingLarge' ||
-    preset === 'headingMedium' ||
-    preset === 'headingSmall'
-  ) {
-    return italic ? $fontFamily.boldItalic : $fontFamily.bold;
-  }
-
   switch (true) {
+    case preset === 'headingLarge' ||
+      preset === 'headingMedium' ||
+      preset === 'headingSmall':
+      return italic ? $fontFamily.boldItalic : $fontFamily.bold;
     case bold && italic:
       return $fontFamily.boldItalic;
     case bold:
