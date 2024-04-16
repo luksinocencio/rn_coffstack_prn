@@ -1,41 +1,16 @@
+import { createText } from '@shopify/restyle';
 import React from 'react';
-import {
-  Text as RNText,
-  TextProps as RNTextProps,
-  TextStyle,
-} from 'react-native';
+import { TextStyle } from 'react-native';
+import { Theme } from '../../theme/theme';
 
-interface TextProps extends RNTextProps {
+const SRText = createText<Theme>();
+type SRTextProps = React.ComponentProps<typeof SRText>;
+
+interface TextProps extends SRTextProps {
   preset?: TextVariants;
   bold?: boolean;
   medium?: boolean;
   italic?: boolean;
-}
-
-function getFontFamily(
-  preset: TextVariants,
-  bold?: boolean,
-  italic?: boolean,
-  medium?: boolean,
-) {
-  switch (true) {
-    case preset === 'headingLarge' ||
-      preset === 'headingMedium' ||
-      preset === 'headingSmall':
-      return italic ? $fontFamily.boldItalic : $fontFamily.bold;
-    case bold && italic:
-      return $fontFamily.boldItalic;
-    case bold:
-      return $fontFamily.bold;
-    case italic:
-      return $fontFamily.italic;
-    case medium && italic:
-      return $fontFamily.mediumItalic;
-    case medium:
-      return $fontFamily.medium;
-    default:
-      return $fontFamily.regular;
-  }
 }
 
 export function Text({
@@ -45,16 +20,17 @@ export function Text({
   italic,
   medium,
   style,
-  ...rest
+  ...sRTextProps
 }: TextProps) {
   const fontFamily = getFontFamily(preset, bold, italic, medium);
 
   return (
-    <RNText
+    <SRText
+      color="backgroundContrast"
       style={[$fontSizes[preset], { fontFamily: fontFamily }, style]}
-      {...rest}>
+      {...sRTextProps}>
       {children}
-    </RNText>
+    </SRText>
   );
 }
 
@@ -93,3 +69,29 @@ const $fontFamily = {
   mediumItalic: 'SatoshiItalic',
   regular: 'Satoshi-Regular',
 };
+
+function getFontFamily(
+  preset: TextVariants,
+  bold?: boolean,
+  italic?: boolean,
+  medium?: boolean,
+) {
+  switch (true) {
+    case preset === 'headingLarge' ||
+      preset === 'headingMedium' ||
+      preset === 'headingSmall':
+      return italic ? $fontFamily.boldItalic : $fontFamily.bold;
+    case bold && italic:
+      return $fontFamily.boldItalic;
+    case bold:
+      return $fontFamily.bold;
+    case italic:
+      return $fontFamily.italic;
+    case medium && italic:
+      return $fontFamily.mediumItalic;
+    case medium:
+      return $fontFamily.medium;
+    default:
+      return $fontFamily.regular;
+  }
+}
