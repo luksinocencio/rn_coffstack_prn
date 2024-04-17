@@ -1,4 +1,4 @@
-import React, { ReactElement, useRef } from 'react';
+import React, { useRef } from 'react';
 import {
   Pressable,
   TextInput as RNTextInput,
@@ -12,13 +12,14 @@ import { $fontFamily, $fontSizes, Text } from '../Text/Text';
 interface TextInputProps extends RNTextInputProps {
   label: string;
   errorMessage?: string;
-  RightComponent?: ReactElement;
+  RightComponent?: React.ReactElement;
+  boxProps?: BoxProps;
 }
 export function TextInput({
   label,
   errorMessage,
   RightComponent,
-
+  boxProps,
   ...rnTextInputProps
 }: TextInputProps) {
   const { colors } = useAppTheme();
@@ -36,7 +37,7 @@ export function TextInput({
     inputRef.current?.focus();
   }
   return (
-    <Box>
+    <Box {...boxProps}>
       <Pressable onPress={focusInput}>
         <Text preset="paragraphMedium" marginBottom="s4">
           {label}

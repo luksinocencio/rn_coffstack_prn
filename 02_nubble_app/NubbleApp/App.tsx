@@ -1,7 +1,6 @@
 import { ThemeProvider } from '@shopify/restyle';
 import React from 'react';
 import { SafeAreaView, View } from 'react-native';
-import { Box } from './src/components/Box/Box';
 import { Button } from './src/components/Button/Button';
 import { Icon } from './src/components/Icon/Icon';
 import { Text } from './src/components/Text/Text';
@@ -20,17 +19,20 @@ function App(): React.JSX.Element {
             Digite seu e-mail e senha para entrar.
           </Text>
 
-          <Box mb="s20">
-            <TextInput label="E-mail" placeholder="Digite seu e-mail" />
-          </Box>
-          <Box mb="s20">
-            <TextInput
-              label="Senha"
-              placeholder="Digite a sua senha"
-              secureTextEntry
-              RightComponent={<Icon name="eyeOn" color="gray2" />}
-            />
-          </Box>
+          <TextInput
+            label="E-mail"
+            placeholder="Digite seu e-mail"
+            boxProps={{ mb: 's20' }}
+          />
+
+          <TextInput
+            label="Senha"
+            placeholder="Digite a sua senha"
+            secureTextEntry
+            RightComponent={<Icon name="eyeOn" color="gray2" />}
+            boxProps={{ mb: 's20' }}
+          />
+
           <Text color="primary" preset="paragraphSmall" bold mb="s10">
             Esqueci a minha senha
           </Text>
