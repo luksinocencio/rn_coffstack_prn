@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { ReactElement, useRef } from 'react';
 import {
   Pressable,
   TextInput as RNTextInput,
@@ -11,43 +11,64 @@ import { $fontFamily, $fontSizes, Text } from '../Text/Text';
 
 interface TextInputProps extends RNTextInputProps {
   label: string;
+  errorMessage?: string;
+  RightComponent?: ReactElement;
 }
-export function TextInput({ label, ...rnTextInputProps }: TextInputProps) {
-  const inputRef = useRef<RNTextInput>(null);
+export function TextInput({
+  label,
+  errorMessage,
+  RightComponent,
+
+  ...rnTextInputProps
+}: TextInputProps) {
   const { colors } = useAppTheme();
+  const inputRef = useRef<RNTextInput>(null);
+
+  const $textInputContainer: BoxProps = {
+    flexDirection: 'row',
+    borderWidth: errorMessage ? 2 : 1,
+    borderColor: errorMessage ? 'error' : 'gray4',
+    padding: 's16',
+    borderRadius: 's12',
+  };
 
   function focusInput() {
     inputRef.current?.focus();
   }
-
   return (
-    <Pressable onPress={focusInput}>
-      <Box>
+    <Box>
+      <Pressable onPress={focusInput}>
         <Text preset="paragraphMedium" marginBottom="s4">
           {label}
         </Text>
         <Box {...$textInputContainer}>
           <RNTextInput
             ref={inputRef}
-            style={$textInputStyle}
             placeholderTextColor={colors.gray2}
+            style={$textInputStyle}
             {...rnTextInputProps}
           />
+          {RightComponent && (
+            <Box justifyContent="center" ml="s16">
+              {RightComponent}
+            </Box>
+          )}
         </Box>
-      </Box>
-    </Pressable>
+        {errorMessage && (
+          <Text color="error" preset="paragraphSmall" bold>
+            {errorMessage}
+          </Text>
+        )}
+      </Pressable>
+    </Box>
   );
 }
 
 const $textInputStyle: TextStyle = {
   padding: 0,
+  flexGrow: 1,
+  flexShrink: 1,
+
   fontFamily: $fontFamily.regular,
   ...$fontSizes.paragraphMedium,
-};
-
-const $textInputContainer: BoxProps = {
-  borderWidth: 1,
-  padding: 's16',
-  borderColor: 'gray4',
-  borderRadius: 's12',
 };
