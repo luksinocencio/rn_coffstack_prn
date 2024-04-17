@@ -1,12 +1,12 @@
 import React from 'react';
 import { ActivityIndicator } from '../ActivityIndicator/ActivityIndicator';
-import { ToucableOpacityBox, ToucableOpacityBoxProps } from '../Box/Box';
+import { TouchableOpacityBox, TouchableOpacityBoxProps } from '../Box/Box';
 import { Text } from '../Text/Text';
 import { buttonPressets } from './buttonPressets';
 
 export type ButtonPresset = 'primary' | 'outline';
 
-interface ButtonProps extends ToucableOpacityBoxProps {
+interface ButtonProps extends TouchableOpacityBoxProps {
   title: string;
   loading?: boolean;
   preset?: ButtonPresset;
@@ -24,7 +24,7 @@ export function Button({
     buttonPressets[preset][disabled ? 'disabled' : 'default'];
 
   return (
-    <ToucableOpacityBox
+    <TouchableOpacityBox
       paddingHorizontal="s20"
       height={50}
       alignItems="center"
@@ -42,6 +42,6 @@ export function Button({
           </Text>
         )}
       </Text>
-    </ToucableOpacityBox>
+    </TouchableOpacityBox>
   );
 }

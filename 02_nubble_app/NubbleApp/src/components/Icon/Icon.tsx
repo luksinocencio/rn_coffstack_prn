@@ -29,6 +29,7 @@ import { TrashIcon } from '../../assets/icons/TrashIcon';
 import { useAppTheme } from '../../hooks/useAppTheme';
 import { ThemeColors } from '../../theme/theme';
 
+
 export interface IconBase {
   size?: number;
   color?: string;
