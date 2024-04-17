@@ -10,12 +10,15 @@ function App(): React.JSX.Element {
     <ThemeProvider theme={theme}>
       <SafeAreaView>
         <View style={{ paddingHorizontal: 10 }}>
-          <Text preset="headingLarge" medium>
-            Hello World!
+          <Text preset="headingLarge" medium italic>
+            Coffstack
           </Text>
           <Button title="Entrar" />
-
           <Button title="Entrar" loading marginTop="s10" />
+          <Button title="Entrar" marginTop="s10" disabled />
+          <Button title="Outline" preset="outline" marginTop="s10" />
+          <Button title="Outline" preset="outline" marginTop="s10" disabled />
+          <Button title="Outline" preset="outline" marginTop="s10" loading />
         </View>
       </SafeAreaView>
     </ThemeProvider>
