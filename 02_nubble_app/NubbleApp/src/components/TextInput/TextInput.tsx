@@ -9,12 +9,13 @@ import { useAppTheme } from '../../hooks/useAppTheme';
 import { Box, BoxProps } from '../Box/Box';
 import { $fontFamily, $fontSizes, Text } from '../Text/Text';
 
-interface TextInputProps extends RNTextInputProps {
+export interface TextInputProps extends RNTextInputProps {
   label: string;
   errorMessage?: string;
   RightComponent?: React.ReactElement;
   boxProps?: BoxProps;
 }
+
 export function TextInput({
   label,
   errorMessage,
@@ -36,6 +37,7 @@ export function TextInput({
   function focusInput() {
     inputRef.current?.focus();
   }
+
   return (
     <Box {...boxProps}>
       <Pressable onPress={focusInput}>
