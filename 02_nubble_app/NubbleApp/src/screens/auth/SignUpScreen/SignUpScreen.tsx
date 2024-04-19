@@ -9,9 +9,10 @@ import { RootStackParamList } from '../../../routes/Routes.tsx';
 
 type ScreenProps = NativeStackScreenProps<RootStackParamList, 'SignUpScreen'>;
 
-export function SignUpScreen({}: ScreenProps) {
+export function SignUpScreen({ navigation }: ScreenProps) {
   function submitForm() {
     // TODO: implementar
+    navigation.navigate('SuccessScreen');
   }
 
   return (
