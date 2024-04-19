@@ -1,5 +1,6 @@
 import React from 'react';
 import { NativeStackScreenProps } from 'react-native-screens/lib/typescript/native-stack/types';
+import { TouchableOpacityBox } from '../../../components/Box/Box';
 import { Button } from '../../../components/Button/Button';
 import { Icon } from '../../../components/Icon/Icon';
 import { Screen } from '../../../components/Screen/Screen';
@@ -17,6 +18,11 @@ export function LoginScreen({ navigation }: ScreenProps) {
   function navigateToSignUpScreen() {
     navigation.navigate('SignUpScreen');
   }
+
+  function navigateToForgotPasswordScreen() {
+    navigation.navigate('ForgotPasswordScreen');
+  }
+
   return (
     <Screen>
       <Text preset="headingLarge" marginBottom="s8">
@@ -40,9 +46,11 @@ export function LoginScreen({ navigation }: ScreenProps) {
         boxProps={{ mb: 's20' }}
       />
 
-      <Text color="primary" preset="paragraphSmall" bold mb="s10">
-        Esqueci a minha senha
-      </Text>
+      <TouchableOpacityBox onPress={navigateToForgotPasswordScreen}>
+        <Text color="primary" preset="paragraphSmall" bold mb="s10">
+          Esqueci a minha senha
+        </Text>
+      </TouchableOpacityBox>
 
       <Button title="Entrar" mt="s48" />
       <Button

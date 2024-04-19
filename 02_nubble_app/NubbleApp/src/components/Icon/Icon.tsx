@@ -10,8 +10,10 @@ import { CameraIcon } from '../../assets/icons/CameraIcon';
 import { ChatIcon } from '../../assets/icons/ChatIcon';
 import { ChatOnIcon } from '../../assets/icons/ChatOnIcon';
 import { CheckIcon } from '../../assets/icons/CheckIcon';
+import { CheckRoundIcon } from '../../assets/icons/CheckRoundIcon';
 import { ChevronRightIcon } from '../../assets/icons/ChevronRightIcon';
 import { CommentIcon } from '../../assets/icons/CommentIcon';
+import { ErrorRoundIcon } from '../../assets/icons/ErrorRoundIcon';
 import { EyeOffIcon } from '../../assets/icons/EyeOffIcon';
 import { EyeOnIcon } from '../../assets/icons/EyeOnIcon';
 import { FlashOffIcon } from '../../assets/icons/FlashOffIcon';
@@ -20,7 +22,10 @@ import { HeartFillIcon } from '../../assets/icons/HeartFillIcon';
 import { HeartIcon } from '../../assets/icons/HeartIcon';
 import { HomeFillIcon } from '../../assets/icons/HomeFillIcon';
 import { HomeIcon } from '../../assets/icons/HomeIcon';
+import { LoaderIcon } from '../../assets/icons/LoaderIcon';
 import { MessageIcon } from '../../assets/icons/MessageIcon';
+import { MessageRoundIcon } from '../../assets/icons/MessageRoundIcon';
+import { MessageRoundLightIcon } from '../../assets/icons/MessageRoundLightIcon';
 import { NewPostIcon } from '../../assets/icons/NewPostIcon';
 import { ProfileFillIcon } from '../../assets/icons/ProfileFillIcon';
 import { ProfileIcon } from '../../assets/icons/ProfileIcon';
@@ -35,7 +40,7 @@ export interface IconBase {
   color?: string;
 }
 
-interface Props {
+export interface IconProps {
   name: IconName;
   color?: ThemeColors;
   size?: number;
@@ -47,7 +52,7 @@ export function Icon({
   color = 'backgroundContrast',
   size,
   onPress,
-}: Props) {
+}: IconProps) {
   const { colors } = useAppTheme();
   const SVGIcon = iconRegistry[name];
 
@@ -73,8 +78,10 @@ const iconRegistry = {
   chat: ChatIcon,
   chatOn: ChatOnIcon,
   check: CheckIcon,
-  comment: CommentIcon,
+  checkRound: CheckRoundIcon,
   chevronRight: ChevronRightIcon,
+  comment: CommentIcon,
+  errorRound: ErrorRoundIcon,
   eyeOn: EyeOnIcon,
   eyeOff: EyeOffIcon,
   flashOn: FlashOnIcon,
@@ -83,7 +90,10 @@ const iconRegistry = {
   heartFill: HeartFillIcon,
   home: HomeIcon,
   homeFill: HomeFillIcon,
+  loader: LoaderIcon,
   message: MessageIcon,
+  messageRound: MessageRoundIcon,
+  messageRoundLight: MessageRoundLightIcon,
   newPost: NewPostIcon,
   profile: ProfileIcon,
   profileFill: ProfileFillIcon,
