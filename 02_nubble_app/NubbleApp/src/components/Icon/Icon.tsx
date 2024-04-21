@@ -1,4 +1,8 @@
 import React from 'react';
+
+import { useAppTheme } from '@hooks';
+import { ThemeColors } from '@theme';
+
 import { Pressable } from 'react-native';
 import { ArrowLeftIcon } from '../../assets/icons/ArrowLeftIcon';
 import { ArrowRightIcon } from '../../assets/icons/ArrowRightIcon';
@@ -13,7 +17,6 @@ import { CheckIcon } from '../../assets/icons/CheckIcon';
 import { CheckRoundIcon } from '../../assets/icons/CheckRoundIcon';
 import { ChevronRightIcon } from '../../assets/icons/ChevronRightIcon';
 import { CommentIcon } from '../../assets/icons/CommentIcon';
-import { ErrorRoundIcon } from '../../assets/icons/ErrorRoundIcon';
 import { EyeOffIcon } from '../../assets/icons/EyeOffIcon';
 import { EyeOnIcon } from '../../assets/icons/EyeOnIcon';
 import { FlashOffIcon } from '../../assets/icons/FlashOffIcon';
@@ -22,18 +25,14 @@ import { HeartFillIcon } from '../../assets/icons/HeartFillIcon';
 import { HeartIcon } from '../../assets/icons/HeartIcon';
 import { HomeFillIcon } from '../../assets/icons/HomeFillIcon';
 import { HomeIcon } from '../../assets/icons/HomeIcon';
-import { LoaderIcon } from '../../assets/icons/LoaderIcon';
 import { MessageIcon } from '../../assets/icons/MessageIcon';
 import { MessageRoundIcon } from '../../assets/icons/MessageRoundIcon';
-import { MessageRoundLightIcon } from '../../assets/icons/MessageRoundLightIcon';
 import { NewPostIcon } from '../../assets/icons/NewPostIcon';
 import { ProfileFillIcon } from '../../assets/icons/ProfileFillIcon';
 import { ProfileIcon } from '../../assets/icons/ProfileIcon';
 import { SearchIcon } from '../../assets/icons/SearchIcon';
 import { SettingsIcon } from '../../assets/icons/SettingsIcon';
 import { TrashIcon } from '../../assets/icons/TrashIcon';
-import { useAppTheme } from '../../hooks/useAppTheme';
-import { ThemeColors } from '../../theme/theme';
 
 export interface IconBase {
   size?: number;
@@ -46,7 +45,6 @@ export interface IconProps {
   size?: number;
   onPress?: () => void;
 }
-
 export function Icon({
   name,
   color = 'backgroundContrast',
@@ -79,9 +77,8 @@ const iconRegistry = {
   chatOn: ChatOnIcon,
   check: CheckIcon,
   checkRound: CheckRoundIcon,
-  chevronRight: ChevronRightIcon,
   comment: CommentIcon,
-  errorRound: ErrorRoundIcon,
+  chevronRight: ChevronRightIcon,
   eyeOn: EyeOnIcon,
   eyeOff: EyeOffIcon,
   flashOn: FlashOnIcon,
@@ -90,10 +87,8 @@ const iconRegistry = {
   heartFill: HeartFillIcon,
   home: HomeIcon,
   homeFill: HomeFillIcon,
-  loader: LoaderIcon,
   message: MessageIcon,
   messageRound: MessageRoundIcon,
-  messageRoundLight: MessageRoundLightIcon,
   newPost: NewPostIcon,
   profile: ProfileIcon,
   profileFill: ProfileFillIcon,
