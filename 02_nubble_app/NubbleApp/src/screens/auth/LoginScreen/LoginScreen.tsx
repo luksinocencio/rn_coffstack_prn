@@ -1,15 +1,15 @@
+import { zodResolver } from '@hookform/resolvers/zod';
+import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { Alert } from 'react-native';
-import { NativeStackScreenProps } from 'react-native-screens/lib/typescript/native-stack/types';
-import { TouchableOpacityBox } from '../../../components/Box/Box';
 import { Button } from '../../../components/Button/Button';
+import { FormPasswordInput } from '../../../components/Form/FormPasswordInput';
 import { FormTextInput } from '../../../components/Form/FormTextInput';
 import { Screen } from '../../../components/Screen/Screen';
 import { Text } from '../../../components/Text/Text';
 import { RootStackParamList } from '../../../routes/Routes';
-import { REGEX_EMAIL_VALIDATION } from '../../../utils/Constants';
-import { FormPasswordInput } from '../../../components/Form/FormPasswordInput';
+import { LoginSchema, loginSchema } from './loginSchema';
 
 /**
  * Trazer todas as rotas RootStackParamList
@@ -17,19 +17,19 @@ import { FormPasswordInput } from '../../../components/Form/FormPasswordInput';
  */
 type ScreenProps = NativeStackScreenProps<RootStackParamList, 'LoginScreen'>;
 
-type LoginFormType = {
-  email: string;
-  password: string;
-};
-
 export function LoginScreen({ navigation }: ScreenProps) {
-  const { control, formState, handleSubmit } = useForm<LoginFormType>({
+  const { control, formState, handleSubmit } = useForm<LoginSchema>({
+    resolver: zodResolver(loginSchema),
     defaultValues: {
       email: '',
       password: '',
     },
     mode: 'onChange',
   });
+
+  function submitForm({ email, password }: LoginSchema) {
+    Alert.alert(`Email: ${email} ${'\n'} Senha: ${password}`);
+  }
 
   function navigateToSignUpScreen() {
     navigation.navigate('SignUpScreen');
@@ -38,36 +38,18 @@ export function LoginScreen({ navigation }: ScreenProps) {
   function navigateToForgotPasswordScreen() {
     navigation.navigate('ForgotPasswordScreen');
   }
-
-  function submitForm({ email, password }: LoginFormType) {
-    Alert.alert('Hello', `${email} ${'\n'} ${password}`);
-  }
-
   return (
-    <Screen>
-      <Text preset="headingLarge" marginBottom="s8">
+    <Screen scrollable>
+      <Text marginBottom="s8" preset="headingLarge">
         Olá
       </Text>
       <Text preset="paragraphLarge" mb="s40">
-        Digite seu e-mail e senha para entrar.
+        Digite seu e-mail e senha para entrar
       </Text>
 
       <FormTextInput
         control={control}
         name="email"
-        rules={{
-          required: {
-            value: true,
-            message: 'E-mail é obrigatório.',
-          },
-          pattern: {
-            value: REGEX_EMAIL_VALIDATION,
-            message: 'E-mail inválido.',
-          },
-        }}
-        keyboardType="email-address"
-        autoCorrect={false}
-        autoCapitalize="none"
         label="E-mail"
         placeholder="Digite seu e-mail"
         boxProps={{ mb: 's20' }}
@@ -76,39 +58,30 @@ export function LoginScreen({ navigation }: ScreenProps) {
       <FormPasswordInput
         control={control}
         name="password"
-        rules={{
-          required: {
-            value: true,
-            message: 'Senha é obrigatória.',
-          },
-          minLength: {
-            value: 8,
-            message: 'A senha deve conter no mínimo 8 caracteres.',
-          },
-        }}
         label="Senha"
-        placeholder="Digite a sua senha"
+        placeholder="Digite sua senha"
         boxProps={{ mb: 's20' }}
       />
 
-      <TouchableOpacityBox onPress={navigateToForgotPasswordScreen}>
-        <Text color="primary" preset="paragraphSmall" bold mb="s10">
-          Esqueci a minha senha
-        </Text>
-      </TouchableOpacityBox>
+      <Text
+        onPress={navigateToForgotPasswordScreen}
+        color="primary"
+        preset="paragraphSmall"
+        bold>
+        Esqueci minha senha
+      </Text>
 
       <Button
-        title="Entrar"
-        mt="s48"
-        onPress={handleSubmit(submitForm)}
         disabled={!formState.isValid}
+        onPress={handleSubmit(submitForm)}
+        marginTop="s48"
+        title="Entrar"
       />
-
       <Button
-        title="Criar Conta"
-        preset="outline"
-        mt="s12"
         onPress={navigateToSignUpScreen}
+        preset="outline"
+        marginTop="s12"
+        title="Criar uma conta"
       />
     </Screen>
   );
