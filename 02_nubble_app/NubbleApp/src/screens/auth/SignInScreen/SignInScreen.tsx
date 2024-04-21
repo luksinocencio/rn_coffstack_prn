@@ -2,7 +2,6 @@ import React from 'react';
 import { Alert } from 'react-native';
 
 import { zodResolver } from '@hookform/resolvers/zod';
-import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { useForm } from 'react-hook-form';
 
 import {
@@ -12,19 +11,18 @@ import {
   Screen,
   Text,
 } from '@components';
-import { RootStackParamList } from '@routes';
+import { AuthScreenProps } from '@routes';
 
-import { LoginSchema, loginSchema } from './loginSchema';
+import { SignInSchema, signInSchema } from './signInSchema';
 
 /**
  * Trazer todas as rotas RootStackParamList
- * Depois coolocar o nome da rota 'LoginScreen'
+ * Depois coolocar o nome da rota 'SignInScreen'
  */
-type ScreenProps = NativeStackScreenProps<RootStackParamList, 'LoginScreen'>;
 
-export function LoginScreen({ navigation }: ScreenProps) {
-  const { control, formState, handleSubmit } = useForm<LoginSchema>({
-    resolver: zodResolver(loginSchema),
+export function SingInScreen({ navigation }: AuthScreenProps<'SignInScreen'>) {
+  const { control, formState, handleSubmit } = useForm<SignInSchema>({
+    resolver: zodResolver(signInSchema),
     defaultValues: {
       email: '',
       password: '',
@@ -32,7 +30,7 @@ export function LoginScreen({ navigation }: ScreenProps) {
     mode: 'onChange',
   });
 
-  function submitForm({ email, password }: LoginSchema) {
+  function submitForm({ email, password }: SignInSchema) {
     Alert.alert(`Email: ${email} ${'\n'} Senha: ${password}`);
   }
 

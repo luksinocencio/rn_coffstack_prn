@@ -1,6 +1,7 @@
-import { useNavigation } from '@react-navigation/native';
 import React from 'react';
 import { KeyboardAvoidingView, Platform } from 'react-native';
+
+import { useNavigation } from '@react-navigation/native';
 
 import { Box, Icon, Text, TouchableOpacityBox } from '@components';
 import { useAppSafeArea, useAppTheme } from '@hooks';
