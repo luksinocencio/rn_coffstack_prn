@@ -4,11 +4,12 @@ import { Alert } from 'react-native';
 import { NativeStackScreenProps } from 'react-native-screens/lib/typescript/native-stack/types';
 import { TouchableOpacityBox } from '../../../components/Box/Box';
 import { Button } from '../../../components/Button/Button';
+import { FormTextInput } from '../../../components/Form/FormTextInput';
 import { PasswordInput } from '../../../components/PasswordInput/PasswordInput';
 import { Screen } from '../../../components/Screen/Screen';
 import { Text } from '../../../components/Text/Text';
-import { TextInput } from '../../../components/TextInput/TextInput';
 import { RootStackParamList } from '../../../routes/Routes';
+import { REGEX_EMAIL_VALIDATION } from '../../../utils/Constants';
 
 /**
  * Trazer todas as rotas RootStackParamList
@@ -51,7 +52,7 @@ export function LoginScreen({ navigation }: ScreenProps) {
         Digite seu e-mail e senha para entrar.
       </Text>
 
-      <Controller
+      <FormTextInput
         control={control}
         name="email"
         rules={{
@@ -60,24 +61,16 @@ export function LoginScreen({ navigation }: ScreenProps) {
             message: 'E-mail é obrigatório.',
           },
           pattern: {
-            value:
-              /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+            value: REGEX_EMAIL_VALIDATION,
             message: 'E-mail inválido.',
           },
         }}
-        render={({ field, fieldState }) => (
-          <TextInput
-            label="E-mail"
-            errorMessage={fieldState.error?.message}
-            placeholder="Digite seu e-mail"
-            boxProps={{ mb: 's20' }}
-            value={field.value}
-            onChangeText={field.onChange}
-            keyboardType="email-address"
-            autoCorrect={false}
-            autoCapitalize="none"
-          />
-        )}
+        keyboardType="email-address"
+        autoCorrect={false}
+        autoCapitalize="none"
+        label="E-mail"
+        placeholder="Digite seu e-mail"
+        boxProps={{ mb: 's20' }}
       />
 
       <Controller

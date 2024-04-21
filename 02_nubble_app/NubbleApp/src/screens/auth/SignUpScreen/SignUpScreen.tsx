@@ -2,12 +2,13 @@ import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import React from 'react';
 import { Controller, useForm } from 'react-hook-form';
 import { Button } from '../../../components/Button/Button.tsx';
+import { FormTextInput } from '../../../components/Form/FormTextInput.tsx';
 import { PasswordInput } from '../../../components/PasswordInput/PasswordInput.tsx';
 import { Screen } from '../../../components/Screen/Screen.tsx';
 import { Text } from '../../../components/Text/Text.tsx';
-import { TextInput } from '../../../components/TextInput/TextInput.tsx';
 import { useResetNavigationSuccess } from '../../../hooks/useResetNavigationReset.ts';
 import { RootStackParamList } from '../../../routes/Routes.tsx';
+import { REGEX_EMAIL_VALIDATION } from '../../../utils/Constants.ts';
 
 type SignUpFormType = {
   username: string;
@@ -33,6 +34,7 @@ export function SignUpScreen({ navigation }: ScreenProps) {
   });
 
   function submitForm({ username, fullname, email, password }: SignUpFormType) {
+    console.log(username, fullname, email, password);
     // reset({
     //   title: 'Sua conta foi criada com sucesso',
     //   description: 'Agora é so fazer login na nossa plataforma!',
@@ -49,7 +51,7 @@ export function SignUpScreen({ navigation }: ScreenProps) {
         Criar uma conta
       </Text>
 
-      <Controller
+      <FormTextInput
         control={control}
         name="username"
         rules={{
@@ -58,19 +60,12 @@ export function SignUpScreen({ navigation }: ScreenProps) {
             message: 'Nome de usuário é obrigatório.',
           },
         }}
-        render={({ field, fieldState }) => (
-          <TextInput
-            value={field.value}
-            onChangeText={field.onChange}
-            errorMessage={fieldState.error?.message}
-            label="Seu username"
-            placeholder="@"
-            boxProps={{ mb: 's20' }}
-          />
-        )}
+        label="Seu username"
+        placeholder="@"
+        boxProps={{ mb: 's20' }}
       />
 
-      <Controller
+      <FormTextInput
         control={control}
         name="fullname"
         rules={{
@@ -79,19 +74,12 @@ export function SignUpScreen({ navigation }: ScreenProps) {
             message: 'Nome de usuário é obrigatório.',
           },
         }}
-        render={({ field, fieldState }) => (
-          <TextInput
-            value={field.value}
-            onChangeText={field.onChange}
-            errorMessage={fieldState.error?.message}
-            label="Nome Completo"
-            placeholder="Digite seu nome completo"
-            boxProps={{ mb: 's20' }}
-          />
-        )}
+        label="Nome Completo"
+        placeholder="Digite seu nome completo"
+        boxProps={{ mb: 's20' }}
       />
 
-      <Controller
+      <FormTextInput
         control={control}
         name="email"
         rules={{
@@ -100,24 +88,16 @@ export function SignUpScreen({ navigation }: ScreenProps) {
             message: 'E-mail é obrigatório.',
           },
           pattern: {
-            value:
-              /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+            value: REGEX_EMAIL_VALIDATION,
             message: 'E-mail inválido.',
           },
         }}
-        render={({ field, fieldState }) => (
-          <TextInput
-            label="E-mail"
-            errorMessage={fieldState.error?.message}
-            placeholder="Digite seu e-mail"
-            boxProps={{ mb: 's20' }}
-            value={field.value}
-            onChangeText={field.onChange}
-            keyboardType="email-address"
-            autoCorrect={false}
-            autoCapitalize="none"
-          />
-        )}
+        keyboardType="email-address"
+        autoCorrect={false}
+        autoCapitalize="none"
+        label="E-mail"
+        placeholder="Digite seu e-mail"
+        boxProps={{ mb: 's20' }}
       />
 
       <Controller
