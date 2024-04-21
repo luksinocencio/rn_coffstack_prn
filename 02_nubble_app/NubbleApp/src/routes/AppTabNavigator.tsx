@@ -1,6 +1,9 @@
 import React from 'react';
 
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import {
+  BottomTabBarProps,
+  createBottomTabNavigator,
+} from '@react-navigation/bottom-tabs';
 
 import {
   FavoriteScreen,
@@ -8,6 +11,8 @@ import {
   MyProfileScreen,
   NewPostScreen,
 } from '@screens';
+
+import { AppTabBar } from './components/AppTabBar/AppTabBar';
 
 export type AppTabBottomTabParamList = {
   HomeScreen: undefined;
@@ -20,9 +25,14 @@ const { Navigator, Screen } =
   createBottomTabNavigator<AppTabBottomTabParamList>();
 
 export function AppTabNavigator() {
+  function renderTabBar(props: BottomTabBarProps) {
+    return <AppTabBar {...props} />;
+  }
+
   return (
     <Navigator
       initialRouteName="HomeScreen"
+      tabBar={props => renderTabBar(props)}
       screenOptions={{
         headerShown: false,
       }}>
@@ -33,3 +43,22 @@ export function AppTabNavigator() {
     </Navigator>
   );
 }
+
+/**
+  options={{
+    tabBarLabel: ({ focused }) => (
+      <Text
+        preset="paragraphCaption"
+        medium
+        color={focused ? 'primary' : 'backgroundContrast'}>
+        Inicio
+      </Text>
+    ),
+    tabBarIcon: ({ focused }) => (
+      <Icon
+        name={focused ? 'homeFill' : 'home'}
+        color={focused ? 'primary' : 'backgroundContrast'}
+      />
+    ),
+  }}
+ * */
