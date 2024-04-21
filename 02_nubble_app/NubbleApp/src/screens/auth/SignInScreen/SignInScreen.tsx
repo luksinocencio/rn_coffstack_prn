@@ -5,20 +5,15 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 
 import {
-  Button,
-  FormPasswordInput,
-  FormTextInput,
-  Screen,
-  Text,
+    Button,
+    FormPasswordInput,
+    FormTextInput,
+    Screen,
+    Text,
 } from '@components';
 import { AuthScreenProps } from '@routes';
 
 import { SignInSchema, signInSchema } from './signInSchema';
-
-/**
- * Trazer todas as rotas RootStackParamList
- * Depois coolocar o nome da rota 'SignInScreen'
- */
 
 export function SingInScreen({ navigation }: AuthScreenProps<'SignInScreen'>) {
   const { control, formState, handleSubmit } = useForm<SignInSchema>({
@@ -80,6 +75,7 @@ export function SingInScreen({ navigation }: AuthScreenProps<'SignInScreen'>) {
         marginTop="s48"
         title="Entrar"
       />
+
       <Button
         onPress={navigateToSignUpScreen}
         preset="outline"

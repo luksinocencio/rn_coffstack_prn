@@ -1,7 +1,10 @@
 /**
  * app screens
  */
+export * from './app/FavoritesScreen/FavoriteScreen';
 export * from './app/HomeScreen/HomeScreen';
+export * from './app/MyProfileScreen/MyProfileScreen';
+export * from './app/NewPostScreen/NewPostScreen';
 export * from './app/SettingsScreen/SettingsScreen';
 /**
  * auth screens
