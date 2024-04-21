@@ -1,15 +1,15 @@
 import React from 'react';
-import { Controller, useForm } from 'react-hook-form';
+import { useForm } from 'react-hook-form';
 import { Alert } from 'react-native';
 import { NativeStackScreenProps } from 'react-native-screens/lib/typescript/native-stack/types';
 import { TouchableOpacityBox } from '../../../components/Box/Box';
 import { Button } from '../../../components/Button/Button';
 import { FormTextInput } from '../../../components/Form/FormTextInput';
-import { PasswordInput } from '../../../components/PasswordInput/PasswordInput';
 import { Screen } from '../../../components/Screen/Screen';
 import { Text } from '../../../components/Text/Text';
 import { RootStackParamList } from '../../../routes/Routes';
 import { REGEX_EMAIL_VALIDATION } from '../../../utils/Constants';
+import { FormPasswordInput } from '../../../components/Form/FormPasswordInput';
 
 /**
  * Trazer todas as rotas RootStackParamList
@@ -73,7 +73,7 @@ export function LoginScreen({ navigation }: ScreenProps) {
         boxProps={{ mb: 's20' }}
       />
 
-      <Controller
+      <FormPasswordInput
         control={control}
         name="password"
         rules={{
@@ -86,16 +86,9 @@ export function LoginScreen({ navigation }: ScreenProps) {
             message: 'A senha deve conter no mínimo 8 caracteres.',
           },
         }}
-        render={({ field, fieldState }) => (
-          <PasswordInput
-            label="Senha"
-            errorMessage={fieldState.error?.message}
-            placeholder="Digite a sua senha"
-            boxProps={{ mb: 's20' }}
-            value={field.value}
-            onChangeText={field.onChange}
-          />
-        )}
+        label="Senha"
+        placeholder="Digite a sua senha"
+        boxProps={{ mb: 's20' }}
       />
 
       <TouchableOpacityBox onPress={navigateToForgotPasswordScreen}>
