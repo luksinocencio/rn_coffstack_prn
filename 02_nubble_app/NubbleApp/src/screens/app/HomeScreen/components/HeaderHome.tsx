@@ -1,5 +1,6 @@
 import React from 'react';
 
+import { LogoSimples } from '@brand';
 import {
   Box,
   BoxProps,
@@ -35,7 +36,7 @@ export function HomeHeader() {
 
   return (
     <Box {...$wrapper} style={{ paddingTop: top }}>
-      <Box backgroundColor="carrotSecondary" height={16} width={70} />
+      <LogoSimples width={70} />
       <Box flexDirection="row" justifyContent="space-around">
         <IconButton
           onPress={() => navigateTo('search')}
