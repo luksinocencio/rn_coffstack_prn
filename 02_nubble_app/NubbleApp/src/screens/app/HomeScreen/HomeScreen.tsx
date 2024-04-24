@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import {
   FlatList,
   ListRenderItemInfo,
@@ -7,35 +7,14 @@ import {
 } from 'react-native'
 
 import { PostItem, Screen } from '@components'
-import { Post, postService } from '@domain'
+import { Post, usePostList } from '@domain'
 import { AppTabScreenProps } from '@routes'
 
 import { HomeHeader } from './components/HeaderHome'
 import { HomeEmpty } from './components/HomeEmpty'
 
 export function HomeScreen({}: AppTabScreenProps<'HomeScreen'>) {
-  const [postList, setPostList] = useState<Post[]>()
-  const [error, setError] = useState<Error | null>(null)
-  const [loading, setLoading] = useState<boolean>(true)
-
-  async function fetchData() {
-    try {
-      setError(null)
-      setLoading(true)
-      const list = await postService.getList()
-      setPostList(list)
-      // setPostList([])
-    } catch (er: any) {
-      console.log(er)
-      setError(er)
-    } finally {
-      setLoading(false)
-    }
-  }
-
-  useEffect(() => {
-    fetchData()
-  }, [])
+  const { postList, loading, error, fetchData } = usePostList()
 
   function renderItem({ item }: ListRenderItemInfo<Post>) {
     return <PostItem post={item} />
