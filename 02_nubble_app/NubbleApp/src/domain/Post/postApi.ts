@@ -14,7 +14,6 @@ async function getList(): Promise<PageAPI<PostAPI>> {
   });
 
   let data: PageAPI<PostAPI> = await response.json();
-  console.log('FETCHED DATA', data);
 
   return data;
 }

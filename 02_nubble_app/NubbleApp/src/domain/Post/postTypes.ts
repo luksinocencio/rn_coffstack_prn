@@ -26,13 +26,13 @@ export interface PostAPI {
   meta: Meta;
 }
 
-export interface Meta {
+interface Meta {
   like_count: string;
   favorite_count: string;
   comments_count: string;
 }
 
-export interface User {
+interface User {
   id: number;
   first_name: string;
   last_name: string;
