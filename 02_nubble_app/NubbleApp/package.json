@@ -8,7 +8,8 @@
     "lint": "eslint .",
     "start": "react-native start",
     "test": "jest",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "podinstall": "cd ios && rm -rf Pods build Podfile.lock && pod deintegrate && pod install; cd .."
   },
   "dependencies": {
     "@hookform/resolvers": "^3.3.4",

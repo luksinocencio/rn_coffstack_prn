@@ -3,6 +3,7 @@
   "compilerOptions": {
     "baseUrl": "./",
     "paths": {
+      "@api": ["src/api"],
       "@brand": ["src/brand"],
       "@components": ["src/components"],
       "@domain": ["src/domain"],
