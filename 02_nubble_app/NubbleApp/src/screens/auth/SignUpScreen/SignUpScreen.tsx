@@ -1,7 +1,7 @@
-import React from 'react';
+import React from 'react'
 
-import { zodResolver } from '@hookform/resolvers/zod';
-import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod'
+import { useForm } from 'react-hook-form'
 
 import {
   Button,
@@ -9,15 +9,15 @@ import {
   FormTextInput,
   Screen,
   Text,
-} from '@components';
-import { useResetNavigationSuccess } from '@hooks';
-import { AuthScreenProps } from '@routes';
+} from '@components'
+import { useResetNavigationSuccess } from '@hooks'
+import { AuthScreenProps } from '@routes'
 
-import { SignUpSchema, signUpSchema } from './signUpSchema';
+import { SignUpSchema, signUpSchema } from './signUpSchema'
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 export function SignUpScreen({ navigation }: AuthScreenProps<'SignUpScreen'>) {
-  const { reset } = useResetNavigationSuccess();
+  const { reset } = useResetNavigationSuccess()
   const { control, formState, handleSubmit } = useForm<SignUpSchema>({
     resolver: zodResolver(signUpSchema),
     defaultValues: {
@@ -27,10 +27,10 @@ export function SignUpScreen({ navigation }: AuthScreenProps<'SignUpScreen'>) {
       password: '',
     },
     mode: 'onChange',
-  });
+  })
 
   function submitForm(formValues: SignUpSchema) {
-    console.log(formValues);
+    console.log(formValues)
     reset({
       title: 'Sua conta foi criada com sucesso!',
       description: 'Agora é só fazer login na nossa plataforma',
@@ -38,7 +38,7 @@ export function SignUpScreen({ navigation }: AuthScreenProps<'SignUpScreen'>) {
         name: 'checkRound',
         color: 'success',
       },
-    });
+    })
   }
 
   return (
@@ -85,5 +85,5 @@ export function SignUpScreen({ navigation }: AuthScreenProps<'SignUpScreen'>) {
         title="Criar uma conta"
       />
     </Screen>
-  );
+  )
 }

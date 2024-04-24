@@ -1,9 +1,9 @@
-import React from 'react';
-import { Dimensions, Image } from 'react-native';
+import React from 'react'
+import { Dimensions, Image } from 'react-native'
 
-import { Post } from '@domain';
+import { Post } from '@domain'
 
-type PostImagemProps = Pick<Post, 'imageURL'>;
+type PostImagemProps = Pick<Post, 'imageURL'>
 
 export function PostImagem({ imageURL }: PostImagemProps) {
   return (
@@ -16,5 +16,5 @@ export function PostImagem({ imageURL }: PostImagemProps) {
         marginHorizontal: -24,
       }}
     />
-  );
+  )
 }

@@ -1,19 +1,19 @@
-import React from 'react';
+import React from 'react'
 
-import { zodResolver } from '@hookform/resolvers/zod';
-import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod'
+import { useForm } from 'react-hook-form'
 
-import { Button, FormTextInput, Screen, Text } from '@components';
-import { useResetNavigationSuccess } from '@hooks';
-import { AuthScreenProps } from '@routes';
+import { Button, FormTextInput, Screen, Text } from '@components'
+import { useResetNavigationSuccess } from '@hooks'
+import { AuthScreenProps } from '@routes'
 
 import {
   ForgotPasswordSchema,
   forgotPasswordSchema,
-} from './forgotPasswordSchema';
+} from './forgotPasswordSchema'
 
 export function ForgotPasswordScreen({}: AuthScreenProps<'ForgotPasswordScreen'>) {
-  const { reset } = useResetNavigationSuccess();
+  const { reset } = useResetNavigationSuccess()
 
   const { control, formState, handleSubmit } = useForm<ForgotPasswordSchema>({
     resolver: zodResolver(forgotPasswordSchema),
@@ -21,10 +21,10 @@ export function ForgotPasswordScreen({}: AuthScreenProps<'ForgotPasswordScreen'>
       email: '',
     },
     mode: 'onChange',
-  });
+  })
 
   function submitForm(values: ForgotPasswordSchema) {
-    console.log(values);
+    console.log(values)
     reset({
       title: `Enviamos as instruções ${'\n'}para seu e-mail`,
       description:
@@ -33,7 +33,7 @@ export function ForgotPasswordScreen({}: AuthScreenProps<'ForgotPasswordScreen'>
         name: 'messageRound',
         color: 'primary',
       },
-    });
+    })
   }
   return (
     <Screen canGoBack>
@@ -58,5 +58,5 @@ export function ForgotPasswordScreen({}: AuthScreenProps<'ForgotPasswordScreen'>
         title="Recuperar senha"
       />
     </Screen>
-  );
+  )
 }

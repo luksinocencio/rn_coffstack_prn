@@ -1,19 +1,19 @@
-import React from 'react';
-import { Alert } from 'react-native';
+import React from 'react'
+import { Alert } from 'react-native'
 
-import { zodResolver } from '@hookform/resolvers/zod';
-import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod'
+import { useForm } from 'react-hook-form'
 
 import {
-    Button,
-    FormPasswordInput,
-    FormTextInput,
-    Screen,
-    Text,
-} from '@components';
-import { AuthScreenProps } from '@routes';
+  Button,
+  FormPasswordInput,
+  FormTextInput,
+  Screen,
+  Text,
+} from '@components'
+import { AuthScreenProps } from '@routes'
 
-import { SignInSchema, signInSchema } from './signInSchema';
+import { SignInSchema, signInSchema } from './signInSchema'
 
 export function SingInScreen({ navigation }: AuthScreenProps<'SignInScreen'>) {
   const { control, formState, handleSubmit } = useForm<SignInSchema>({
@@ -23,18 +23,18 @@ export function SingInScreen({ navigation }: AuthScreenProps<'SignInScreen'>) {
       password: '',
     },
     mode: 'onChange',
-  });
+  })
 
   function submitForm({ email, password }: SignInSchema) {
-    Alert.alert(`Email: ${email} ${'\n'} Senha: ${password}`);
+    Alert.alert(`Email: ${email} ${'\n'} Senha: ${password}`)
   }
 
   function navigateToSignUpScreen() {
-    navigation.navigate('SignUpScreen');
+    navigation.navigate('SignUpScreen')
   }
 
   function navigateToForgotPasswordScreen() {
-    navigation.navigate('ForgotPasswordScreen');
+    navigation.navigate('ForgotPasswordScreen')
   }
   return (
     <Screen scrollable>
@@ -83,5 +83,5 @@ export function SingInScreen({ navigation }: AuthScreenProps<'SignInScreen'>) {
         title="Criar uma conta"
       />
     </Screen>
-  );
+  )
 }

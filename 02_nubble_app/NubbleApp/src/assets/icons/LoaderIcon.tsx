@@ -1,6 +1,8 @@
-import React from 'react';
-import { Path, Svg } from 'react-native-svg';
-import { IconBase } from '../../components/Icon/Icon';
+import React from 'react'
+
+import { Path, Svg } from 'react-native-svg'
+
+import { IconBase } from '@components'
 
 export function LoaderIcon({ size = 48, color = 'black' }: IconBase) {
   return (
@@ -11,5 +13,5 @@ export function LoaderIcon({ size = 48, color = 'black' }: IconBase) {
         stroke-width="3"
       />
     </Svg>
-  );
+  )
 }

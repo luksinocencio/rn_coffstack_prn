@@ -1,20 +1,20 @@
-import React from 'react';
-import { KeyboardAvoidingView, Platform } from 'react-native';
+import React from 'react'
+import { KeyboardAvoidingView, Platform } from 'react-native'
 
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation } from '@react-navigation/native'
 
-import { Box, BoxProps, Icon, Text, TouchableOpacityBox } from '@components';
-import { useAppSafeArea, useAppTheme } from '@hooks';
+import { Box, BoxProps, Icon, Text, TouchableOpacityBox } from '@components'
+import { useAppSafeArea, useAppTheme } from '@hooks'
 
 import {
   ScrollViewContainer,
   ViewContainer,
-} from './components/ScreenContainer/ScreenContainer';
+} from './components/ScreenContainer/ScreenContainer'
 
 interface ScreenProps extends BoxProps {
-  children: React.ReactNode;
-  canGoBack?: boolean;
-  scrollable?: boolean;
+  children: React.ReactNode
+  canGoBack?: boolean
+  scrollable?: boolean
 }
 
 export function Screen({
@@ -24,11 +24,11 @@ export function Screen({
   style,
   ...boxProps
 }: ScreenProps) {
-  const { bottom, top } = useAppSafeArea();
-  const { colors } = useAppTheme();
-  const navigation = useNavigation();
+  const { bottom, top } = useAppSafeArea()
+  const { colors } = useAppTheme()
+  const navigation = useNavigation()
 
-  const Container = scrollable ? ScrollViewContainer : ViewContainer;
+  const Container = scrollable ? ScrollViewContainer : ViewContainer
   return (
     <KeyboardAvoidingView
       style={{ flex: 1 }}
@@ -53,5 +53,5 @@ export function Screen({
         </Box>
       </Container>
     </KeyboardAvoidingView>
-  );
+  )
 }

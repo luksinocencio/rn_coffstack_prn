@@ -1,7 +1,10 @@
-import React from 'react';
-import { Circle, Path, Svg } from 'react-native-svg';
-import { IconBase } from '../../components/Icon/Icon';
-import { palette } from '../../theme/theme';
+import React from 'react'
+
+import { Circle, Path, Svg } from 'react-native-svg'
+
+import { IconBase } from '@components'
+
+import { palette } from '../../theme/theme'
 
 export function CheckRoundIcon({
   size = 48,
@@ -17,5 +20,5 @@ export function CheckRoundIcon({
         fill="white"
       />
     </Svg>
-  );
+  )
 }

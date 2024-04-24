@@ -1,7 +1,7 @@
-import React from 'react';
-import { Circle, Path, Svg } from 'react-native-svg';
-import { IconBase } from '../../components/Icon/Icon';
-import { palette } from '../../theme/theme';
+import { IconBase } from '@components'
+import React from 'react'
+import { Circle, Path, Svg } from 'react-native-svg'
+import { palette } from '../../theme/theme'
 
 export function MessageRoundLightIcon({
   size = 48,
@@ -17,5 +17,5 @@ export function MessageRoundLightIcon({
         fill="black"
       />
     </Svg>
-  );
+  )
 }

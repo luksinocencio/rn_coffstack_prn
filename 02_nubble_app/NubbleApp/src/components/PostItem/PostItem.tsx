@@ -1,15 +1,15 @@
-import React from 'react';
+import React from 'react'
 
-import { Box } from '@components';
-import { Post } from '@domain';
+import { Box } from '@components'
+import { Post } from '@domain'
 
-import { PostActions } from './components/PostActions';
-import { PostBottom } from './components/PostBottom';
-import { PostHeader } from './components/PostHeader';
-import { PostImagem } from './components/PostImagem';
+import { PostActions } from './components/PostActions'
+import { PostBottom } from './components/PostBottom'
+import { PostHeader } from './components/PostHeader'
+import { PostImagem } from './components/PostImagem'
 
 interface PostItemProps {
-  post: Post;
+  post: Post
 }
 
 export function PostItem({ post }: PostItemProps) {
@@ -28,5 +28,5 @@ export function PostItem({ post }: PostItemProps) {
         commentCount={post.commentCount}
       />
     </Box>
-  );
+  )
 }

@@ -1,12 +1,12 @@
-import React from 'react';
+import React from 'react'
 
-import { Screen, Text } from '@components';
-import { AppTabScreenProps } from '@routes';
+import { Screen, Text } from '@components'
+import { AppTabScreenProps } from '@routes'
 
 export function FavoriteScreen({}: AppTabScreenProps<'FavoriteScreen'>) {
   return (
     <Screen>
       <Text preset="headingLarge">Favorite Screen</Text>
     </Screen>
-  );
+  )
 }

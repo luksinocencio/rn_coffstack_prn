@@ -1,21 +1,21 @@
-import React from 'react';
+import React from 'react'
 
 import {
   ActivityIndicator,
   Text,
   TouchableOpacityBox,
   TouchableOpacityBoxProps,
-} from '@components';
+} from '@components'
 
-import { buttonPresets } from './buttonPresets';
+import { buttonPresets } from './buttonPresets'
 
-export type ButtonPreset = 'primary' | 'outline';
+export type ButtonPreset = 'primary' | 'outline'
 
 interface ButtonProps extends TouchableOpacityBoxProps {
-  title: string;
-  loading?: boolean;
-  preset?: ButtonPreset;
-  disabled?: boolean;
+  title: string
+  loading?: boolean
+  preset?: ButtonPreset
+  disabled?: boolean
 }
 
 export function Button({
@@ -25,7 +25,7 @@ export function Button({
   disabled,
   ...touchableOpacityBoxProps
 }: ButtonProps) {
-  const buttonPreset = buttonPresets[preset][disabled ? 'disabled' : 'default'];
+  const buttonPreset = buttonPresets[preset][disabled ? 'disabled' : 'default']
   return (
     <TouchableOpacityBox
       disabled={disabled || loading}
@@ -44,5 +44,5 @@ export function Button({
         </Text>
       )}
     </TouchableOpacityBox>
-  );
+  )
 }

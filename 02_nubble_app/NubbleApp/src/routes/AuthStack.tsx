@@ -1,14 +1,14 @@
-import React from 'react';
+import React from 'react'
 
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { createNativeStackNavigator } from '@react-navigation/native-stack'
 
-import { IconProps } from '@components';
+import { IconProps } from '@components'
 import {
   ForgotPasswordScreen,
   SignUpScreen,
   SingInScreen,
   SuccessScreen,
-} from '@screens';
+} from '@screens'
 
 /**
  * undefined -> usamos mesmo que nossas rotas não precisem de parametros
@@ -16,17 +16,17 @@ import {
  */
 
 export type AuthStackParamList = {
-  SignInScreen: undefined;
-  SignUpScreen: undefined;
+  SignInScreen: undefined
+  SignUpScreen: undefined
   SuccessScreen: {
-    title: string;
-    description: string;
-    icon: Pick<IconProps, 'name' | 'color'>;
-  };
-  ForgotPasswordScreen: undefined;
-};
+    title: string
+    description: string
+    icon: Pick<IconProps, 'name' | 'color'>
+  }
+  ForgotPasswordScreen: undefined
+}
 
-const { Navigator, Screen } = createNativeStackNavigator<AuthStackParamList>();
+const { Navigator, Screen } = createNativeStackNavigator<AuthStackParamList>()
 
 export function AuthStack() {
   return (
@@ -38,5 +38,5 @@ export function AuthStack() {
       <Screen name="SuccessScreen" component={SuccessScreen} />
       <Screen name="ForgotPasswordScreen" component={ForgotPasswordScreen} />
     </Navigator>
-  );
+  )
 }

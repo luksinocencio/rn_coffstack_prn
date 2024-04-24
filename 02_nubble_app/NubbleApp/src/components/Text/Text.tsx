@@ -1,18 +1,18 @@
-import React from 'react';
-import { TextStyle } from 'react-native';
+import React from 'react'
+import { TextStyle } from 'react-native'
 
-import { createText } from '@shopify/restyle';
+import { createText } from '@shopify/restyle'
 
-import { Theme } from '@theme';
+import { Theme } from '@theme'
 
-export const SRText = createText<Theme>();
-export type SRTextProps = React.ComponentProps<typeof SRText>;
+export const SRText = createText<Theme>()
+export type SRTextProps = React.ComponentProps<typeof SRText>
 
 export interface TextProps extends SRTextProps {
-  preset?: TextVariants;
-  bold?: boolean;
-  medium?: boolean;
-  italic?: boolean;
+  preset?: TextVariants
+  bold?: boolean
+  medium?: boolean
+  italic?: boolean
 }
 
 export function Text({
@@ -24,7 +24,7 @@ export function Text({
   style,
   ...sRTextProps
 }: TextProps) {
-  const fontFamily = getFontFamily(preset, bold, italic, medium);
+  const fontFamily = getFontFamily(preset, bold, italic, medium)
 
   return (
     <SRText
@@ -33,7 +33,7 @@ export function Text({
       {...sRTextProps}>
       {children}
     </SRText>
-  );
+  )
 }
 
 type TextVariants =
@@ -44,7 +44,7 @@ type TextVariants =
   | 'paragraphMedium'
   | 'paragraphSmall'
   | 'paragraphCaption'
-  | 'paragraphCaptionSmall';
+  | 'paragraphCaptionSmall'
 
 export const $fontSizes: Record<TextVariants, TextStyle> = {
   headingLarge: { fontSize: 32, lineHeight: 38.4 },
@@ -57,7 +57,7 @@ export const $fontSizes: Record<TextVariants, TextStyle> = {
 
   paragraphCaption: { fontSize: 12, lineHeight: 16.8 },
   paragraphCaptionSmall: { fontSize: 10, lineHeight: 14 },
-};
+}
 
 export const $fontFamily = {
   black: 'Satoshi-Black',
@@ -70,7 +70,7 @@ export const $fontFamily = {
   medium: 'Satoshi-Medium',
   mediumItalic: 'SatoshiItalic',
   regular: 'Satoshi-Regular',
-};
+}
 
 function getFontFamily(
   preset: TextVariants,
@@ -82,18 +82,18 @@ function getFontFamily(
     case preset === 'headingLarge' ||
       preset === 'headingMedium' ||
       preset === 'headingSmall':
-      return italic ? $fontFamily.boldItalic : $fontFamily.bold;
+      return italic ? $fontFamily.boldItalic : $fontFamily.bold
     case bold && italic:
-      return $fontFamily.boldItalic;
+      return $fontFamily.boldItalic
     case bold:
-      return $fontFamily.bold;
+      return $fontFamily.bold
     case italic:
-      return $fontFamily.italic;
+      return $fontFamily.italic
     case medium && italic:
-      return $fontFamily.mediumItalic;
+      return $fontFamily.mediumItalic
     case medium:
-      return $fontFamily.medium;
+      return $fontFamily.medium
     default:
-      return $fontFamily.regular;
+      return $fontFamily.regular
   }
 }

@@ -1,8 +1,10 @@
-import React from 'react';
-import {Svg, Path, Circle} from 'react-native-svg';
-import {IconBase} from '../../components/Icon/Icon';
+import React from 'react'
 
-export function ChatOnIcon({size = 20, color = 'black'}: IconBase) {
+import { Circle, Path, Svg } from 'react-native-svg'
+
+import { IconBase } from '@components'
+
+export function ChatOnIcon({ size = 20, color = 'black' }: IconBase) {
   return (
     <Svg width={size} height={size} viewBox="0 0 20 20" fill="none">
       <Path
@@ -13,5 +15,5 @@ export function ChatOnIcon({size = 20, color = 'black'}: IconBase) {
       />
       <Circle cx="17" cy="5" r="3" fill="black" />
     </Svg>
-  );
+  )
 }

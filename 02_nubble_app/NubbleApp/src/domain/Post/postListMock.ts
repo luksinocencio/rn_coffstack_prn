@@ -1,4 +1,4 @@
-import { Post } from './postTypes';
+import { Post } from './postTypes'
 
 export const postListMock: Post[] = [
   {
@@ -118,4 +118,4 @@ export const postListMock: Post[] = [
     commentCount: 0,
     favoriteCount: 0,
   },
-];
+]

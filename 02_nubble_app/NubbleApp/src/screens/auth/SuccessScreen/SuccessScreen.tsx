@@ -1,16 +1,16 @@
-import React from 'react';
+import React from 'react'
 
-import { Button, Icon, Screen, Text } from '@components';
-import { AuthScreenProps } from '@routes';
+import { Button, Icon, Screen, Text } from '@components'
+import { AuthScreenProps } from '@routes'
 
 export function SuccessScreen({
   route,
   navigation,
 }: AuthScreenProps<'SuccessScreen'>) {
-  const { params } = route;
+  const { params } = route
 
   function goBackToBegin() {
-    navigation.goBack();
+    navigation.goBack()
   }
 
   return (
@@ -25,5 +25,5 @@ export function SuccessScreen({
       </Text>
       <Button onPress={goBackToBegin} title="Voltar ao inicío" mt="s40" />
     </Screen>
-  );
+  )
 }

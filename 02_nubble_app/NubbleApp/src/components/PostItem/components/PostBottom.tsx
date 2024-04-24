@@ -1,12 +1,12 @@
-import React from 'react';
+import React from 'react'
 
-import { Box, Text, TouchableOpacityBox } from '@components';
-import { Post } from '@domain';
+import { Box, Text, TouchableOpacityBox } from '@components'
+import { Post } from '@domain'
 
-type PostBottomProps = Pick<Post, 'author' | 'text' | 'commentCount'>;
+type PostBottomProps = Pick<Post, 'author' | 'text' | 'commentCount'>
 
 export function PostBottom({ author, text, commentCount }: PostBottomProps) {
-  const commentText = getCommentText(commentCount);
+  const commentText = getCommentText(commentCount)
   return (
     <Box mt="s16">
       <Text preset="paragraphMedium" medium>
@@ -23,16 +23,16 @@ export function PostBottom({ author, text, commentCount }: PostBottomProps) {
         ) : null}
       </TouchableOpacityBox>
     </Box>
-  );
+  )
 }
 
 function getCommentText(commentCount: number): string | null {
   switch (commentCount) {
     case 0:
-      return null;
+      return null
     case 1:
-      return 'ver comentário';
+      return 'ver comentário'
     default:
-      return `ver ${commentCount} comentários`;
+      return `ver ${commentCount} comentários`
   }
 }

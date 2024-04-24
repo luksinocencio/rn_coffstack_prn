@@ -1,14 +1,14 @@
-import { IconProps } from '@components';
-import { AppTabBottomTabParamList } from '@routes';
+import { IconProps } from '@components'
+import { AppTabBottomTabParamList } from '@routes'
 
 export const mapScreenToProps: Record<
   keyof AppTabBottomTabParamList,
   {
-    label: string;
+    label: string
     icon: {
-      focused: IconProps['name'];
-      unfocused: IconProps['name'];
-    };
+      focused: IconProps['name']
+      unfocused: IconProps['name']
+    }
   }
 > = {
   HomeScreen: {
@@ -39,4 +39,4 @@ export const mapScreenToProps: Record<
       unfocused: 'profile',
     },
   },
-};
+}

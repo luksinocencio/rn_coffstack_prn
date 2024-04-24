@@ -1,12 +1,12 @@
-import React from 'react';
+import React from 'react'
 
-import { Box, Icon, IconProps, Text, TouchableOpacityBox } from '@components';
-import { Post } from '@domain';
+import { Box, Icon, IconProps, Text, TouchableOpacityBox } from '@components'
+import { Post } from '@domain'
 
 type PostActionsProps = Pick<
   Post,
   'commentCount' | 'favoriteCount' | 'reactionCount'
->;
+>
 
 export function PostActions({
   commentCount,
@@ -14,15 +14,15 @@ export function PostActions({
   reactionCount,
 }: PostActionsProps) {
   function likePost() {
-    console.log('liked was pressed');
+    console.log('liked was pressed')
   }
 
   function navigateToComments() {
-    console.log('comment was pressed');
+    console.log('comment was pressed')
   }
 
   function favoritePost() {
-    console.log('favorite was pressed');
+    console.log('favorite was pressed')
   }
 
   return (
@@ -46,17 +46,17 @@ export function PostActions({
         text={favoriteCount}
       />
     </Box>
-  );
+  )
 }
 
 interface ItemProps {
-  onPress: () => void;
-  marked: boolean;
-  text: number;
+  onPress: () => void
+  marked: boolean
+  text: number
   iconName: {
-    default: IconProps['name'];
-    marked: IconProps['name'];
-  };
+    default: IconProps['name']
+    marked: IconProps['name']
+  }
 }
 
 function Item({ onPress, text, iconName, marked }: ItemProps) {
@@ -76,5 +76,5 @@ function Item({ onPress, text, iconName, marked }: ItemProps) {
         </Text>
       ) : null}
     </TouchableOpacityBox>
-  );
+  )
 }

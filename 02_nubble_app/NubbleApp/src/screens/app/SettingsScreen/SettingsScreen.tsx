@@ -1,7 +1,7 @@
-import React from 'react';
+import React from 'react'
 
-import { Button, Screen, Text } from '@components';
-import { AppScreenProps } from '@routes';
+import { Button, Screen, Text } from '@components'
+import { AppScreenProps } from '@routes'
 
 export function SettingsScreen({
   navigation,
@@ -18,5 +18,5 @@ export function SettingsScreen({
         }
       />
     </Screen>
-  );
+  )
 }

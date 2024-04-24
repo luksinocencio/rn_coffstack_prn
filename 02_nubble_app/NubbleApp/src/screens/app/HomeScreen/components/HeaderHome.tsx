@@ -1,37 +1,37 @@
-import React from 'react';
+import React from 'react'
 
-import { LogoSimples } from '@brand';
+import { LogoSimples } from '@brand'
 import {
   Box,
   BoxProps,
   Icon,
   IconProps,
   TouchableOpacityBox,
-} from '@components';
-import { useAppSafeArea } from '@hooks';
-import { Theme } from '@theme';
+} from '@components'
+import { useAppSafeArea } from '@hooks'
+import { Theme } from '@theme'
 
 function IconButton({
   onPress,
   iconName,
   mr,
 }: {
-  onPress: () => void;
-  iconName: IconProps['name'];
-  mr?: keyof Theme['spacing'];
+  onPress: () => void
+  iconName: IconProps['name']
+  mr?: keyof Theme['spacing']
 }) {
   return (
     <TouchableOpacityBox mr={mr} onPress={onPress}>
       <Icon name={iconName} />
     </TouchableOpacityBox>
-  );
+  )
 }
 
 export function HomeHeader() {
-  const { top } = useAppSafeArea();
+  const { top } = useAppSafeArea()
 
   function navigateTo(screenName: string) {
-    console.log(screenName);
+    console.log(screenName)
   }
 
   return (
@@ -51,7 +51,7 @@ export function HomeHeader() {
         <IconButton onPress={() => navigateTo('chat')} iconName="chat" />
       </Box>
     </Box>
-  );
+  )
 }
 
 const $wrapper: BoxProps = {
@@ -60,4 +60,4 @@ const $wrapper: BoxProps = {
   paddingBottom: 's24',
   paddingHorizontal: 's24',
   alignItems: 'center',
-};
+}

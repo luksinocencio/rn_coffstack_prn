@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios from 'axios'
 
 export const api = axios.create({
   baseURL: 'http://127.0.0.1:3333/',
@@ -8,4 +8,4 @@ export const api = axios.create({
       'Bearer ' +
       'NQ.w6BlPutLOqcKoItZ-IvjELcWp2iRqSpnnCZZsmlrZpUbsgXJ7ZznI56TMJhx',
   },
-});
+})

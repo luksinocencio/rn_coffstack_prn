@@ -1,15 +1,15 @@
-import React from 'react';
+import React from 'react'
 
-import { Path, Svg } from 'react-native-svg';
+import { Path, Svg } from 'react-native-svg'
 
-import { useAppTheme } from '@hooks';
+import { useAppTheme } from '@hooks'
 
 interface Props {
-  width?: number;
+  width?: number
 }
 
 export function LogoSimples({ width = 105 }: Props) {
-  const { colors } = useAppTheme();
+  const { colors } = useAppTheme()
   return (
     <Svg
       width={width}
@@ -45,5 +45,5 @@ export function LogoSimples({ width = 105 }: Props) {
         fill={colors.backgroundContrast}
       />
     </Svg>
-  );
+  )
 }

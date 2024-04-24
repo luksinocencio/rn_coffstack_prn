@@ -1,16 +1,16 @@
-import { ButtonPreset, TouchableOpacityBoxProps } from '@components';
-import { ThemeColors } from '@theme';
+import { ButtonPreset, TouchableOpacityBoxProps } from '@components'
+import { ThemeColors } from '@theme'
 
 interface ButtonUI {
-  container: TouchableOpacityBoxProps;
-  content: ThemeColors;
+  container: TouchableOpacityBoxProps
+  content: ThemeColors
 }
 
 export const buttonPresets: Record<
   ButtonPreset,
   {
-    default: ButtonUI;
-    disabled: ButtonUI;
+    default: ButtonUI
+    disabled: ButtonUI
   }
 > = {
   primary: {
@@ -43,4 +43,4 @@ export const buttonPresets: Record<
       content: 'gray2',
     },
   },
-};
+}

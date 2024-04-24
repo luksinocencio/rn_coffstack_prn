@@ -1,10 +1,10 @@
-import React from 'react';
-import { Image } from 'react-native';
+import React from 'react'
+import { Image } from 'react-native'
 
-import { Box, Text } from '@components';
-import { Post } from '@domain';
+import { Box, Text } from '@components'
+import { Post } from '@domain'
 
-type PostHeaderProps = Pick<Post, 'author'>;
+type PostHeaderProps = Pick<Post, 'author'>
 
 export function PostHeader({ author }: PostHeaderProps) {
   return (
@@ -17,5 +17,5 @@ export function PostHeader({ author }: PostHeaderProps) {
         {author.userName}
       </Text>
     </Box>
-  );
+  )
 }
