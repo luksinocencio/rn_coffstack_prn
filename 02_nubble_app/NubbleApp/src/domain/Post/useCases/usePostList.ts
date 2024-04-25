@@ -1,48 +1,69 @@
 import { useEffect, useState } from 'react'
 
-import { postService } from '@domain'
-
-import { Post } from '../postTypes'
+import { Post, postService } from '@domain'
 
 /**
  * Hook para buscar a lista de posts
  * @description Camada de aplicacção: onde escreveremos os casos de uso. Integração de múltiplos services, para executar uma tarefa.
  * @alias usePostList
- * @returns {error, postList, loading, fetchData, fetchNextPage}
  * @example const { postList, loading, error, fetchData, fetchNextPage } = usePostList()
  */
 
 export function usePostList() {
   const [postList, setPostList] = useState<Post[]>([])
-  const [loading, setLoading] = useState<boolean>(true)
-  const [error, setError] = useState<Error | null>(null)
-  const [page, setPage] = useState<number>(1)
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState<boolean | null>(null)
+  const [page, setPage] = useState(1)
+  const [hasNextPage, setHasNextPage] = useState(true)
 
-  async function fetchData() {
+  async function fetchInitialData() {
     try {
       setError(null)
       setLoading(true)
-      const list = await postService.getList(page)
-      setPostList(prev => [...prev, ...list])
-      setPage(prev => prev + 1)
-    } catch (er: any) {
-      console.log(er)
-      setError(er)
+      const { data, meta } = await postService.getList(1)
+      setPostList(data)
+      if (meta.hasNextPage) {
+        setPage(2)
+        setHasNextPage(true)
+      } else {
+        setHasNextPage(false)
+      }
+    } catch (er) {
+      setError(true)
     } finally {
       setLoading(false)
     }
   }
 
-  function fetchNextPage() {
-    if (!loading) {
-      fetchData()
+  async function fetchNextPage() {
+    if (loading || !hasNextPage) {
+      return
+    }
+    try {
+      setLoading(true)
+      const { data, meta } = await postService.getList(page)
+      setPostList(prev => [...prev, ...data])
+      if (meta.hasNextPage) {
+        setPage(prev => prev + 1)
+      } else {
+        setHasNextPage(false)
+      }
+    } catch (er) {
+      setError(true)
+    } finally {
+      setLoading(false)
     }
   }
 
   useEffect(() => {
-    fetchData()
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    fetchInitialData()
   }, [])
 
-  return { postList, error, loading, fetchData, fetchNextPage }
+  return {
+    postList,
+    error,
+    loading,
+    refresh: fetchInitialData,
+    fetchNextPage,
+  }
 }
