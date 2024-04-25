@@ -21,24 +21,20 @@ export interface PostAPI {
   is_activated: boolean
   created_at: Date
   updated_at: Date
-  user: User
+  user: {
+    id: number
+    first_name: string
+    last_name: string
+    username: string
+    email: string
+    profile_url: string
+    is_online: boolean
+    full_name: string
+  }
   status: string
-  meta: Meta
-}
-
-interface Meta {
-  like_count: string
-  favorite_count: string
-  comments_count: string
-}
-
-interface User {
-  id: number
-  first_name: string
-  last_name: string
-  username: string
-  email: string
-  profile_url: string
-  is_online: boolean
-  full_name: string
+  meta: {
+    like_count: string
+    favorite_count: string
+    comments_count: string
+  }
 }

@@ -14,7 +14,7 @@ import { HomeHeader } from './components/HeaderHome'
 import { HomeEmpty } from './components/HomeEmpty'
 
 export function HomeScreen({}: AppTabScreenProps<'HomeScreen'>) {
-  const { postList, loading, error, fetchData } = usePostList()
+  const { postList, loading, error, fetchData, fetchNextPage } = usePostList()
 
   function renderItem({ item }: ListRenderItemInfo<Post>) {
     return <PostItem post={item} />
@@ -23,15 +23,17 @@ export function HomeScreen({}: AppTabScreenProps<'HomeScreen'>) {
   return (
     <Screen style={$screen}>
       <FlatList
-        ListHeaderComponent={<HomeHeader />}
-        data={postList}
-        renderItem={renderItem}
-        keyExtractor={item => item.id}
         showsVerticalScrollIndicator={false}
+        data={postList}
+        keyExtractor={item => item.id}
+        renderItem={renderItem}
+        onEndReached={fetchNextPage}
+        onEndReachedThreshold={0.1}
+        contentContainerStyle={{ flexGrow: 1 }}
+        ListHeaderComponent={<HomeHeader />}
         ListEmptyComponent={
           <HomeEmpty loading={loading} error={error} refetch={fetchData} />
         }
-        contentContainerStyle={{ flexGrow: 1 }}
       />
     </Screen>
   )
