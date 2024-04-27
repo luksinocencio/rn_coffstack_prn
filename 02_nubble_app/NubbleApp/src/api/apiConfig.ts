@@ -6,6 +6,6 @@ export const api = axios.create({
     'Content-Type': 'application/json',
     Authorization:
       'Bearer ' +
-      'NQ.w6BlPutLOqcKoItZ-IvjELcWp2iRqSpnnCZZsmlrZpUbsgXJ7ZznI56TMJhx',
+      'NA.S2ypgYrMGxka1Wa4NOY3RcAnalrp-XigFD6hXjZb9XOzM1HpT5YfNpzwDTQx',
   },
 })
