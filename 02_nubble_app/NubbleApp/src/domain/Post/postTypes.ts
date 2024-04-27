@@ -1,5 +1,5 @@
 export interface Post {
-  id: string
+  id: number
   text: string
   author: {
     profileURL: string
@@ -19,8 +19,8 @@ export interface PostAPI {
   image_url: string
   is_fixed: boolean
   is_activated: boolean
-  created_at: Date
-  updated_at: Date
+  created_at: string
+  updated_at: string
   user: {
     id: number
     first_name: string
