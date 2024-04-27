@@ -1,12 +1,8 @@
 // post
-export * from './Post/postService'
-export * from './Post/postTypes'
-export * from './Post/useCases/usePostList'
+export * from './Post'
 
 // post-comment
-export * from './PostComment/postCommentService'
-export * from './PostComment/postCommentTypes'
-export * from './PostComment/useCases/usePostCommentList'
+export * from './PostComment'
 
 // hooks
-export * from './hooks/usePaginatedList'
+export * from './hooks'

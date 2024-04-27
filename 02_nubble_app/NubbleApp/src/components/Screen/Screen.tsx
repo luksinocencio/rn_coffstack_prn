@@ -23,8 +23,8 @@ export function Screen({
 }: ScreenProps) {
   const { bottom, top } = useAppSafeArea()
   const { colors } = useAppTheme()
-
   const Container = scrollable ? ScrollViewContainer : ViewContainer
+
   return (
     <KeyboardAvoidingView
       style={{ flex: 1 }}
@@ -34,7 +34,7 @@ export function Screen({
           paddingHorizontal="s24"
           style={[{ paddingTop: top, paddingBottom: bottom }, style]}
           {...boxProps}>
-          <ScreenHeader title={title} canGoBack={canGoBack} />
+          <ScreenHeader canGoBack={canGoBack} title={title} />
           {children}
         </Box>
       </Container>
