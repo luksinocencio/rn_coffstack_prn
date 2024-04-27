@@ -9,7 +9,7 @@ import { $textInputStyle, Box, Text, TouchableOpacityBox } from '@components'
 import { useAppTheme } from '@hooks'
 
 interface TextMessageProps extends RNTextInputProps {
-  onPressSend: () => void
+  onPressSend: (message: string) => void
 }
 export function TextMessage({
   onPressSend,
@@ -42,7 +42,9 @@ export function TextMessage({
           style={[$textInputStyle, { color: colors.gray1 }]}
           {...rnTextInputProps}
         />
-        <TouchableOpacityBox disabled={sendIsDisabled} onPress={onPressSend}>
+        <TouchableOpacityBox
+          disabled={sendIsDisabled}
+          onPress={() => onPressSend(value ?? '')}>
           <Text color={sendIsDisabled ? 'gray2' : 'primary'} bold>
             Enviar
           </Text>

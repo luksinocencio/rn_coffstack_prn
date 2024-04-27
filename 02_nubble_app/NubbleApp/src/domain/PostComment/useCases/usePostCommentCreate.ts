@@ -1,8 +1,14 @@
 import { useState } from 'react'
 
+import { PostComment } from '..'
 import { postCommentService } from '../postCommentService'
 
-export function usePostCommentCreate(postId: number) {
+interface Options {
+  onSuccess?: (data: PostComment) => void
+  onError?: (message: string) => void
+}
+
+export function usePostCommentCreate(postId: number, options?: Options) {
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<boolean | null>(null)
 
@@ -10,10 +16,15 @@ export function usePostCommentCreate(postId: number) {
     try {
       setLoading(true)
       setError(null)
-      await postCommentService.create(postId, message)
+      const postComment = await postCommentService.create(postId, message)
+
+      if (options?.onSuccess) {
+        options.onSuccess(postComment)
+      }
     } catch (err) {
       console.error(err)
       setError(true)
+      options?.onError?.('Erro ao criar comenário')
     } finally {
       setLoading(false)
     }

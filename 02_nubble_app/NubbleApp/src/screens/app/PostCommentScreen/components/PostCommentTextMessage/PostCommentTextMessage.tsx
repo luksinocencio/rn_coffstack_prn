@@ -6,24 +6,26 @@ import { usePostCommentCreate } from '@domain'
 
 export type PostCommentTextMessageProps = {
   postId: number
+  onAddComment: () => void
 }
 
 export default function PostCommentTextMessage({
   postId,
+  onAddComment,
 }: PostCommentTextMessageProps) {
-  const { createComment } = usePostCommentCreate(postId)
   const [message, setMessage] = useState('')
-
-  function onPressSend() {
-    createComment(message)
-    setMessage('')
-    Keyboard.dismiss()
-  }
+  const { createComment } = usePostCommentCreate(postId, {
+    onSuccess: () => {
+      onAddComment()
+      setMessage('')
+      Keyboard.dismiss()
+    },
+  })
 
   return (
     <TextMessage
       placeholder="Adicione um comentário"
-      onPressSend={onPressSend}
+      onPressSend={createComment}
       value={message}
       onChangeText={setMessage}
     />
