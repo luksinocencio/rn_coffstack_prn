@@ -1,4 +1,5 @@
-import { Post, postService, usePaginatedList } from '@domain'
+import { Post, postService } from '@domain'
+import { usePaginatedList } from '@infra'
 
 /**
  * Hook para buscar a lista de posts

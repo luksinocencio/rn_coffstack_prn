@@ -14,13 +14,13 @@
 		353A7893FDAD409C936FCBDB /* Satoshi-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = EBE8EFEC80D043E8A1F8E909 /* Satoshi-Bold.otf */; };
 		3922838004FA417E9A3491AA /* Satoshi-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 814A72C59DF44204B8CF25B4 /* Satoshi-Light.otf */; };
 		424DC78680054D37B8CAEDF8 /* Satoshi-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6DC0356C79154D5FB13ED0ED /* Satoshi-Black.otf */; };
-		77AB41450C9F7B6910C58BB2 /* libPods-NubbleApp-NubbleAppTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 51B01D51B826FC1D60F05B89 /* libPods-NubbleApp-NubbleAppTests.a */; };
+		4A809E163950F20C9F506D68 /* libPods-NubbleApp-NubbleAppTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BD8BCEF5BBF9C67CC1DAEBE9 /* libPods-NubbleApp-NubbleAppTests.a */; };
 		792E09CEA3154291B994A061 /* Satoshi-MediumItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 54CD5F2D670947488FB3F154 /* Satoshi-MediumItalic.otf */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		8D2174BABC904AB393BC05D8 /* Satoshi-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = E602ED519A2249C4BBE7880A /* Satoshi-Regular.otf */; };
+		A6DC82CC755A03E104EB7A22 /* libPods-NubbleApp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F20881EE3AA7284E86A6D65 /* libPods-NubbleApp.a */; };
 		AA726779D662417EAD2926F2 /* Satoshi-BlackItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 297408715E95468484E5EE8A /* Satoshi-BlackItalic.otf */; };
 		B9C4593B0D654769B5B1EF9A /* Satoshi-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 80431B8BF8D94EC3BBB1356B /* Satoshi-Medium.otf */; };
-		D1B7E616510EB670EE183081 /* libPods-NubbleApp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 952CDC44DD938BA823BBF340 /* libPods-NubbleApp.a */; };
 		D42AD995DFB042009877B3F4 /* Satoshi-BoldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = D3AAF403556645428AABE0AE /* Satoshi-BoldItalic.otf */; };
 		E2EB2E9EB5284B46ADD5391B /* Satoshi-Italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = FDD18B52598C4B17990CD9B1 /* Satoshi-Italic.otf */; };
 		E4587344BF624148A83FBF2F /* Satoshi-LightItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2BF32088DB5848B6BBF1497D /* Satoshi-LightItalic.otf */; };
@@ -46,21 +46,21 @@
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = NubbleApp/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = NubbleApp/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = NubbleApp/main.m; sourceTree = "<group>"; };
-		225D931BFC00C4203B1FEA50 /* Pods-NubbleApp-NubbleAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NubbleApp-NubbleAppTests.release.xcconfig"; path = "Target Support Files/Pods-NubbleApp-NubbleAppTests/Pods-NubbleApp-NubbleAppTests.release.xcconfig"; sourceTree = "<group>"; };
 		297408715E95468484E5EE8A /* Satoshi-BlackItalic.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Satoshi-BlackItalic.otf"; path = "../src/assets/fonts/Satoshi-BlackItalic.otf"; sourceTree = "<group>"; };
 		2BF32088DB5848B6BBF1497D /* Satoshi-LightItalic.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Satoshi-LightItalic.otf"; path = "../src/assets/fonts/Satoshi-LightItalic.otf"; sourceTree = "<group>"; };
-		3491122D6BB20410B5CA6322 /* Pods-NubbleApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NubbleApp.release.xcconfig"; path = "Target Support Files/Pods-NubbleApp/Pods-NubbleApp.release.xcconfig"; sourceTree = "<group>"; };
-		51B01D51B826FC1D60F05B89 /* libPods-NubbleApp-NubbleAppTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-NubbleApp-NubbleAppTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2F20881EE3AA7284E86A6D65 /* libPods-NubbleApp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-NubbleApp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		54CD5F2D670947488FB3F154 /* Satoshi-MediumItalic.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Satoshi-MediumItalic.otf"; path = "../src/assets/fonts/Satoshi-MediumItalic.otf"; sourceTree = "<group>"; };
-		6128AB628D4DFFEDF21F3BEF /* Pods-NubbleApp-NubbleAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NubbleApp-NubbleAppTests.debug.xcconfig"; path = "Target Support Files/Pods-NubbleApp-NubbleAppTests/Pods-NubbleApp-NubbleAppTests.debug.xcconfig"; sourceTree = "<group>"; };
+		6ACDF8966C811462BE1424C7 /* Pods-NubbleApp-NubbleAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NubbleApp-NubbleAppTests.release.xcconfig"; path = "Target Support Files/Pods-NubbleApp-NubbleAppTests/Pods-NubbleApp-NubbleAppTests.release.xcconfig"; sourceTree = "<group>"; };
 		6DC0356C79154D5FB13ED0ED /* Satoshi-Black.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Satoshi-Black.otf"; path = "../src/assets/fonts/Satoshi-Black.otf"; sourceTree = "<group>"; };
 		80431B8BF8D94EC3BBB1356B /* Satoshi-Medium.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Satoshi-Medium.otf"; path = "../src/assets/fonts/Satoshi-Medium.otf"; sourceTree = "<group>"; };
 		814A72C59DF44204B8CF25B4 /* Satoshi-Light.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Satoshi-Light.otf"; path = "../src/assets/fonts/Satoshi-Light.otf"; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = NubbleApp/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		952CDC44DD938BA823BBF340 /* libPods-NubbleApp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-NubbleApp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		900B27F1D86346974C839B1A /* Pods-NubbleApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NubbleApp.debug.xcconfig"; path = "Target Support Files/Pods-NubbleApp/Pods-NubbleApp.debug.xcconfig"; sourceTree = "<group>"; };
+		A304B325FF2743AC4AA9F2C8 /* Pods-NubbleApp-NubbleAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NubbleApp-NubbleAppTests.debug.xcconfig"; path = "Target Support Files/Pods-NubbleApp-NubbleAppTests/Pods-NubbleApp-NubbleAppTests.debug.xcconfig"; sourceTree = "<group>"; };
+		BD8BCEF5BBF9C67CC1DAEBE9 /* libPods-NubbleApp-NubbleAppTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-NubbleApp-NubbleAppTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3AAF403556645428AABE0AE /* Satoshi-BoldItalic.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Satoshi-BoldItalic.otf"; path = "../src/assets/fonts/Satoshi-BoldItalic.otf"; sourceTree = "<group>"; };
+		E34098C918B4755AEDC312DC /* Pods-NubbleApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NubbleApp.release.xcconfig"; path = "Target Support Files/Pods-NubbleApp/Pods-NubbleApp.release.xcconfig"; sourceTree = "<group>"; };
 		E602ED519A2249C4BBE7880A /* Satoshi-Regular.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Satoshi-Regular.otf"; path = "../src/assets/fonts/Satoshi-Regular.otf"; sourceTree = "<group>"; };
-		EB9A951513CBC26E9CE24631 /* Pods-NubbleApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NubbleApp.debug.xcconfig"; path = "Target Support Files/Pods-NubbleApp/Pods-NubbleApp.debug.xcconfig"; sourceTree = "<group>"; };
 		EBE8EFEC80D043E8A1F8E909 /* Satoshi-Bold.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Satoshi-Bold.otf"; path = "../src/assets/fonts/Satoshi-Bold.otf"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		FDD18B52598C4B17990CD9B1 /* Satoshi-Italic.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Satoshi-Italic.otf"; path = "../src/assets/fonts/Satoshi-Italic.otf"; sourceTree = "<group>"; };
@@ -71,7 +71,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				77AB41450C9F7B6910C58BB2 /* libPods-NubbleApp-NubbleAppTests.a in Frameworks */,
+				4A809E163950F20C9F506D68 /* libPods-NubbleApp-NubbleAppTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -79,7 +79,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D1B7E616510EB670EE183081 /* libPods-NubbleApp.a in Frameworks */,
+				A6DC82CC755A03E104EB7A22 /* libPods-NubbleApp.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -120,8 +120,8 @@
 			isa = PBXGroup;
 			children = (
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
-				952CDC44DD938BA823BBF340 /* libPods-NubbleApp.a */,
-				51B01D51B826FC1D60F05B89 /* libPods-NubbleApp-NubbleAppTests.a */,
+				2F20881EE3AA7284E86A6D65 /* libPods-NubbleApp.a */,
+				BD8BCEF5BBF9C67CC1DAEBE9 /* libPods-NubbleApp-NubbleAppTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -179,10 +179,10 @@
 		BBD78D7AC51CEA395F1C20DB /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				EB9A951513CBC26E9CE24631 /* Pods-NubbleApp.debug.xcconfig */,
-				3491122D6BB20410B5CA6322 /* Pods-NubbleApp.release.xcconfig */,
-				6128AB628D4DFFEDF21F3BEF /* Pods-NubbleApp-NubbleAppTests.debug.xcconfig */,
-				225D931BFC00C4203B1FEA50 /* Pods-NubbleApp-NubbleAppTests.release.xcconfig */,
+				900B27F1D86346974C839B1A /* Pods-NubbleApp.debug.xcconfig */,
+				E34098C918B4755AEDC312DC /* Pods-NubbleApp.release.xcconfig */,
+				A304B325FF2743AC4AA9F2C8 /* Pods-NubbleApp-NubbleAppTests.debug.xcconfig */,
+				6ACDF8966C811462BE1424C7 /* Pods-NubbleApp-NubbleAppTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -194,12 +194,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "NubbleAppTests" */;
 			buildPhases = (
-				8CE13A2B4F48D648343C1F8C /* [CP] Check Pods Manifest.lock */,
+				2DD3A6512DC412BA2C5483A4 /* [CP] Check Pods Manifest.lock */,
 				00E356EA1AD99517003FC87E /* Sources */,
 				00E356EB1AD99517003FC87E /* Frameworks */,
 				00E356EC1AD99517003FC87E /* Resources */,
-				86D919678226EF04212ED4DA /* [CP] Embed Pods Frameworks */,
-				8F3D246CDC02B0C28D33B296 /* [CP] Copy Pods Resources */,
+				2B1BA98FBDE175C6B6637195 /* [CP] Embed Pods Frameworks */,
+				59DE168CEC12584C2D3E2F98 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -215,13 +215,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "NubbleApp" */;
 			buildPhases = (
-				5D8318997EB5FC8EA4FA8702 /* [CP] Check Pods Manifest.lock */,
+				1232F5452C53763FFA12B06E /* [CP] Check Pods Manifest.lock */,
 				13B07F871A680F5B00A75B9A /* Sources */,
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
-				0EA29DC2D0AF5FE07A79E168 /* [CP] Embed Pods Frameworks */,
-				9676534A70869A8108218F7D /* [CP] Copy Pods Resources */,
+				993FB18C851EF6613342262A /* [CP] Embed Pods Frameworks */,
+				5A85EBE2A9846204BB951086 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -314,24 +314,7 @@
 			shellPath = /bin/sh;
 			shellScript = "set -e\n\nWITH_ENVIRONMENT=\"../node_modules/react-native/scripts/xcode/with-environment.sh\"\nREACT_NATIVE_XCODE=\"../node_modules/react-native/scripts/react-native-xcode.sh\"\n\n/bin/sh -c \"$WITH_ENVIRONMENT $REACT_NATIVE_XCODE\"\n";
 		};
-		0EA29DC2D0AF5FE07A79E168 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-NubbleApp/Pods-NubbleApp-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-NubbleApp/Pods-NubbleApp-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-NubbleApp/Pods-NubbleApp-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		5D8318997EB5FC8EA4FA8702 /* [CP] Check Pods Manifest.lock */ = {
+		1232F5452C53763FFA12B06E /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -353,7 +336,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		86D919678226EF04212ED4DA /* [CP] Embed Pods Frameworks */ = {
+		2B1BA98FBDE175C6B6637195 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -370,7 +353,7 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-NubbleApp-NubbleAppTests/Pods-NubbleApp-NubbleAppTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		8CE13A2B4F48D648343C1F8C /* [CP] Check Pods Manifest.lock */ = {
+		2DD3A6512DC412BA2C5483A4 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -392,7 +375,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		8F3D246CDC02B0C28D33B296 /* [CP] Copy Pods Resources */ = {
+		59DE168CEC12584C2D3E2F98 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -409,7 +392,7 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-NubbleApp-NubbleAppTests/Pods-NubbleApp-NubbleAppTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		9676534A70869A8108218F7D /* [CP] Copy Pods Resources */ = {
+		5A85EBE2A9846204BB951086 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -424,6 +407,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-NubbleApp/Pods-NubbleApp-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		993FB18C851EF6613342262A /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-NubbleApp/Pods-NubbleApp-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-NubbleApp/Pods-NubbleApp-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-NubbleApp/Pods-NubbleApp-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -459,7 +459,7 @@
 /* Begin XCBuildConfiguration section */
 		00E356F61AD99517003FC87E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6128AB628D4DFFEDF21F3BEF /* Pods-NubbleApp-NubbleAppTests.debug.xcconfig */;
+			baseConfigurationReference = A304B325FF2743AC4AA9F2C8 /* Pods-NubbleApp-NubbleAppTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -486,7 +486,7 @@
 		};
 		00E356F71AD99517003FC87E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 225D931BFC00C4203B1FEA50 /* Pods-NubbleApp-NubbleAppTests.release.xcconfig */;
+			baseConfigurationReference = 6ACDF8966C811462BE1424C7 /* Pods-NubbleApp-NubbleAppTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
@@ -510,7 +510,7 @@
 		};
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = EB9A951513CBC26E9CE24631 /* Pods-NubbleApp.debug.xcconfig */;
+			baseConfigurationReference = 900B27F1D86346974C839B1A /* Pods-NubbleApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -537,7 +537,7 @@
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3491122D6BB20410B5CA6322 /* Pods-NubbleApp.release.xcconfig */;
+			baseConfigurationReference = E34098C918B4755AEDC312DC /* Pods-NubbleApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;

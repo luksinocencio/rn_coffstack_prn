@@ -18,7 +18,10 @@ export function PostBottom({
   const commentText = getCommentText(commentCount)
 
   function navigateToCommentScreen() {
-    navigation.navigate('PostCommentScreen', { postId: id })
+    navigation.navigate('PostCommentScreen', {
+      postId: id,
+      postAuthorId: author.id,
+    })
   }
 
   return (
