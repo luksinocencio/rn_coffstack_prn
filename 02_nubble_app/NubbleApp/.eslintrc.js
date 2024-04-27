@@ -44,5 +44,6 @@ module.exports = {
     'react-native/no-inline-styles': 0,
     'prettier/prettier': 0,
     semi: 0,
+    'no-catch-shadow': 0,
   },
 }

@@ -1,12 +1,13 @@
 import React from 'react'
 import { FlatList, ListRenderItemInfo } from 'react-native'
 
-import { Screen } from '@components'
+import { Box, Screen } from '@components'
 import { PostComment, usePostCommentList } from '@domain'
 import { useAppSafeArea } from '@hooks'
 import { AppScreenProps } from '@routes'
 
 import { PostCommentBottom, PostCommentItem } from './components'
+import PostCommentTextMessage from './components/PostCommentTextMessage/PostCommentTextMessage'
 
 export function PostCommentScreen({
   route,
@@ -28,15 +29,17 @@ export function PostCommentScreen({
   }
 
   return (
-    <Screen title="Comentários" canGoBack style={{ flex: 1 }}>
-      <FlatList
-        data={data}
-        keyExtractor={item => item.id.toString()}
-        renderItem={renderItem}
-        contentContainerStyle={{ flexGrow: 1, paddingBottom: bottom }}
-        showsVerticalScrollIndicator={false}
-        ListFooterComponent={renderListFooterComponent}
-      />
+    <Screen flex={1} title="Comentários" canGoBack>
+      <Box flex={1} justifyContent="space-between">
+        <FlatList
+          showsVerticalScrollIndicator={false}
+          data={data}
+          renderItem={renderItem}
+          contentContainerStyle={{ paddingBottom: bottom }}
+          ListFooterComponent={renderListFooterComponent}
+        />
+        <PostCommentTextMessage postId={postId} />
+      </Box>
     </Screen>
   )
 }

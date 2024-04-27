@@ -6,15 +6,27 @@ async function getList(
   post_id: number,
   pageParams?: PageParams,
 ): Promise<PageAPI<PostCommentAPI>> {
-  const response = await api.get<PageAPI<PostCommentAPI>>('user/post_comment', {
+  const { data } = await api.get<PageAPI<PostCommentAPI>>('user/post_comment', {
     params: {
       post_id,
       ...pageParams,
     },
   })
-  return response.data
+  return data
+}
+
+async function create(
+  post_id: number,
+  message: string,
+): Promise<PostCommentAPI> {
+  const { data } = await api.post<PostCommentAPI>('user/post_comment', {
+    post_id,
+    message,
+  })
+  return data
 }
 
 export const postCommentApi = {
   getList,
+  create,
 }
