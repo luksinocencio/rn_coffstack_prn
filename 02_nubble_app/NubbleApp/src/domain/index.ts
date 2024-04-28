@@ -6,3 +6,6 @@ export * from './PostComment'
 
 // auth
 export * from './Auth'
+
+// user
+export * from './User'
