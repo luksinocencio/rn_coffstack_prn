@@ -1,50 +1,58 @@
-import React, { useEffect } from 'react'
-import { Dimensions } from 'react-native'
+import React, { useCallback, useEffect, useRef } from 'react'
+import { Animated } from 'react-native'
 
 import { useToast, useToastService } from '@services'
-import { $shadowProps } from '@theme'
 
-import { Box, BoxProps } from '../Box/Box'
-import { Icon } from '../Icon/Icon'
-import { Text } from '../Text/Text'
+import { ToasContent } from './components/ToastContent'
 
-const MAX_WIDTH = Dimensions.get('screen').width * 0.9
+const DEFAULT_DURATION = 2000
 
 export function Toast() {
   const toast = useToast()
   const { hideToast } = useToastService()
+  const fadeAnim = useRef(new Animated.Value(0)).current
+
+  const runEnteringAnimation = useCallback(() => {
+    Animated.timing(fadeAnim, {
+      toValue: 1,
+      duration: 1000,
+      useNativeDriver: true,
+    }).start()
+  }, [fadeAnim])
+
+  const runExitingAnimation = useCallback(
+    (callback: Animated.EndCallback) => {
+      Animated.timing(fadeAnim, {
+        toValue: 0,
+        duration: 1000,
+        useNativeDriver: true,
+      }).start(callback)
+    },
+    [fadeAnim],
+  )
 
   useEffect(() => {
     if (toast) {
+      runEnteringAnimation()
+
       setTimeout(() => {
-        hideToast()
-      }, 2000)
+        runExitingAnimation(hideToast)
+      }, toast.duration || DEFAULT_DURATION)
     }
-  }, [hideToast, toast])
+  }, [hideToast, toast, runEnteringAnimation, runExitingAnimation])
 
   if (!toast) {
     return null
   }
 
   return (
-    <Box top={100} {...$boxStyle}>
-      <Icon color="success" name="checkRound" />
-      <Text style={{ flexShrink: 1 }} ml="s16" preset="paragraphMedium" bold>
-        {toast?.message}
-      </Text>
-    </Box>
+    <Animated.View
+      style={{
+        opacity: fadeAnim,
+        position: 'absolute',
+        alignSelf: 'center',
+      }}>
+      <ToasContent toast={toast} />
+    </Animated.View>
   )
-}
-
-const $boxStyle: BoxProps = {
-  position: 'absolute',
-  backgroundColor: 'background',
-  alignSelf: 'center',
-  alignItems: 'center',
-  padding: 's16',
-  borderRadius: 's16',
-  flexDirection: 'row',
-  opacity: 0.95,
-  maxWidth: MAX_WIDTH,
-  style: { ...$shadowProps },
 }
