@@ -3,23 +3,28 @@ import { Alert, Pressable } from 'react-native'
 
 import { Box, ProfileAvatar, Text } from '@components'
 import { PostComment, postCommentService, usePostCommentRemove } from '@domain'
+import { useToast } from '@services'
 
-interface PostCommentItemProps {
+interface Props {
   postComment: PostComment
   userId: number
   postAuthorId: number
   onRemoveComment: () => void
 }
-
 export function PostCommentItem({
   postComment,
+  onRemoveComment,
   userId,
   postAuthorId,
-  onRemoveComment,
-}: PostCommentItemProps) {
+}: Props) {
+  const { showToast } = useToast()
   const { mutate } = usePostCommentRemove({
-    onSuccess: onRemoveComment,
+    onSuccess: () => {
+      onRemoveComment()
+      showToast({ message: 'Cometário deletado' })
+    },
   })
+
   const isAllowToDelete = postCommentService.isAllowToDelete(
     postComment,
     userId,
@@ -27,32 +32,27 @@ export function PostCommentItem({
   )
 
   function confirmRemove() {
-    Alert.alert(
-      'Deseja excluir este comentário?',
-      'Você tem certeza que deseja excluir este comentário?',
-      [
-        {
-          text: 'Cancelar',
-          style: 'cancel',
-        },
-        {
-          text: 'Confirmar',
-          style: 'destructive',
-          onPress: () => mutate({ postCommentId: postComment.id }),
-        },
-      ],
-    )
+    Alert.alert('Deseja excluir o comentário?', 'pressione confirmar', [
+      {
+        text: 'Confirmar',
+        onPress: () => mutate({ postCommentId: postComment.id }),
+      },
+      {
+        text: 'Cancelar',
+        style: 'cancel',
+      },
+    ])
   }
 
   return (
     <Pressable disabled={!isAllowToDelete} onLongPress={confirmRemove}>
-      <Box flexDirection="row" mb="s16" alignItems="center">
+      <Box flexDirection="row" alignItems="center" mb="s16">
         <ProfileAvatar imageURL={postComment.author.profileURL} />
         <Box ml="s12" flex={1}>
           <Text preset="paragraphSmall" bold>
             {postComment.author.userName}
           </Text>
-          <Text color="gray1" preset="paragraphSmall">
+          <Text preset="paragraphSmall" color="gray1">
             {postComment.message} - {postComment.createdAtRelative}
           </Text>
         </Box>

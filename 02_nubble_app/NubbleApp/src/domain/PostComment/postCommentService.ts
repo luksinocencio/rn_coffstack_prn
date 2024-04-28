@@ -7,7 +7,6 @@ import { postCommentApi } from './postCommentApi'
 import { PostComment } from './postCommentTypes'
 
 const PER_PAGE = 10
-
 async function getList(
   postId: number,
   page: number,
@@ -25,6 +24,7 @@ async function getList(
 
 async function create(postId: number, message: string): Promise<PostComment> {
   const postCommentAPI = await postCommentApi.create(postId, message)
+
   return postCommentAdapter.toPostComment(postCommentAPI)
 }
 
@@ -34,10 +34,11 @@ async function remove(postCommentId: number): Promise<string> {
 }
 
 /**
- * @description user podera remover o comentario se ele for o autor do comentario ou se ele for o autor do post
- * @param userId id do usuario logado
- * @param postComment id do usuario que fez o comentario
- * @param postAuthorId o id do autor do post
+ * @description user can delete the comment if it is the post author or comment author
+ *
+ * @param postComment comment to be deleted
+ * @param userId the current session user id
+ * @param postAuthorId the id of the post author
  */
 function isAllowToDelete(
   postComment: PostComment,
