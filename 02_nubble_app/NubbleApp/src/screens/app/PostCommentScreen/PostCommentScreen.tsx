@@ -26,7 +26,7 @@ export function PostCommentScreen({
         postComment={item}
         onRemoveComment={refresh}
         userId={id}
-        postAuthorId={item.author.id}
+        postAuthorId={postAutorId}
       />
     )
   }
