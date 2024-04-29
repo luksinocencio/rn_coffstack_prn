@@ -12,21 +12,19 @@ import PostCommentTextMessage from './components/PostCommentTextMessage/PostComm
 export function PostCommentScreen({
   route,
 }: AppScreenProps<'PostCommentScreen'>) {
-  const postId = route.params.postId
-  const postAutorId = route.params.postAuthorId
+  const { postId, postAuthorId } = route.params
 
-  const { list, fetchNextPage, hasNextPage, refresh } =
-    usePostCommentList(postId)
+  const { list, fetchNextPage, hasNextPage } = usePostCommentList(postId)
   const { bottom } = useAppSafeArea()
   const { id } = useUser()
 
   function renderItem({ item }: ListRenderItemInfo<PostComment>) {
     return (
       <PostCommentItem
+        postId={postId}
         postComment={item}
-        onRemoveComment={refresh}
         userId={id}
-        postAuthorId={postAutorId}
+        postAuthorId={postAuthorId}
       />
     )
   }

@@ -6,25 +6,22 @@ import { PostComment, postCommentService, usePostCommentRemove } from '@domain'
 import { useToastService } from '@services'
 
 interface Props {
+  postId: number
   postComment: PostComment
   userId: number
   postAuthorId: number
-  onRemoveComment: () => void
 }
 export function PostCommentItem({
+  postId,
   postComment,
-  onRemoveComment,
   userId,
   postAuthorId,
 }: Props) {
   const { showToast } = useToastService()
-  const { mutate } = usePostCommentRemove({
+  const { mutate } = usePostCommentRemove(postId, {
     onSuccess: () => {
-      onRemoveComment()
       showToast({
         message: 'Cometário deletado',
-        duration: 3000,
-        position: 'bottom',
       })
     },
   })
