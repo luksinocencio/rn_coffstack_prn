@@ -49,7 +49,7 @@ export function PostCommentScreen({
           contentContainerStyle={{ paddingBottom: bottom }}
           ListFooterComponent={renderListFooterComponent}
         />
-        <PostCommentTextMessage postId={postId} onAddComment={refresh} />
+        <PostCommentTextMessage postId={postId} />
       </Box>
     </Screen>
   )

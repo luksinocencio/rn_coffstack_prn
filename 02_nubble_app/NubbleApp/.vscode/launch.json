@@ -5,10 +5,11 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "Attach to packager",
+      "name": "Attach to Hermes application",
       "request": "attach",
-      "type": "reactnative",
-      "cwd": "${workspaceFolder}"
+      "type": "reactnativedirect",
+      "cwd": "${workspaceFolder}",
+      "skipFiles": ["<node_internals>/**", "node_modules/**"]
     }
   ]
 }
