@@ -67,3 +67,6 @@ yarn-error.log
 
 .idea
 .idea/* 
+
+# Visual Studio Code
+.vscode/.react

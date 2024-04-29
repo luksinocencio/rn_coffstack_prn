@@ -15,7 +15,7 @@ export function PostCommentScreen({
   const postId = route.params.postId
   const postAutorId = route.params.postAuthorId
 
-  const { data, fetchNextPage, hasNextPage, refresh } =
+  const { list, fetchNextPage, hasNextPage, refresh } =
     usePostCommentList(postId)
   const { bottom } = useAppSafeArea()
   const { id } = useUser()
@@ -44,7 +44,7 @@ export function PostCommentScreen({
       <Box flex={1} justifyContent="space-between">
         <FlatList
           showsVerticalScrollIndicator={false}
-          data={data}
+          data={list}
           renderItem={renderItem}
           contentContainerStyle={{ paddingBottom: bottom }}
           ListFooterComponent={renderListFooterComponent}
