@@ -1,5 +1,0 @@
-export * from './CreatePostCommentService'
-export * from './IndexPostCommentService'
-export * from './DeletePostCommentService'
-export * from './UpdatePostCommentService'
-export * from './ShowPostCommentService'
