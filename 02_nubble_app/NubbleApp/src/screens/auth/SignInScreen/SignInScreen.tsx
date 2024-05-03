@@ -1,5 +1,4 @@
 import React from 'react'
-import { Alert } from 'react-native'
 
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
@@ -11,11 +10,23 @@ import {
   Screen,
   Text,
 } from '@components'
+import { useAuthSignIn } from '@domain'
 import { AuthScreenProps } from '@routes'
+import { useToastService } from '@services'
 
 import { SignInSchema, signInSchema } from './signInSchema'
 
-export function SingInScreen({ navigation }: AuthScreenProps<'SignInScreen'>) {
+export function SignInScreen({ navigation }: AuthScreenProps<'SignInScreen'>) {
+  const { showToast } = useToastService()
+  const { isLoading, signIn } = useAuthSignIn({
+    onError: message => {
+      showToast({
+        type: 'error',
+        message: message,
+        position: 'bottom',
+      })
+    },
+  })
   const { control, formState, handleSubmit } = useForm<SignInSchema>({
     resolver: zodResolver(signInSchema),
     defaultValues: {
@@ -26,7 +37,8 @@ export function SingInScreen({ navigation }: AuthScreenProps<'SignInScreen'>) {
   })
 
   function submitForm({ email, password }: SignInSchema) {
-    Alert.alert(`Email: ${email} ${'\n'} Senha: ${password}`)
+    // Alert.alert(`Email: ${email} ${'\n'} Senha: ${password}`)
+    signIn({ email, password })
   }
 
   function navigateToSignUpScreen() {
@@ -74,6 +86,7 @@ export function SingInScreen({ navigation }: AuthScreenProps<'SignInScreen'>) {
         onPress={handleSubmit(submitForm)}
         marginTop="s48"
         title="Entrar"
+        loading={isLoading}
       />
 
       <Button

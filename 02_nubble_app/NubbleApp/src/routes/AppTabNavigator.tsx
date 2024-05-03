@@ -43,22 +43,3 @@ export function AppTabNavigator() {
     </Navigator>
   )
 }
-
-/**
-  options={{
-    tabBarLabel: ({ focused }) => (
-      <Text
-        preset="paragraphCaption"
-        medium
-        color={focused ? 'primary' : 'backgroundContrast'}>
-        Inicio
-      </Text>
-    ),
-    tabBarIcon: ({ focused }) => (
-      <Icon
-        name={focused ? 'homeFill' : 'home'}
-        color={focused ? 'primary' : 'backgroundContrast'}
-      />
-    ),
-  }}
- * */

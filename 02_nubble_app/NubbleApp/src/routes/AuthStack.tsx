@@ -5,8 +5,8 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import { IconProps } from '@components'
 import {
   ForgotPasswordScreen,
+  SignInScreen,
   SignUpScreen,
-  SingInScreen,
   SuccessScreen,
 } from '@screens'
 
@@ -33,7 +33,7 @@ export function AuthStack() {
     <Navigator
       initialRouteName="SignInScreen"
       screenOptions={{ headerShown: false, fullScreenGestureEnabled: true }}>
-      <Screen name="SignInScreen" component={SingInScreen} />
+      <Screen name="SignInScreen" component={SignInScreen} />
       <Screen name="SignUpScreen" component={SignUpScreen} />
       <Screen name="SuccessScreen" component={SuccessScreen} />
       <Screen name="ForgotPasswordScreen" component={ForgotPasswordScreen} />
