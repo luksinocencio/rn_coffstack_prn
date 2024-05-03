@@ -1,21 +1,32 @@
 import React from 'react'
+import { Alert } from 'react-native'
 
-import { Button, Screen, Text } from '@components'
+import { Button, Screen } from '@components'
+import { useAuthSignOut } from '@domain'
 import { AppScreenProps } from '@routes'
 
-export function SettingsScreen({
-  navigation,
-}: AppScreenProps<'SettingsScreen'>) {
+export function SettingsScreen({}: AppScreenProps<'SettingsScreen'>) {
+  const { isLoading, signOut } = useAuthSignOut()
+
+  function handleSignOut() {
+    Alert.alert('Sair da conta', 'Deseja realmente sair da conta?', [
+      {
+        text: 'Cancelar',
+        style: 'cancel',
+      },
+      {
+        text: 'Sair',
+        onPress: signOut,
+      },
+    ])
+  }
+
   return (
-    <Screen canGoBack>
-      <Text preset="headingSmall">Settings Screen</Text>
+    <Screen canGoBack title="Configurações">
       <Button
-        title="Go to Home"
-        onPress={() =>
-          navigation.navigate('AppTabNavigator', {
-            screen: 'NewPostScreen',
-          })
-        }
+        title="Sair da conta"
+        loading={isLoading}
+        onPress={handleSignOut}
       />
     </Screen>
   )
