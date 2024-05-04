@@ -7,3 +7,4 @@ export * from './hooks/useUser'
 // useCases
 export * from './useCases/useAuthSignIn'
 export * from './useCases/useAuthSignOut'
+export * from './useCases/useAuthSignUp'

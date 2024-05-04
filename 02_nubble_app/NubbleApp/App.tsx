@@ -6,13 +6,18 @@ import { SafeAreaProvider } from 'react-native-safe-area-context'
 
 import { Toast } from '@components'
 import { Router } from '@routes'
-import { AuthCredentialsProvider, ToastProvider } from '@services'
+import {
+  AuthCredentialsProvider,
+  MMKVStorage,
+  ToastProvider,
+  initializeStorage,
+} from '@services'
 import { theme } from '@theme'
 
+initializeStorage(MMKVStorage)
 /**
  * @tanstack/react-query -> gerenciamento de estado global de forma assincrona
  */
-
 const queryClient = new QueryClient()
 
 function App(): React.JSX.Element {
