@@ -11,7 +11,8 @@
     "prepare": "husky install",
     "art:3333": "adb reverse tcp:3333 tcp:3333",
     "podinstall": "cd ios && rm -rf Pods build Podfile.lock && pod deintegrate && pod install; cd ..",
-    "ios:15": "react-native run-ios --simulator='iPhone 15'"
+    "ios:15": "react-native run-ios --simulator='iPhone 15'",
+    "test:coverage": "npm test -- --coverage --watchAll=false"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.3.4",
