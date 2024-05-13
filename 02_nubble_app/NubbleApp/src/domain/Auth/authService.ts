@@ -65,4 +65,5 @@ export const authService = {
   isEmailAvailable,
   requestNewPassoword,
   authenticateByRefreshToken,
+  isRefreshTokenRequest: authApi.isRefreshTokenRequest,
 }

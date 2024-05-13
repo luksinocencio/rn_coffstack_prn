@@ -1,8 +1,56 @@
 import axios from 'axios'
 
+import { AuthCredentials, authService } from '@domain'
+
 export const api = axios.create({
   baseURL: 'http://127.0.0.1:3333/',
   headers: {
     'Content-Type': 'application/json',
   },
 })
+
+type InterceptorsProps = {
+  authCredentials: AuthCredentials | null
+  saveCredentials: (credentials: AuthCredentials) => Promise<void>
+  removeCredentils: () => Promise<void>
+}
+
+export function registerInterceptor({
+  authCredentials,
+  removeCredentils,
+  saveCredentials,
+}: InterceptorsProps) {
+  const interceptor = api.interceptors.response.use(
+    response => response,
+    async responseError => {
+      const failedRequest = responseError.config
+      const hasNotRefreshToken = !authCredentials?.refreshToken
+      const isRefreshTokenRequest =
+        authService.isRefreshTokenRequest(failedRequest)
+
+      if (responseError.response.status === 401) {
+        if (hasNotRefreshToken || isRefreshTokenRequest || failedRequest.sent) {
+          removeCredentils()
+          return Promise.reject(responseError)
+        }
+
+        failedRequest.sent = true
+
+        const newAuthCredentials = await authService.authenticateByRefreshToken(
+          authCredentials?.refreshToken,
+        )
+
+        saveCredentials(newAuthCredentials)
+
+        failedRequest.headers.Authorization = `Bearer ${newAuthCredentials.token}`
+
+        return api(failedRequest)
+      }
+
+      return Promise.reject(responseError)
+    },
+  )
+
+  // remove listener when component unmount
+  return () => api.interceptors.response.eject(interceptor)
+}
