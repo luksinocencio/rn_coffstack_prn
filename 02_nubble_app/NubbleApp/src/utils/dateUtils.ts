@@ -5,11 +5,16 @@ function formatRelative(dateISO: string): string {
   const now = Date.now()
 
   const diffInSeconds = differenceInSeconds(now, date)
+
+  if (diffInSeconds < 0) {
+    return format(date, 'dd/MM/yyyy')
+  }
+
   if (diffInSeconds < 60) {
     return `${diffInSeconds} s`
   }
 
-  const diffInMinutes = Math.floor(diffInSeconds / 60)
+  const diffInMinutes = Math.round(diffInSeconds / 60)
   if (diffInMinutes < 60) {
     return `${diffInMinutes} m`
   }
@@ -37,6 +42,4 @@ function formatRelative(dateISO: string): string {
   return format(date, 'dd/MM/yyyy')
 }
 
-export const dateUtils = {
-  formatRelative,
-}
+export const dateUtils = { formatRelative }
