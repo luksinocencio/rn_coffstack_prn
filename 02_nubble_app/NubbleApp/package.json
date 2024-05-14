@@ -7,12 +7,13 @@
     "ios": "react-native run-ios",
     "lint": "eslint .",
     "start": "react-native start",
-    "test": "jest",
     "prepare": "husky install",
     "art:3333": "adb reverse tcp:3333 tcp:3333",
     "podinstall": "cd ios && rm -rf Pods build Podfile.lock && pod deintegrate && pod install; cd ..",
     "ios:15": "react-native run-ios --simulator='iPhone 15'",
-    "test:coverage": "npm test -- --coverage --watchAll=false"
+    "test": "jest --verbose",
+    "test:coverage": "npm test -- --coverage --watchAll=false",
+    "coverage": "jest --verbose --coverage"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.3.4",
