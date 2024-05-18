@@ -12,12 +12,12 @@ export const api = axios.create({
 type InterceptorsProps = {
   authCredentials: AuthCredentials | null
   saveCredentials: (credentials: AuthCredentials) => Promise<void>
-  removeCredentils: () => Promise<void>
+  removeCredentials: () => Promise<void>
 }
 
 export function registerInterceptor({
   authCredentials,
-  removeCredentils,
+  removeCredentials,
   saveCredentials,
 }: InterceptorsProps) {
   const interceptor = api.interceptors.response.use(
@@ -30,7 +30,7 @@ export function registerInterceptor({
 
       if (responseError.response.status === 401) {
         if (hasNotRefreshToken || isRefreshTokenRequest || failedRequest.sent) {
-          removeCredentils()
+          removeCredentials()
           return Promise.reject(responseError)
         }
 

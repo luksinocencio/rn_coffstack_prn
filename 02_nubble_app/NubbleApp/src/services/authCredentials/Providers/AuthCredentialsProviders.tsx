@@ -1,9 +1,4 @@
-import React, {
-  PropsWithChildren,
-  createContext,
-  useEffect,
-  useState,
-} from 'react'
+import React, { createContext, useEffect, useState } from 'react'
 
 import { registerInterceptor } from '@api'
 import { AuthCredentials, authService } from '@domain'
@@ -11,16 +6,20 @@ import { AuthCredentials, authService } from '@domain'
 import { authCredentialsStorage } from '../authCredentialsStorage'
 import { AuthCredentialsService } from '../authCredentialsTypes'
 
-export const AuthCredentialsContenxt = createContext<AuthCredentialsService>({
+export const AuthCredentialsContext = createContext<AuthCredentialsService>({
   authCredentials: null,
+  userId: null,
   isLoading: true,
   saveCredentials: async () => {},
-  removeCredentils: async () => {},
+  removeCredentials: async () => {},
 })
 
-export function AuthCredentialsProvider({ children }: PropsWithChildren<{}>) {
+export function AuthCredentialsProvider({
+  children,
+}: React.PropsWithChildren<{}>) {
   const [authCredentials, setAuthCredentials] =
     useState<AuthCredentials | null>(null)
+
   const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
@@ -30,23 +29,21 @@ export function AuthCredentialsProvider({ children }: PropsWithChildren<{}>) {
   useEffect(() => {
     const interceptor = registerInterceptor({
       authCredentials,
-      removeCredentils,
+      removeCredentials,
       saveCredentials,
     })
 
     // remove listener when component unmount
-    return () => {
-      interceptor()
-    }
+    return interceptor
   }, [authCredentials])
 
   async function startAuthCredentials() {
     try {
-      const credentials = await authCredentialsStorage.get()
-      if (credentials) {
-        await new Promise(resolve => setTimeout(resolve, 2000))
-        authService.updateToken(credentials.token)
-        setAuthCredentials(credentials)
+      // await new Promise(resolve => setTimeout(resolve, 2000, ''));
+      const ac = await authCredentialsStorage.get()
+      if (ac) {
+        authService.updateToken(ac.token)
+        setAuthCredentials(ac)
       }
     } catch (error) {
       // TODO: handle error
@@ -55,22 +52,30 @@ export function AuthCredentialsProvider({ children }: PropsWithChildren<{}>) {
     }
   }
 
-  async function saveCredentials(credentials: AuthCredentials): Promise<void> {
-    authCredentialsStorage.set(credentials)
-    authService.updateToken(credentials.token)
-    setAuthCredentials(credentials)
+  async function saveCredentials(ac: AuthCredentials): Promise<void> {
+    authService.updateToken(ac.token)
+    authCredentialsStorage.set(ac)
+    setAuthCredentials(ac)
   }
 
-  async function removeCredentils(): Promise<void> {
-    authCredentialsStorage.remove()
+  async function removeCredentials(): Promise<void> {
     authService.removeToken()
+    authCredentialsStorage.remove()
     setAuthCredentials(null)
   }
 
+  const userId = authCredentials?.user.id || null
+
   return (
-    <AuthCredentialsContenxt.Provider
-      value={{ authCredentials, isLoading, saveCredentials, removeCredentils }}>
+    <AuthCredentialsContext.Provider
+      value={{
+        authCredentials,
+        isLoading,
+        saveCredentials,
+        removeCredentials,
+        userId,
+      }}>
       {children}
-    </AuthCredentialsContenxt.Provider>
+    </AuthCredentialsContext.Provider>
   )
 }
