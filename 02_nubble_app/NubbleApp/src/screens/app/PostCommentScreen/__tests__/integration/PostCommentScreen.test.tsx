@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { renderScreen } from 'test-utils'
+import { renderScreen, screen } from 'test-utils'
 
 import { PostCommentScreen } from '../../PostCommentScreen'
 
@@ -19,5 +19,9 @@ describe('integration: PostCommentScreen', () => {
         }}
       />,
     )
+
+    const comment = screen.findByText(/comentário aleatório./i)
+
+    expect(comment).toBeTruthy()
   })
 })

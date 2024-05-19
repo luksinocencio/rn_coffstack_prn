@@ -1,4 +1,5 @@
 // post-comment
+export { POST_COMMENT_PATH } from './postCommentApi'
 export * from './postCommentService'
 export * from './postCommentTypes'
 // post-comment useCases
