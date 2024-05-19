@@ -1,4 +1,5 @@
 {
+  "include": ["src/**/*", "src/test/setup.env.ts"],
   "extends": "@react-native/typescript-config/tsconfig.json",
   "compilerOptions": {
     "baseUrl": "./",
