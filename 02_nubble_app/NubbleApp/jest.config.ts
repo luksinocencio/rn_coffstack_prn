@@ -3,7 +3,10 @@ import { Config } from 'jest'
 const config: Config = {
   preset: 'react-native',
   setupFiles: ['<rootDir>/src/test/jestSetup.ts'],
-  setupFilesAfterEnv: ['@testing-library/react-native/extend-expect'],
+  setupFilesAfterEnv: [
+    // '@testing-library/react-native/extend-expect',
+    './src/test/setup-env.ts',
+  ],
   collectCoverageFrom: [
     'src/{components,utils,hooks,domain,screens}/**/*.{js,jsx,ts,tsx}',
   ],
