@@ -14,6 +14,7 @@ import {
   renderHook,
 } from '@testing-library/react-native'
 
+import { AuthCredentialsProvider } from '@services'
 import { theme } from '@theme'
 
 const queryClientConfig: QueryClientConfig = {
@@ -77,11 +78,13 @@ export const wrapperScreenProviders = () => {
   })
 
   return ({ children }: { children: ReactNode }) => (
-    <QueryClientProvider client={queryClient}>
-      <ThemeProvider theme={theme}>
-        <NavigationContainer>{children}</NavigationContainer>
-      </ThemeProvider>
-    </QueryClientProvider>
+    <AuthCredentialsProvider>
+      <QueryClientProvider client={queryClient}>
+        <ThemeProvider theme={theme}>
+          <NavigationContainer>{children}</NavigationContainer>
+        </ThemeProvider>
+      </QueryClientProvider>
+    </AuthCredentialsProvider>
   )
 }
 
