@@ -1,3 +1,4 @@
+import { cloneDeep } from 'lodash'
 import { http, HttpResponse } from 'msw'
 
 import { BASE_URL, PageAPI } from '@api'
@@ -7,7 +8,11 @@ import { mockedData } from './mocks'
 
 const FULL_URL = `${BASE_URL}${POST_COMMENT_PATH}`
 
-let inMemoryResponse = { ...mockedData.mockedPostCommentResponse }
+let inMemoryResponse = cloneDeep(mockedData.mockedPostCommentResponse)
+
+export function resetInMemoryResponse() {
+  inMemoryResponse = cloneDeep(mockedData.mockedPostCommentResponse)
+}
 
 export const postCommentHandlers = [
   http.get(FULL_URL, async () => {
@@ -15,7 +20,6 @@ export const postCommentHandlers = [
 
     return HttpResponse.json(response, { status: 200 })
   }),
-
   http.post<any, { post_id: number; message: string }>(
     FULL_URL,
     async ({ request }) => {
@@ -37,9 +41,8 @@ export const postCommentHandlers = [
       return HttpResponse.json(newPostCommentAPI, { status: 201 })
     },
   ),
-
   http.delete<{ postCommentId: string }>(
-    `${FULL_URL}/:id`,
+    `${FULL_URL}/:postCommentId`,
     async ({ params }) => {
       inMemoryResponse.data = inMemoryResponse.data.filter(
         item => item.id.toString() !== params.postCommentId,
