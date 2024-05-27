@@ -18,12 +18,10 @@ beforeAll(() => server.listen())
 afterEach(() => {
   server.resetHandlers()
   resetInMemoryResponse()
+  // jest.resetAllMocks()
 })
 
-afterAll(() => {
-  server.close()
-  jest.resetAllMocks()
-})
+afterAll(() => server.close())
 
 describe('integration: PostCommentScreen', () => {
   test('When ADDING a comment, the list is automatically updated', async () => {
