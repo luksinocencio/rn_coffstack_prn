@@ -13,7 +13,8 @@
     "ios:15": "react-native run-ios --simulator='iPhone 15'",
     "test": "jest --verbose",
     "test:coverage": "npm test -- --coverage --watchAll=false",
-    "coverage": "jest --verbose --coverage"
+    "coverage": "jest --verbose --coverage",
+    "pre-commit": "npm run lint && npm run tsc --noEmit && npm run test"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.3.4",
