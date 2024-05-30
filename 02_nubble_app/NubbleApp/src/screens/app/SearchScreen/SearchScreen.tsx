@@ -5,10 +5,12 @@ import { Icon, ProfileUser, Screen, Text, TextInput } from '@components'
 import { User, useUserSearch } from '@domain'
 import { useDebounce } from '@hooks'
 import { AppScreenProps } from '@routes'
+import { useSearchHistoryService } from '@services'
 
 export function SearchScreen({}: AppScreenProps<'SearchScreen'>) {
   const [search, setSearch] = useState('')
   const debouncedSearch = useDebounce(search, 500)
+  const { addUser } = useSearchHistoryService()
 
   const { list } = useUserSearch(debouncedSearch)
 
