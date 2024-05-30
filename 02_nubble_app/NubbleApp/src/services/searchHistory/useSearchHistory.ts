@@ -11,20 +11,20 @@ const useSearchHistoryStore = create<SearchHistoryService>()(
       userList: [],
       addUser: user => {
         const userList = get().userList
-        const updateList = [...userList, user]
-        set({ userList: updateList })
+        const updatedList = [...userList, user]
+        set({ userList: updatedList })
       },
       removeUser: userId => {
         const userList = get().userList
-        const updateList = userList.filter(user => user.id !== userId)
-        set({ userList: updateList })
+        const updatedList = userList.filter(user => user.id !== userId)
+        set({ userList: updatedList })
       },
       clearUserList: () => {
         set({ userList: [] })
       },
     }),
     {
-      name: '@SearchHistoryStore',
+      name: '@SearchHistory',
       storage: storage,
     },
   ),

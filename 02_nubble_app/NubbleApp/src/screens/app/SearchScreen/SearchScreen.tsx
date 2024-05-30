@@ -1,11 +1,13 @@
 import React, { useState } from 'react'
 import { FlatList, ListRenderItemInfo } from 'react-native'
 
-import { Icon, ProfileUser, Screen, Text, TextInput } from '@components'
+import { Icon, ProfileUser, Screen, TextInput } from '@components'
 import { User, useUserSearch } from '@domain'
 import { useDebounce } from '@hooks'
 import { AppScreenProps } from '@routes'
 import { useSearchHistoryService } from '@services'
+
+import { SearchHistory } from './components/SearchHistory'
 
 export function SearchScreen({}: AppScreenProps<'SearchScreen'>) {
   const [search, setSearch] = useState('')
@@ -29,12 +31,15 @@ export function SearchScreen({}: AppScreenProps<'SearchScreen'>) {
           LeftComponent={<Icon name="search" color="gray3" />}
         />
       }>
-      <Text preset="headingMedium">Buscar recentes</Text>
-      <FlatList
-        data={list}
-        renderItem={renderItem}
-        keyExtractor={item => item.username}
-      />
+      {search.length === 0 ? (
+        <SearchHistory />
+      ) : (
+        <FlatList
+          data={list}
+          renderItem={renderItem}
+          keyExtractor={item => item.username}
+        />
+      )}
     </Screen>
   )
 }
