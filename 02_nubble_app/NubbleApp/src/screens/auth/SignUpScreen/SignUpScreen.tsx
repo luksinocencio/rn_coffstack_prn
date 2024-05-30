@@ -86,7 +86,6 @@ export function SignUpScreen({}: AuthScreenProps<'SignUpScreen'>) {
         placeholder="Digite seu nome"
         boxProps={{ mb: 's20' }}
       />
-
       <FormTextInput
         control={control}
         name="lastName"
@@ -95,14 +94,13 @@ export function SignUpScreen({}: AuthScreenProps<'SignUpScreen'>) {
         placeholder="Digite seu sobrenome"
         boxProps={{ mb: 's20' }}
       />
-
       <FormTextInput
         control={control}
         name="email"
         label="E-mail"
-        errorMessage={emailValidation.errorMessage}
         placeholder="Digite seu e-mail"
         boxProps={{ mb: 's20' }}
+        errorMessage={emailValidation.errorMessage}
         RightComponent={
           emailValidation.isFetching ? (
             <ActivityIndicator size="small" />
@@ -122,8 +120,8 @@ export function SignUpScreen({}: AuthScreenProps<'SignUpScreen'>) {
         loading={isLoading}
         disabled={
           !formState.isValid ||
-          usernameValidation.notReaty ||
-          emailValidation.notReaty
+          usernameValidation.notReady ||
+          emailValidation.notReady
         }
         onPress={handleSubmit(submitForm)}
         title="Criar uma conta"

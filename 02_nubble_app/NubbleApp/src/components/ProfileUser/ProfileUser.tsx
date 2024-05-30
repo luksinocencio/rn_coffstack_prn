@@ -1,21 +1,31 @@
-import React from 'react'
+import React, { ReactElement } from 'react'
 import { GestureResponderEvent } from 'react-native'
 
 import { useNavigation } from '@react-navigation/native'
 
 import {
+  Box,
   PressableBox,
   PressableBoxProps,
   ProfileAvatar,
+  ProfileAvatarProps,
   Text,
 } from '@components'
 import { User } from '@domain'
 
 type Props = {
   user: Pick<User, 'username' | 'profileUrl' | 'id'>
+  avatarProps?: Omit<Partial<ProfileAvatarProps>, 'imageURL'>
+  RightComponent?: ReactElement
 } & PressableBoxProps
 
-export function ProfileUser({ user, onPress, ...pressableBoxProps }: Props) {
+export function ProfileUser({
+  user,
+  onPress,
+  avatarProps,
+  RightComponent,
+  ...pressableBoxProps
+}: Props) {
   const navigation = useNavigation()
 
   function handleOnPress(event: GestureResponderEvent) {
@@ -32,12 +42,16 @@ export function ProfileUser({ user, onPress, ...pressableBoxProps }: Props) {
       onPress={handleOnPress}
       flexDirection="row"
       alignItems="center"
+      justifyContent="space-between"
       mb="s16"
       {...pressableBoxProps}>
-      <ProfileAvatar imageURL={user.profileUrl} />
-      <Text ml="s12" medium preset="paragraphMedium">
-        {user.username}
-      </Text>
+      <Box flexDirection="row" alignItems="center">
+        <ProfileAvatar {...avatarProps} imageURL={user.profileUrl} />
+        <Text ml="s12" medium preset="paragraphMedium">
+          {user.username}
+        </Text>
+      </Box>
+      {RightComponent}
     </PressableBox>
   )
 }

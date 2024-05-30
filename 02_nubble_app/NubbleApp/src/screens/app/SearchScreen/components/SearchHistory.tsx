@@ -1,19 +1,36 @@
 import React from 'react'
 import { FlatList, ListRenderItemInfo } from 'react-native'
 
-import { Box, ProfileUser, Text } from '@components'
+import { Box, Icon, ProfileUser, Text } from '@components'
 import { User } from '@domain'
-import { useSearchHistory } from '@services'
+import { useSearchHistory, useSearchHistoryService } from '@services'
 
 export function SearchHistory() {
   const userList = useSearchHistory()
+  const { removeUser } = useSearchHistoryService()
 
   function renderListHeader() {
-    return <Text preset="headingMedium">Buscar recentes</Text>
+    return (
+      <Text mb="s16" preset="headingMedium">
+        Buscar recentes
+      </Text>
+    )
   }
 
   function renderItem({ item }: ListRenderItemInfo<User>) {
-    return <ProfileUser user={item} />
+    return (
+      <ProfileUser
+        user={item}
+        avatarProps={{ size: 48 }}
+        RightComponent={
+          <Icon
+            color="primary"
+            name="trash"
+            onPress={() => removeUser(item.id)}
+          />
+        }
+      />
+    )
   }
 
   return (
