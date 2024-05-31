@@ -12,7 +12,7 @@ export function SearchHistory() {
   function renderListHeader() {
     return (
       <Text mb="s16" preset="headingMedium">
-        Buscar recentes
+        Buscas recentes
       </Text>
     )
   }
