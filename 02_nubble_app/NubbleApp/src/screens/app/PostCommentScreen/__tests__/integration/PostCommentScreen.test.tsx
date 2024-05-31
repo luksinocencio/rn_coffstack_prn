@@ -32,7 +32,7 @@ afterAll(() => {
 })
 
 describe('integration: PostCommentScreen', () => {
-  test('When ADDING a comment, the list is automatically updated', async () => {
+  it('When ADDING a comment, the list is automatically updated', async () => {
     renderScreen(
       <PostCommentScreen
         navigation={{} as any}
@@ -69,7 +69,7 @@ describe('integration: PostCommentScreen', () => {
     expect(comments.length).toBe(3)
   })
 
-  test('When DELETING a comment, the list is automatically updated and a toast message is displayed ', async () => {
+  it('When DELETING a comment, the list is automatically updated and a toast message is displayed ', async () => {
     jest
       .spyOn(authCredentialsStorage, 'get')
       .mockResolvedValue(mockedPostComment.mateusAuthCredentials)
