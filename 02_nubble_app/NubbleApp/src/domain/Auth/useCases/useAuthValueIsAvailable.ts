@@ -1,8 +1,9 @@
 import { useQuery } from '@tanstack/react-query'
 
-import { authService } from '@domain'
 import { useDebounce } from '@hooks'
 import { QueryKeys } from '@infra'
+
+import { authService } from '../authService'
 
 interface Param<T extends { length: number }> {
   value: T
@@ -14,8 +15,8 @@ interface Param<T extends { length: number }> {
 function useAuthIsValueAvailable<T extends { length: number }>({
   value,
   enabled,
-  queryKey,
   isAvailableFunc,
+  queryKey,
 }: Param<T>) {
   const debouncedValue = useDebounce(value, 1500)
 
@@ -45,8 +46,8 @@ export function useAuthIsUsernameAvailable({
   return useAuthIsValueAvailable({
     value: username,
     enabled,
-    queryKey: QueryKeys.IsUsernameAvailable,
     isAvailableFunc: authService.isUserNameAvailable,
+    queryKey: QueryKeys.IsUsernameAvailable,
   })
 }
 
@@ -60,7 +61,7 @@ export function useAuthIsEmailAvailable({
   return useAuthIsValueAvailable({
     value: email,
     enabled,
-    queryKey: QueryKeys.IsEmailAvailable,
     isAvailableFunc: authService.isEmailAvailable,
+    queryKey: QueryKeys.IsUsernameAvailable,
   })
 }
