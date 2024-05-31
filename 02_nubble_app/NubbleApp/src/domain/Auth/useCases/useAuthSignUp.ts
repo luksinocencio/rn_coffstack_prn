@@ -2,8 +2,7 @@ import { useMutation } from '@tanstack/react-query'
 
 import { MutationOptions } from '@infra'
 
-import { authService } from '../authService'
-import { SignUpData } from '../authTypes'
+import { SignUpData, authService } from '../'
 
 export function useAuthSignUp(options?: MutationOptions<void>) {
   const mutation = useMutation<void, Error, SignUpData>({

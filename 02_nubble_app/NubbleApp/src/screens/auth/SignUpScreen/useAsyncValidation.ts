@@ -11,7 +11,7 @@ type Props = {
 
 type ReturnValues = {
   errorMessage?: string
-  notReady: boolean
+  notReaty: boolean
   isFetching: boolean
 }
 
@@ -21,7 +21,7 @@ export function useAsyncValidation({ watch, getFieldState }: Props): {
 } {
   const username = watch('username')
   const usernameState = getFieldState('username')
-  const usernameIsValid = !usernameState.invalid && usernameState.isDirty
+  const usernameIsValid = !usernameState.invalid && !usernameState.isDirty
   const usernameQuery = useAuthIsUsernameAvailable({
     username,
     enabled: usernameIsValid,
@@ -29,7 +29,7 @@ export function useAsyncValidation({ watch, getFieldState }: Props): {
 
   const email = watch('email')
   const emailState = getFieldState('email')
-  const emailIsValid = !emailState.invalid && emailState.isDirty
+  const emailIsValid = !emailState.invalid && !emailState.isDirty
   const emailQuery = useAuthIsEmailAvailable({
     email,
     enabled: emailIsValid,
@@ -40,14 +40,14 @@ export function useAsyncValidation({ watch, getFieldState }: Props): {
       errorMessage: usernameQuery.isUnavailable
         ? 'username indisponível'
         : undefined,
-      notReady: usernameQuery.isFetching || usernameQuery.isUnavailable,
+      notReaty: usernameQuery.isFetching || usernameQuery.isUnavailable,
       isFetching: usernameQuery.isFetching,
     },
     emailValidation: {
       errorMessage: emailQuery.isUnavailable
         ? 'e-mail indisponível'
         : undefined,
-      notReady: emailQuery.isFetching || emailQuery.isUnavailable,
+      notReaty: emailQuery.isFetching || emailQuery.isUnavailable,
       isFetching: emailQuery.isFetching,
     },
   }

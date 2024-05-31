@@ -1,7 +1,7 @@
 import React from 'react'
 import { Image } from 'react-native'
 
-export type ProfileAvatarProps = {
+interface ProfileAvatarProps {
   imageURL: string
   /**@default 32*/
   size?: number
