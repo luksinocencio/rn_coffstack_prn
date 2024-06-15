@@ -15,25 +15,25 @@ import { Header } from './components/Header'
 
 const SCREEN_WIDTH = Dimensions.get('screen').width
 const NUM_COLUMNS = 4
-const ITEM_WIDTH = SCREEN_WIDTH / NUM_COLUMNS
+const ITEM_SIZE = SCREEN_WIDTH / NUM_COLUMNS
 
 export function NewPostScreen({}: AppTabScreenProps<'NewPostScreen'>) {
   const [selectedImage, setSelectedImage] = useState<string>()
   const { photoList, fetchNextPage } = useCameraRoll(true, setSelectedImage)
   const flatListRef = useRef<FlatList>(null)
 
-  function onSelecteImage(imageUri: string) {
+  function onSelectedImage(imageUri: string) {
     setSelectedImage(imageUri)
     flatListRef.current?.scrollToOffset({ animated: true, offset: 0 })
   }
 
   function renderItem({ item }: ListRenderItemInfo<string>) {
     return (
-      <Pressable onPress={() => onSelecteImage(item)}>
+      <Pressable onPress={() => onSelectedImage(item)}>
         <Image
           key={item}
           source={{ uri: item }}
-          style={{ width: ITEM_WIDTH, height: ITEM_WIDTH }}
+          style={{ width: ITEM_SIZE, height: ITEM_SIZE }}
         />
       </Pressable>
     )
