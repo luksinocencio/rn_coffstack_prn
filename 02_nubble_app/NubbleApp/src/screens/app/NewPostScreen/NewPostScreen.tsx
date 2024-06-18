@@ -9,7 +9,7 @@ import {
 
 import { Screen } from '@components'
 import { AppTabScreenProps } from '@routes'
-import { useCameraRoll } from '@services'
+import { useCameraRoll, usePermission } from '@services'
 
 import { Header } from './components/Header'
 
@@ -19,7 +19,12 @@ const ITEM_SIZE = SCREEN_WIDTH / NUM_COLUMNS
 
 export function NewPostScreen({}: AppTabScreenProps<'NewPostScreen'>) {
   const [selectedImage, setSelectedImage] = useState<string>()
-  const { photoList, fetchNextPage } = useCameraRoll(true, setSelectedImage)
+  const permission = usePermission('photoLibrary')
+  const { photoList, fetchNextPage } = useCameraRoll(
+    permission.status === 'granted',
+    setSelectedImage,
+  )
+
   const flatListRef = useRef<FlatList>(null)
 
   function onSelectedImage(imageUri: string) {
