@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 
-import { permissionServiceAndroid } from './permissionService.android.ts'
-import { PermissionName, PermissionStatus } from './permissionTypes.ts'
+import { permissionService } from './permissionService'
+import { PermissionName, PermissionStatus } from './permissionTypes'
 
 export function usePermission(permissionName: PermissionName) {
   const [isLoading, setIsLoading] = useState(true)
@@ -10,12 +10,12 @@ export function usePermission(permissionName: PermissionName) {
   async function checkPermission() {
     try {
       setIsLoading(true)
-      const initialState = await permissionServiceAndroid.check(permissionName)
-      if (initialState === 'denied') {
-        const _status = await permissionServiceAndroid.request(permissionName)
+      const initialStatus = await permissionService.check(permissionName)
+      if (initialStatus === 'denied') {
+        const _status = await permissionService.request(permissionName)
         setStatus(_status)
       } else {
-        setStatus(initialState)
+        setStatus(initialStatus)
       }
     } catch (error) {
       setStatus('unavailable')
@@ -29,5 +29,8 @@ export function usePermission(permissionName: PermissionName) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-  return { status, isLoading }
+  return {
+    status,
+    isLoading,
+  }
 }

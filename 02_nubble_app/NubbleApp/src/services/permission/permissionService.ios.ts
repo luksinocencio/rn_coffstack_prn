@@ -6,7 +6,11 @@ import {
   request as rnpRequest,
 } from 'react-native-permissions'
 
-import { PermissionName, PermissionService, PermissionStatus } from '@services'
+import {
+  PermissionName,
+  PermissionService,
+  PermissionStatus,
+} from './permissionTypes'
 
 const mapName: Record<PermissionName, RnpPermission> = {
   photoLibrary: RNP_PERMISSIONS.IOS.PHOTO_LIBRARY,
