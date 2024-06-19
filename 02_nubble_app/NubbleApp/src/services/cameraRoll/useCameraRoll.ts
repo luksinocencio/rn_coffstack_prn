@@ -4,7 +4,7 @@ import { useInfiniteQuery } from '@tanstack/react-query'
 
 import { QueryKeys } from '@infra'
 
-import { cameraRollService } from './cameraRollService.ts'
+import { cameraRollService } from './cameraRollService'
 
 export function useCameraRoll(
   hasPermission: boolean,
@@ -19,6 +19,12 @@ export function useCameraRoll(
     enabled: hasPermission,
   })
 
+  function fetchNextPage() {
+    if (hasPermission) {
+      query.fetchNextPage()
+    }
+  }
+
   useEffect(() => {
     if (query.data) {
       const newList = query.data.pages.reduce<string[]>((prev, curr) => {
@@ -30,11 +36,11 @@ export function useCameraRoll(
         onInitialLoad(newList[0])
       }
     }
-  }, [query.data, onInitialLoad])
+  }, [onInitialLoad, query.data])
 
   return {
     photoList: list,
     hasNextPage: query.hasNextPage,
-    fetchNextPage: () => query.fetchNextPage(),
+    fetchNextPage,
   }
 }
