@@ -1,8 +1,16 @@
 import React from 'react'
 import { Linking, Platform } from 'react-native'
 
-import { ActivityIndicator, Box, Button, Screen, Text } from '@components'
+import {
+  ActivityIndicator,
+  Box,
+  Button,
+  Screen,
+  Text,
+  TextProps,
+} from '@components'
 import { PermissionName, usePermission } from '@services'
+
 
 interface PermissionManagerProps {
   permissionName: PermissionName
@@ -22,31 +30,41 @@ export function PermissionManager({
   }
 
   return (
-    <Screen flex={1} justifyContent="center" alignItems="center">
-      <Text preset="headingSmall" textAlign="center">
-        {description}
-      </Text>
-      {isLoading && <ActivityIndicator color="primary" />}
-      {status === 'never_ask_again' && (
-        <Box>
-          {Platform.OS === 'android' && (
-            <Text
-              preset="paragraphMedium"
-              color="error"
-              marginVertical="s16"
-              textAlign="center"
-              bold>
-              É necessário abrir e fechar o App novamente após alterar as
-              configurações.
-            </Text>
-          )}
-          <Button
-            title="Abrir Configurações"
-            onPress={Linking.openSettings}
-            mt="s16"
-          />
-        </Box>
-      )}
+    <Screen flex={1} canGoBack>
+      <Box flex={1} justifyContent="center" alignItems="center">
+        <Text preset="headingSmall" textAlign="center">
+          {description}
+        </Text>
+        {isLoading && <ActivityIndicator color="primary" />}
+        {status === 'unavailable' && (
+          <Text {...$messageStyle}>
+            Esse recurso não está disponível para esse dispositivo
+          </Text>
+        )}
+        {status === 'never_ask_again' && (
+          <Box>
+            {Platform.OS === 'android' && (
+              <Text {...$messageStyle}>
+                É necessário abrir e fechar o App novamente após alterar as
+                configurações
+              </Text>
+            )}
+            <Button
+              title="Abrir Configurações"
+              onPress={Linking.openSettings}
+              mt="s16"
+            />
+          </Box>
+        )}
+      </Box>
     </Screen>
   )
+}
+
+const $messageStyle: TextProps = {
+  preset: 'paragraphMedium',
+  color: 'error',
+  bold: true,
+  marginVertical: 's16',
+  textAlign: 'center',
 }
