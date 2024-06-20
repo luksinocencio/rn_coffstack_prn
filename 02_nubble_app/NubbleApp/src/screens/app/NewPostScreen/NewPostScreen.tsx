@@ -7,7 +7,6 @@ import {
   Pressable,
 } from 'react-native'
 
-
 import { PermissionManager, Screen } from '@components'
 import { AppTabScreenProps } from '@routes'
 import { useCameraRoll, usePermission } from '@services'
@@ -59,7 +58,7 @@ export function NewPostScreen(props: AppTabScreenProps<'NewPostScreen'>) {
           onEndReached={fetchNextPage}
           onEndReachedThreshold={0.1}
           ListHeaderComponent={
-            <Header imageWidth={SCREEN_WIDTH} imageUri={selectedImage} />
+            <Header imageSize={SCREEN_WIDTH} imageUri={selectedImage} />
           }
         />
       </Screen>

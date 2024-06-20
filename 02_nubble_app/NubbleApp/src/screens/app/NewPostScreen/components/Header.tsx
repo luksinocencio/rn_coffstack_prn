@@ -1,16 +1,17 @@
 import React from 'react'
 import { ImageBackground, StyleSheet } from 'react-native'
 
+import { images } from '@assets'
 import { useNavigation } from '@react-navigation/native'
 
 import { Box, BoxProps, Button, Icon, Text } from '@components'
 
 interface Props {
   imageUri?: string
-  imageWidth: number
+  imageSize: number
 }
 
-export function Header({ imageUri, imageWidth }: Props) {
+export function Header({ imageUri, imageSize }: Props) {
   const navigation = useNavigation()
 
   function navigateToPublishPost() {
@@ -19,15 +20,19 @@ export function Header({ imageUri, imageWidth }: Props) {
     }
   }
 
+  function navigateToCamera() {
+    navigation.navigate('CameraScreen')
+  }
+
   return (
     <Box>
       <ImageBackground
-        source={{ uri: imageUri }}
+        source={imageUri ? { uri: imageUri } : images.imagePlaceholder}
         style={[
           styles.imageBackground,
           {
-            width: imageWidth,
-            height: imageWidth,
+            width: imageSize,
+            height: imageSize,
           },
         ]}>
         {Boolean(imageUri) && (
@@ -41,7 +46,7 @@ export function Header({ imageUri, imageWidth }: Props) {
       </ImageBackground>
       <Box {...$optionsStyle}>
         <Text preset="headingSmall">Sua galeria</Text>
-        <Icon name="camera" />
+        <Icon name="camera" onPress={navigateToCamera} />
       </Box>
     </Box>
   )
