@@ -34,8 +34,6 @@ export function CameraScreen({ navigation }: AppScreenProps<'CameraScreen'>) {
   const appState = useAppState()
   const isActive = isFocused && appState === 'active'
 
-  // console.log({ isFocused, appState, isActive })
-
   function toggleFlash() {
     setFlashOne(prev => !prev)
   }
