@@ -4,12 +4,12 @@ import { GestureResponderEvent } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
 
 import {
-  Box,
-  PressableBox,
-  PressableBoxProps,
-  ProfileAvatar,
-  ProfileAvatarProps,
-  Text,
+    Box,
+    PressableBox,
+    PressableBoxProps,
+    ProfileAvatar,
+    ProfileAvatarProps,
+    Text,
 } from '@components'
 import { User } from '@domain'
 

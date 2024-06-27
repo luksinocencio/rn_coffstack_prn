@@ -1,9 +1,8 @@
-/* eslint-disable react-native/no-inline-styles */
+
 import React from 'react'
 import { Dimensions } from 'react-native'
 
 import { Toast, ToastPosition, ToastType } from '@services'
-
 import { $shadowProps } from '@theme'
 
 import { Box, BoxProps } from '../../Box/Box'

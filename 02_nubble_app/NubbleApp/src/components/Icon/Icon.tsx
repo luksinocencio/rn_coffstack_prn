@@ -10,6 +10,7 @@ import { BellIcon } from '../../assets/icons/BellIcon'
 import { BellOnIcon } from '../../assets/icons/BellOnIcon'
 import { BookmarkFillIcon } from '../../assets/icons/BookmarkFillIcon'
 import { BookmarkIcon } from '../../assets/icons/BookmarkIcon'
+import { CameraClickIcon } from '../../assets/icons/CameraClickIcon.tsx'
 import { CameraIcon } from '../../assets/icons/CameraIcon'
 import { ChatIcon } from '../../assets/icons/ChatIcon'
 import { ChatOnIcon } from '../../assets/icons/ChatOnIcon'
@@ -46,6 +47,7 @@ export interface IconProps {
   size?: number
   onPress?: () => void
 }
+
 export function Icon({
   name,
   color = 'backgroundContrast',
@@ -74,6 +76,7 @@ const iconRegistry = {
   bookmark: BookmarkIcon,
   bookmarkFill: BookmarkFillIcon,
   camera: CameraIcon,
+  cameraClick: CameraClickIcon,
   chat: ChatIcon,
   chatOn: ChatOnIcon,
   check: CheckIcon,

@@ -17,13 +17,16 @@ export interface TextInputProps extends RNTextInputProps {
   LeftComponent?: ReactElement
   RightComponent?: ReactElement
   boxProps?: BoxProps
+  containerProps?: BoxProps
 }
+
 export function TextInput({
   label,
   errorMessage,
   LeftComponent,
   RightComponent,
   boxProps,
+  containerProps,
   ...rnTextInputProps
 }: TextInputProps) {
   const { colors } = useAppTheme()
@@ -40,6 +43,7 @@ export function TextInput({
   function focusInput() {
     inputRef.current?.focus()
   }
+
   return (
     <Box flexGrow={1} flexShrink={1} {...boxProps}>
       <Pressable onPress={focusInput}>
@@ -48,7 +52,7 @@ export function TextInput({
             {label}
           </Text>
         )}
-        <Box {...$textInputContainer}>
+        <Box {...$textInputContainer} {...containerProps}>
           {LeftComponent && (
             <Box justifyContent="center" mr="s16">
               {LeftComponent}
