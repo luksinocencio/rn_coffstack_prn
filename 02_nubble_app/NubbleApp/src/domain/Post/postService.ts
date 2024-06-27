@@ -9,14 +9,15 @@ import { Post } from './postTypes'
 
 async function getList(page: number): Promise<Page<Post>> {
   const postPageAPI = await postApi.getList({ page, per_page: 10 })
+
   return apiAdapter.toPageModel(postPageAPI, postAdapter.toPost)
 }
 
 async function createPost(
   text: string,
-  postImage: ImageForUpload,
+  imageCover: ImageForUpload,
 ): Promise<Post> {
-  const postApiData = await postApi.createPost(text, postImage)
+  const postApiData = await postApi.createPost(text, imageCover)
   return postAdapter.toPost(postApiData)
 }
 

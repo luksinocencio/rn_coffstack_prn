@@ -4,7 +4,7 @@ import { Circle, Path, Svg } from 'react-native-svg'
 
 import { IconBase } from '@components'
 
-import { palette } from '../../theme/theme'
+import { palette } from '../../theme/colors'
 
 export function MessageRoundLightIcon({
   size = 48,
