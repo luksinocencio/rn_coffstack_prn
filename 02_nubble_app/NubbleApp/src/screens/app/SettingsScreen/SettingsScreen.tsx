@@ -1,9 +1,11 @@
 import React from 'react'
-import { Alert } from 'react-native'
+import { Alert, FlatList, ListRenderItemInfo } from 'react-native'
 
-import { Button, Screen } from '@components'
+import { Button, Screen, Separator } from '@components'
 import { useAuthSignOut } from '@domain'
 import { AppScreenProps } from '@routes'
+
+import { MenuItem, MenuItemProps } from './components/MenuItem.tsx'
 
 export function SettingsScreen({}: AppScreenProps<'SettingsScreen'>) {
   const { isLoading, signOut } = useAuthSignOut()
@@ -21,12 +23,40 @@ export function SettingsScreen({}: AppScreenProps<'SettingsScreen'>) {
     ])
   }
 
+  const items: MenuItemProps[] = [
+    {
+      label: 'Termos de uso',
+      onPress: () => console.log('Termos de uso'),
+    },
+    {
+      label: 'Política de privacidade',
+      onPress: () => console.log('Política de privacidade'),
+    },
+    {
+      label: 'Alterar tema',
+      onPress: () => console.log('Tema'),
+    },
+  ]
+
+  function renderItem({ item }: ListRenderItemInfo<MenuItemProps>) {
+    return <MenuItem {...item} />
+  }
+
   return (
     <Screen canGoBack title="Configurações">
-      <Button
-        title="Sair da conta"
-        loading={isLoading}
-        onPress={handleSignOut}
+      <FlatList
+        data={items}
+        renderItem={renderItem}
+        bounces={false}
+        ItemSeparatorComponent={Separator}
+        ListFooterComponent={
+          <Button
+            mt="s48"
+            title="Sair da conta"
+            loading={isLoading}
+            onPress={handleSignOut}
+          />
+        }
       />
     </Screen>
   )
