@@ -1,6 +1,7 @@
 import { Platform } from 'react-native'
 
 import { CameraRoll } from '@react-native-camera-roll/camera-roll'
+import { manipulateAsync, SaveFormat } from 'expo-image-manipulator'
 
 import { ImageForUpload, PhotoListPaginated } from './multimediaType'
 
@@ -16,12 +17,23 @@ async function getPhotos(cursor?: string): Promise<PhotoListPaginated> {
   }
 }
 
-function prepareImageForUpload(imageUri: string): ImageForUpload {
-  //TODO: implementar
+/**
+ *
+ * @param imageUri image path
+ * @returns `ImageForUpload` - an object with props requested by a `FormData`
+ */
+async function prepareImageForUpload(
+  imageUri: string,
+): Promise<ImageForUpload> {
+  console.log('imageUri:', imageUri)
+  const image = await manipulateAsync(prepareImageUri(imageUri), [], {
+    compress: 0.5,
+    format: SaveFormat.JPEG,
+  })
   return {
-    uri: imageUri,
-    name: 'name',
-    type: 'image/png',
+    uri: image.uri,
+    name: Date.now().toString(),
+    type: 'image/jpeg',
   }
 }
 

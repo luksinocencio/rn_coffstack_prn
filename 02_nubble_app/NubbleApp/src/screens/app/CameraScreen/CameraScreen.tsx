@@ -69,7 +69,6 @@ export function CameraScreen({ navigation }: AppScreenProps<'CameraScreen'>) {
             isActive={isActive}
             photo={true}
             onInitialized={() => setIsReady(true)}
-            // enableHighQualityPhotos={true}
           />
         )}
 
