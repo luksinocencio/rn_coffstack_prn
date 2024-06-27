@@ -1,3 +1,5 @@
 export * from './multimediaService'
 export * from './multimediaType'
-export * from './useMultimidiaGetPhotos'
+
+// Hooks
+export * from './useMultimediaGetPhotos'

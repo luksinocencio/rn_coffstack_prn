@@ -8,10 +8,10 @@ import { Box, BoxProps, Button, Icon, Text } from '@components'
 
 interface Props {
   imageUri?: string
-  imageSize: number
+  imageWidth: number
 }
 
-export function Header({ imageUri, imageSize }: Props) {
+export function Header({ imageUri, imageWidth }: Props) {
   const navigation = useNavigation()
 
   function navigateToPublishPost() {
@@ -29,18 +29,18 @@ export function Header({ imageUri, imageSize }: Props) {
       <ImageBackground
         source={imageUri ? { uri: imageUri } : images.imagePlaceholder}
         style={[
-          styles.imageBackground,
           {
-            width: imageSize,
-            height: imageSize,
+            width: imageWidth,
+            height: imageWidth,
           },
+          styles.imageBackground,
         ]}>
         {Boolean(imageUri) && (
           <Button
+            onPress={navigateToPublishPost}
+            preset="ghost"
             title="Escolher essa"
             mb="s24"
-            preset="ghost"
-            onPress={navigateToPublishPost}
           />
         )}
       </ImageBackground>
@@ -52,13 +52,6 @@ export function Header({ imageUri, imageSize }: Props) {
   )
 }
 
-const styles = StyleSheet.create({
-  imageBackground: {
-    justifyContent: 'flex-end',
-    alignItems: 'center',
-  },
-})
-
 const $optionsStyle: BoxProps = {
   flexDirection: 'row',
   alignItems: 'center',
@@ -66,3 +59,10 @@ const $optionsStyle: BoxProps = {
   paddingHorizontal: 's24',
   paddingVertical: 's16',
 }
+
+const styles = StyleSheet.create({
+  imageBackground: {
+    justifyContent: 'flex-end',
+    alignItems: 'center',
+  },
+})

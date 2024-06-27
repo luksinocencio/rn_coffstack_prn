@@ -4,23 +4,21 @@ import { ImageForUpload } from '@services'
 import { PostAPI } from './postTypes'
 
 async function getList(params?: PageParams): Promise<PageAPI<PostAPI>> {
-  // await new Promise(resolve => setTimeout(resolve, 1000))
-  const { data } = await api.get<PageAPI<PostAPI>>('user/post', {
+  const response = await api.get<PageAPI<PostAPI>>('user/post', {
     params,
   })
-
-  return data
+  return response.data
 }
 
 async function createPost(
-  text: String,
+  text: string,
   imageCover: ImageForUpload,
 ): Promise<PostAPI> {
-  const formData = new FormData()
-  formData.append('text', text)
-  formData.append('imageCover', imageCover)
+  const form = new FormData()
+  form.append('text', text)
+  form.append('imageCover', imageCover)
 
-  const response = await api.postForm<PostAPI>('user/post', formData)
+  const response = await api.postForm<PostAPI>('user/post', form)
   return response.data
 }
 
