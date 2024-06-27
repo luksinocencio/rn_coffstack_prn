@@ -10,8 +10,8 @@ import { AuthScreenProps, AuthStackParamList } from '@routes'
 import { useToastService } from '@services'
 
 import {
-    ForgotPasswordSchema,
-    forgotPasswordSchema,
+  ForgotPasswordSchema,
+  forgotPasswordSchema,
 } from './forgotPasswordSchema'
 
 export function ForgotPasswordScreen({}: AuthScreenProps<'ForgotPasswordScreen'>) {
@@ -24,7 +24,8 @@ export function ForgotPasswordScreen({}: AuthScreenProps<'ForgotPasswordScreen'>
       'Clique no link enviado no seu e-mail para recuperar sua senha',
     icon: {
       name: 'messageRound',
-      color: 'primary',
+      color: 'iconColor',
+      fillColor: 'iconFillColor',
     },
   }
 
