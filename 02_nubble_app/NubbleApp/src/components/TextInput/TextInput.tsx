@@ -8,6 +8,7 @@ import {
 
 import { useAppTheme } from '@hooks'
 
+import { colors } from '../../theme/colors.ts'
 import { Box, BoxProps } from '../Box/Box'
 import { $fontFamily, $fontSizes, Text } from '../Text/Text'
 
@@ -88,7 +89,7 @@ export const $textInputStyle: TextStyle = {
   padding: 0,
   flexGrow: 1,
   flexShrink: 1,
-
+  color: colors.palette.grayBlack,
   fontFamily: $fontFamily.regular,
   ...$fontSizes.paragraphMedium,
 }
