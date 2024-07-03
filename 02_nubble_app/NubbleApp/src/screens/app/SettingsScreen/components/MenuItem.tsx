@@ -15,7 +15,7 @@ export function MenuItem({ label, onPress }: MenuItemProps) {
       alignItems={'center'}
       paddingVertical="s16"
       justifyContent="space-between">
-      <Text preset="paragraphMedium" bold>
+      <Text preset="paragraphMedium" medium>
         {label}
       </Text>
       <Icon name="chevronRight" />

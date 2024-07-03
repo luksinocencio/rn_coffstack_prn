@@ -7,7 +7,9 @@ import { AppScreenProps } from '@routes'
 
 import { MenuItem, MenuItemProps } from './components/MenuItem.tsx'
 
-export function SettingsScreen({}: AppScreenProps<'SettingsScreen'>) {
+export function SettingsScreen({
+  navigation,
+}: AppScreenProps<'SettingsScreen'>) {
   const { isLoading, signOut } = useAuthSignOut()
 
   function handleSignOut() {
@@ -34,7 +36,7 @@ export function SettingsScreen({}: AppScreenProps<'SettingsScreen'>) {
     },
     {
       label: 'Alterar tema',
-      onPress: () => console.log('Tema'),
+      onPress: () => navigation.navigate('DarkModeScreen'),
     },
   ]
 
