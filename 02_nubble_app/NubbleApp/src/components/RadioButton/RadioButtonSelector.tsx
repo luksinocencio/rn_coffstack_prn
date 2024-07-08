@@ -6,6 +6,7 @@ import { Separator } from '../Separator/Separator'
 import { RadioButtonItem } from './RadioButtonItem'
 
 type ItemTConstraint = Record<string, any>
+
 export type RadioButtonSelectorProps<ItemT extends ItemTConstraint> = {
   items: ItemT[]
   selectedItem?: ItemT
