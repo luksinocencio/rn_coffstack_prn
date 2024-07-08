@@ -6,7 +6,8 @@ import { usePostCreate } from '@domain'
 import { AppScreenProps } from '@routes'
 import { useToastService } from '@services'
 
-const IMAGE_SIZE = Dimensions.get('screen').width / 2
+
+const IMAGE_WIDTH = Dimensions.get('screen').width / 2
 
 export function PublishPostScreen({
   route,
@@ -34,9 +35,10 @@ export function PublishPostScreen({
         source={{
           uri: imageUri,
         }}
+
         style={{
-          width: IMAGE_SIZE,
-          height: IMAGE_SIZE,
+          width: IMAGE_WIDTH,
+          height: IMAGE_WIDTH,
           alignSelf: 'center',
           marginTop: 20,
         }}

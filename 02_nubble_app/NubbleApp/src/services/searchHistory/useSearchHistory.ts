@@ -7,6 +7,7 @@ import { SearchHistoryService } from './searchHistoryType'
 
 const useSearchHistoryStore = create<SearchHistoryService>()(
   persist(
+    // @ts-ignore
     (set, get) => ({
       userList: [],
       addUser: user => {

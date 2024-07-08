@@ -43,7 +43,7 @@ function removeToken() {
   api.defaults.headers.common.Authorization = null
 }
 
-async function requestNewPassoword(email: string): Promise<string> {
+async function requestNewPassword(email: string): Promise<string> {
   const { message } = await authApi.forgotPassword({ email })
   return message
 }
@@ -63,7 +63,7 @@ export const authService = {
   signUp,
   isUserNameAvailable,
   isEmailAvailable,
-  requestNewPassoword,
+  requestNewPassword: requestNewPassword,
   authenticateByRefreshToken,
   isRefreshTokenRequest: authApi.isRefreshTokenRequest,
 }

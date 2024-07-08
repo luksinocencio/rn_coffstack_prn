@@ -11,6 +11,7 @@ export * from './app/SearchScreen/SearchScreen'
 export * from './app/SettingsScreen/SettingsScreen'
 export * from './app/PublishPostScreen/PublishPostScreen'
 export * from './app/CameraScreen/CameraScreen'
+export * from './app/DarkModeScreen/DarkModeScreen'
 /**
  * auth screens
  */
