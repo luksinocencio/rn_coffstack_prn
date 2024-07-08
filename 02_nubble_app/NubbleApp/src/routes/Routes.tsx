@@ -5,11 +5,13 @@ import { NavigationContainer } from '@react-navigation/native'
 import { ActivityIndicator, Box } from '@components'
 import { useAuthCredentials } from '@services'
 
-import { AppStack } from './AppStack'
-import { AuthStack } from './AuthStack'
+// import {AppStack} from './AppStack';
+// import {AuthStack} from './AuthStack';
+import { OnboardingStack } from './OnboardingStack'
 
 export function Router() {
-  const { authCredentials, isLoading } = useAuthCredentials()
+  // const {authCredentials, isLoading} = useAuthCredentials();
+  const { isLoading } = useAuthCredentials()
 
   if (isLoading) {
     return (
@@ -25,7 +27,8 @@ export function Router() {
 
   return (
     <NavigationContainer>
-      {authCredentials ? <AppStack /> : <AuthStack />}
+      {/* {authCredentials ? <AppStack /> : <AuthStack />} */}
+      <OnboardingStack />
     </NavigationContainer>
   )
 }
