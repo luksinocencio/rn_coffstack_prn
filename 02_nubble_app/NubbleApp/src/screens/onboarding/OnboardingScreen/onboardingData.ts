@@ -21,4 +21,22 @@ const page1: OnboardingPageItem = {
   },
 }
 
-export const onboardingPages: OnboardingPageItem[] = [page1]
+const page2: OnboardingPageItem = {
+  title: 'Compartilhe suas histórias com seus amigos próximos',
+  subtitle: 'Tenha sua linha do tempo personalizada',
+  image: {
+    light: images.onboardingLight2,
+    dark: images.onboardingDark2,
+  },
+}
+
+const page3: OnboardingPageItem = {
+  title: 'Intereja em tempo real com as pessoas',
+  subtitle: 'Curta ',
+  image: {
+    light: images.onboardingLight3,
+    dark: images.onboardingDark3,
+  },
+}
+
+export const onboardingPages: OnboardingPageItem[] = [page1, page2, page3]

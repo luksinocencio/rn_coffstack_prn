@@ -1,15 +1,25 @@
 import React from 'react'
 
-import { Box, Icon, Text } from '@components'
+import { Box, Icon, PressableBox, Text } from '@components'
 
-export function BottomMenu() {
+import { OnboardingPageProps } from './OnboardingPage'
+
+type BottomMenuProps = Pick<OnboardingPageProps, 'onPressSkip' | 'onPressNext'>
+
+export function BottomMenu({ onPressNext, onPressSkip }: BottomMenuProps) {
   return (
     <Box flexDirection="row" justifyContent="space-between" padding="s16">
-      <Text>Pular</Text>
-      <Box flexDirection="row" alignItems="center">
+      <PressableBox onPress={onPressSkip} hitSlop={10}>
+        <Text>Pular</Text>
+      </PressableBox>
+      <PressableBox
+        hitSlop={10}
+        flexDirection="row"
+        alignItems="center"
+        onPress={onPressNext}>
         <Text mr="s4">Próximos</Text>
         <Icon name="arrowRight" />
-      </Box>
+      </PressableBox>
     </Box>
   )
 }
