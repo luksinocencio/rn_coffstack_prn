@@ -10,15 +10,19 @@ export function BottomMenu({ onPressNext, onPressSkip }: BottomMenuProps) {
   return (
     <Box flexDirection="row" justifyContent="space-between" padding="s16">
       <PressableBox onPress={onPressSkip} hitSlop={10}>
-        <Text>Pular</Text>
+        <Text medium color="gray2">
+          Pular
+        </Text>
       </PressableBox>
       <PressableBox
         hitSlop={10}
         flexDirection="row"
         alignItems="center"
         onPress={onPressNext}>
-        <Text mr="s4">Próximos</Text>
-        <Icon name="arrowRight" />
+        <Text bold mr="s4">
+          Próximos
+        </Text>
+        <Icon name="arrowRight" color="carrotSecondary" />
       </PressableBox>
     </Box>
   )
