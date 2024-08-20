@@ -1,25 +1,65 @@
 {
-  "include": ["src/**/*", "src/test/setup.env.ts"],
+  "include": [
+    "src/**/*",
+    "src/test/setup.env.ts"
+  ],
   "extends": "@react-native/typescript-config/tsconfig.json",
   "compilerOptions": {
     "baseUrl": "./",
-    "moduleSuffixes": [".ios", ".android", ".native", ""],
+    "moduleSuffixes": [
+      ".ios",
+      ".android",
+      ".native",
+      ""
+    ],
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
     "paths": {
-      "@api": ["src/api"],
-      "@brand": ["src/brand"],
-      "@components": ["src/components"],
-      "@domain": ["src/domain"],
-      "@hooks": ["src/hooks"],
-      "@routes": ["src/routes"],
-      "@screens": ["src/screens"],
-      "@theme": ["src/theme"],
-      "@types": ["src/types"],
-      "@utils": ["src/utils"],
-      "@infra": ["src/infra"],
-      "@services": ["src/services"],
-      "@test": ["src/test"],
-      "test-utils": ["src/test/test-utils"],
-      "@assets": ["src/assets"]
+      "@api": [
+        "src/api"
+      ],
+      "@brand": [
+        "src/brand"
+      ],
+      "@components": [
+        "src/components"
+      ],
+      "@domain": [
+        "src/domain"
+      ],
+      "@hooks": [
+        "src/hooks"
+      ],
+      "@routes": [
+        "src/routes"
+      ],
+      "@screens": [
+        "src/screens"
+      ],
+      "@theme": [
+        "src/theme"
+      ],
+      "@types": [
+        "src/types"
+      ],
+      "@utils": [
+        "src/utils"
+      ],
+      "@infra": [
+        "src/infra"
+      ],
+      "@services": [
+        "src/services"
+      ],
+      "@test": [
+        "src/test"
+      ],
+      "test-utils": [
+        "src/test/test-utils"
+      ],
+      "@assets": [
+        "src/assets"
+      ]
     }
   }
 }
