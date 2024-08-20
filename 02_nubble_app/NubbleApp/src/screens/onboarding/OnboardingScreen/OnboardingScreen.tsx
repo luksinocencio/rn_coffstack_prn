@@ -25,7 +25,7 @@ export function OnboardingScreen({}: OnboardingScreenProps<'OnboardingScreen'>) 
   }
 
   function onFinishOnboarding() {
-    // TODO: implementar
+    // TODO: - implementar
     console.log('Finish onboarding')
   }
 

@@ -4,9 +4,20 @@ import { Box, Icon, PressableBox, Text } from '@components'
 
 import { OnboardingPageProps } from './OnboardingPage'
 
-type BottomMenuProps = Pick<OnboardingPageProps, 'onPressSkip' | 'onPressNext'>
+type BottomMenuProps = Pick<
+  OnboardingPageProps,
+  'onPressSkip' | 'onPressNext'
+> & {
+  isLast: boolean
+}
 
-export function BottomMenu({ onPressNext, onPressSkip }: BottomMenuProps) {
+export function BottomMenu({
+  onPressNext,
+  onPressSkip,
+  isLast,
+}: BottomMenuProps) {
+  const nextText = isLast ? 'Começar' : 'Próximo'
+
   return (
     <Box flexDirection="row" justifyContent="space-between" padding="s16">
       <PressableBox onPress={onPressSkip} hitSlop={10}>
@@ -20,7 +31,7 @@ export function BottomMenu({ onPressNext, onPressSkip }: BottomMenuProps) {
         alignItems="center"
         onPress={onPressNext}>
         <Text bold mr="s4">
-          Próximos
+          {nextText}
         </Text>
         <Icon name="arrowRight" color="carrotSecondary" />
       </PressableBox>
