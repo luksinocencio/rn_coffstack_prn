@@ -1,4 +1,4 @@
-import { Storage } from '../../storage'
+import { Storage } from '@services'
 
 let storage: Record<string, any> = {}
 

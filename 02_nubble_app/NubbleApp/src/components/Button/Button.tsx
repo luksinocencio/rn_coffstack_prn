@@ -1,11 +1,8 @@
 import React from 'react'
 
-import {
-  ActivityIndicator,
-  Text,
-  TouchableOpacityBox,
-  TouchableOpacityBoxProps,
-} from '@components'
+import { ActivityIndicator, Text } from '@components'
+
+import { TouchableOpacityBox, TouchableOpacityBoxProps } from '../Box/Box'
 
 import { buttonPresets } from './buttonPresets'
 
