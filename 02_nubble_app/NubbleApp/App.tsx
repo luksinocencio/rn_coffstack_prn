@@ -1,4 +1,5 @@
 import React from 'react'
+import { LogBox } from 'react-native'
 
 import { ThemeProvider } from '@shopify/restyle'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
@@ -38,5 +39,9 @@ function App(): JSX.Element {
     </AuthCredentialsProvider>
   )
 }
+
+LogBox.ignoreAllLogs()
+
+LogBox.ignoreLogs(['Require cycle:'])
 
 export default App

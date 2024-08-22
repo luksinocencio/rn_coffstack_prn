@@ -21,9 +21,6 @@ pod install
 # Volta para o diretório anterior
 cd ..
 
-# Executa o comando yarn-start
-yarn start --reset-cache
-
 # Executa o comando yarn ios
 yarn ios --simulator="iPhone 15"
 
