@@ -1,5 +1,3 @@
-// import {Page} from '@types';
-
 import { Page } from '@types'
 
 import { apiAdapter } from '@api'
