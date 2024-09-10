@@ -1,31 +1,36 @@
-import { PostAPI, UserAPI } from '@domain'
+import { userAdapter } from '../User'
 
-import { PostReactionAPI } from './postReactionsType.ts'
+import {
+  PostReaction,
+  PostReactionAPI,
+  PostReactionBase,
+  PostReactionBaseAPI,
+} from './postReactionsType'
 
-function toPostReaction(postReactionAPI: PostReactionAPI): {
-  createdAt: string
-  emojiType: 'favorite' | 'like'
-  post: Pick<PostAPI, 'id' | 'text' | 'image_url' | 'status'>
-  author: UserAPI
-  id: number
-  postId: number
-  userId: number
-  isChecked: true
-  updatedAt: string
-} {
+function toPostReactionBase(
+  postReactionBaseAPI: PostReactionBaseAPI,
+): PostReactionBase {
   return {
-    id: postReactionAPI.id,
-    postId: postReactionAPI.post_id,
-    userId: postReactionAPI.user_id,
-    emojiType: postReactionAPI.emoji_type,
-    createdAt: postReactionAPI.created_at,
-    updatedAt: postReactionAPI.updated_at,
-    isChecked: postReactionAPI.is_checked,
-    author: postReactionAPI.user,
-    post: postReactionAPI.post,
+    id: postReactionBaseAPI.id,
+    postId: postReactionBaseAPI.post_id,
+    userId: postReactionBaseAPI.user_id,
+    emojiType: postReactionBaseAPI.emoji_type,
+    isChecked: postReactionBaseAPI.is_checked,
+    createdAt: postReactionBaseAPI.created_at,
+    updatedAt: postReactionBaseAPI.updated_at,
   }
 }
 
-export const postReactionAdapter = {
-  toPostReaction,
+function toPostReaction(postReactionAPI: PostReactionAPI): PostReaction {
+  return {
+    ...toPostReactionBase(postReactionAPI),
+    author: userAdapter.toUser(postReactionAPI.user),
+    post: {
+      id: postReactionAPI.post.id,
+      text: postReactionAPI.post.text,
+      imageURL: postReactionAPI.post.image_url,
+    },
+  }
 }
+
+export const postReactionAdapter = { toPostReactionBase, toPostReaction }
