@@ -6,7 +6,7 @@ import { PostReaction, postReactionService } from '@domain'
 import { QueryKeys } from '@infra'
 import { AppTabScreenProps } from '@routes'
 
-export function FavoriteScreen(props: AppTabScreenProps<'FavoriteScreen'>) {
+export function FavoriteScreen({}: AppTabScreenProps<'FavoriteScreen'>) {
   function renderItem({ item }: ListRenderItemInfo<PostReaction>) {
     return (
       <Image
