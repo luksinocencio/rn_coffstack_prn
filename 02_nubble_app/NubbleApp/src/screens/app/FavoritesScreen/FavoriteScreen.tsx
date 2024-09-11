@@ -1,30 +1,47 @@
 import React from 'react'
-import { Image, ListRenderItemInfo } from 'react-native'
+import { Dimensions, Image, ListRenderItemInfo } from 'react-native'
 
-import { InfinityScrollList, Screen, Text } from '@components'
+import { Box, InfinityScrollList, Screen, Text } from '@components'
 import { PostReaction, postReactionService } from '@domain'
 import { QueryKeys } from '@infra'
 import { AppTabScreenProps } from '@routes'
 
+const NUM_COLUMNS = 2
+const SCREEN_WITDH = Dimensions.get('window').width
+const SCREEN_PADDING = 24
+const ITEM_MARGIN = 16
+const ITEM_WITH =
+  (SCREEN_WITDH - SCREEN_PADDING * 2 - ITEM_MARGIN) / NUM_COLUMNS
+
 export function FavoriteScreen({}: AppTabScreenProps<'FavoriteScreen'>) {
   function renderItem({ item }: ListRenderItemInfo<PostReaction>) {
     return (
-      <Image
-        source={{ uri: item.post.imageURL }}
-        style={{ width: 200, height: 200 }}
-      />
+      <Box>
+        <Image
+          source={{ uri: item.post.imageURL }}
+          style={{ width: ITEM_WITH, height: ITEM_WITH }}
+        />
+        <Text preset="paragraphSmall" medium mt="s4">
+          {item.author.username}
+        </Text>
+      </Box>
     )
   }
 
   return (
-    <Screen>
-      <Text preset="headingSmall">Favorite Screen</Text>
+    <Screen title="Favoritos">
       <InfinityScrollList
         queryKey={QueryKeys.FavoriteList}
         getList={page => postReactionService.getMyReactions('favorite', page)}
         renderItem={renderItem}
         flatListProps={{
-          numColumns: 2,
+          numColumns: NUM_COLUMNS,
+          columnWrapperStyle: {
+            columnGap: ITEM_MARGIN,
+          },
+          contentContainerStyle: {
+            rowGap: SCREEN_PADDING,
+          },
         }}
         emptyListProps={{
           emptyMessage: 'não há favoritos',
