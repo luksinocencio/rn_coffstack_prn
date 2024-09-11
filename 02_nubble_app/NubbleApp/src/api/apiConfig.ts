@@ -30,7 +30,7 @@ export function registerInterceptor({
 
       if (responseError.response.status === 401) {
         if (hasNotRefreshToken || isRefreshTokenRequest || failedRequest.sent) {
-          removeCredentials()
+          await removeCredentials()
           return Promise.reject(responseError)
         }
 
@@ -39,7 +39,7 @@ export function registerInterceptor({
         const newAuthCredentials = await authService.authenticateByRefreshToken(
           authCredentials?.refreshToken,
         )
-        saveCredentials(newAuthCredentials)
+        await saveCredentials(newAuthCredentials)
 
         failedRequest.headers.Authorization = `Bearer ${newAuthCredentials.token}`
 
@@ -50,6 +50,6 @@ export function registerInterceptor({
     },
   )
 
-  // remove listener when component unmount
+  // remove listener quando o component unmount
   return () => api.interceptors.response.eject(interceptor)
 }
