@@ -4,12 +4,12 @@ import { GestureResponderEvent } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
 
 import {
-    Box,
-    PressableBox,
-    PressableBoxProps,
-    ProfileAvatar,
-    ProfileAvatarProps,
-    Text,
+  Box,
+  PressableBox,
+  PressableBoxProps,
+  ProfileAvatar,
+  ProfileAvatarProps,
+  Text,
 } from '@components'
 import { User } from '@domain'
 
@@ -47,7 +47,7 @@ export function ProfileUser({
       {...pressableBoxProps}>
       <Box flexDirection="row" alignItems="center">
         <ProfileAvatar {...avatarProps} imageURL={user.profileUrl} />
-        <Text ml="s12" medium preset="paragraphMedium">
+        <Text ml="s12" semiBold preset="paragraphMedium">
           {user.username}
         </Text>
       </Box>

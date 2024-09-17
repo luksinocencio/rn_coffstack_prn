@@ -26,7 +26,7 @@ export function PostBottom({
 
   return (
     <Box mt="s16">
-      <Text preset="paragraphMedium" medium>
+      <Text preset="paragraphMedium" semiBold>
         {author.name}
       </Text>
       <Text preset="paragraphMedium" color="gray1">

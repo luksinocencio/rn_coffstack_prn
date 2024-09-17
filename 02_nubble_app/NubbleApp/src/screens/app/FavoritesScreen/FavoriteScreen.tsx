@@ -1,7 +1,9 @@
 import React from 'react'
 import { Dimensions, Image, ListRenderItemInfo } from 'react-native'
 
-import { Box, InfinityScrollList, Screen, Text } from '@components'
+import { useNavigation } from '@react-navigation/native'
+
+import { InfinityScrollList, PressableBox, Screen, Text } from '@components'
 import { PostReaction, postReactionService } from '@domain'
 import { QueryKeys } from '@infra'
 import { AppTabScreenProps } from '@routes'
@@ -14,17 +16,25 @@ const ITEM_WITH =
   (SCREEN_WITDH - SCREEN_PADDING * 2 - ITEM_MARGIN) / NUM_COLUMNS
 
 export function FavoriteScreen({}: AppTabScreenProps<'FavoriteScreen'>) {
+  const navigation = useNavigation()
+
   function renderItem({ item }: ListRenderItemInfo<PostReaction>) {
     return (
-      <Box>
+      <PressableBox
+        onPress={() =>
+          navigation.navigate('PostCommentScreen', {
+            postId: item.post.id,
+            postAuthorId: item.author.id,
+          })
+        }>
         <Image
           source={{ uri: item.post.imageURL }}
           style={{ width: ITEM_WITH, height: ITEM_WITH }}
         />
-        <Text preset="paragraphSmall" medium mt="s4">
+        <Text preset="paragraphSmall" semiBold mt="s4">
           {item.author.username}
         </Text>
-      </Box>
+      </PressableBox>
     )
   }
 
