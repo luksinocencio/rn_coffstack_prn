@@ -25,6 +25,7 @@ export function FavoriteScreen({}: AppTabScreenProps<'FavoriteScreen'>) {
           navigation.navigate('PostCommentScreen', {
             postId: item.post.id,
             postAuthorId: item.author.id,
+            showPost: true,
           })
         }>
         <Image

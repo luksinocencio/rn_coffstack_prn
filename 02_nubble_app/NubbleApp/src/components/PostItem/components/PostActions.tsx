@@ -3,47 +3,57 @@ import React from 'react'
 import { Box, Icon, IconProps, Text, TouchableOpacityBox } from '@components'
 import { Post } from '@domain'
 
-type PostActionsProps = Pick<
-  Post,
-  'commentCount' | 'favoriteCount' | 'reactionCount'
->
+type Props = Pick<Post, 'reactionCount' | 'commentCount' | 'favoriteCount'> & {
+  hideCommentAction?: boolean
+}
 
 export function PostActions({
+  reactionCount,
   commentCount,
   favoriteCount,
-  reactionCount,
-}: PostActionsProps) {
+  hideCommentAction,
+}: Props) {
   function likePost() {
-    console.log('liked was pressed')
+    //TODO: Implement like post
   }
 
   function navigateToComments() {
-    console.log('comment was pressed')
+    //TODO: Implement navigate to comments
   }
 
   function favoritePost() {
-    console.log('favorite was pressed')
+    // TODO: Implement favorite post
   }
 
   return (
     <Box flexDirection="row" mt="s16">
       <Item
+        marked
         onPress={likePost}
-        marked={true}
-        iconName={{ default: 'heart', marked: 'heartFill' }}
         text={reactionCount}
+        icon={{
+          default: 'heart',
+          marked: 'heartFill',
+        }}
       />
       <Item
+        disabled={hideCommentAction}
+        marked={false}
         onPress={navigateToComments}
-        marked={false}
-        iconName={{ default: 'comment', marked: 'comment' }}
         text={commentCount}
+        icon={{
+          default: 'comment',
+          marked: 'comment',
+        }}
       />
       <Item
-        onPress={favoritePost}
         marked={false}
-        iconName={{ default: 'bookmark', marked: 'bookmarkFill' }}
+        onPress={favoritePost}
         text={favoriteCount}
+        icon={{
+          default: 'bookmark',
+          marked: 'bookmarkFill',
+        }}
       />
     </Box>
   )
@@ -53,28 +63,30 @@ interface ItemProps {
   onPress: () => void
   marked: boolean
   text: number
-  iconName: {
+  disabled?: boolean
+  icon: {
     default: IconProps['name']
     marked: IconProps['name']
   }
 }
 
-function Item({ onPress, text, iconName, marked }: ItemProps) {
+function Item({ onPress, icon, marked, text, disabled }: ItemProps) {
   return (
     <TouchableOpacityBox
+      disabled={disabled}
       flexDirection="row"
       alignItems="center"
       mr="s24"
       onPress={onPress}>
       <Icon
         color={marked ? 'market' : undefined}
-        name={marked ? iconName.marked : iconName.default}
+        name={marked ? icon.marked : icon.default}
       />
-      {text > 0 ? (
-        <Text preset="paragraphSmall" ml="s4">
+      {text > 0 && (
+        <Text preset="paragraphSmall" bold ml="s4">
           {text}
         </Text>
-      ) : null}
+      )}
     </TouchableOpacityBox>
   )
 }

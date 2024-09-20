@@ -5,31 +5,34 @@ import { Post } from '@domain'
 
 import { PostActions } from './components/PostActions'
 import { PostBottom } from './components/PostBottom'
-import { PostImagem } from './components/PostImagem'
+import { PostImage } from './components/PostImage'
 
-interface PostItemProps {
+interface Props {
   post: Post
+  hideCommentAction?: boolean
 }
 
-export function PostItem({ post }: PostItemProps) {
+export function PostItem({ post, hideCommentAction }: Props) {
   return (
-    <Box mb="s24" paddingHorizontal="s24">
+    <Box paddingHorizontal="s24" marginBottom="s24">
       <ProfileUser
         user={{
           id: post.author.id,
-          profileUrl: post.author.profileURL,
           username: post.author.userName,
+          profileUrl: post.author.profileURL,
         }}
       />
-      <PostImagem imageURL={post.imageURL} />
+      <PostImage imageURL={post.imageURL} />
       <PostActions
+        hideCommentAction={hideCommentAction}
         commentCount={post.commentCount}
         favoriteCount={post.favoriteCount}
         reactionCount={post.reactionCount}
       />
       <PostBottom
-        text={post.text}
+        hideCommentAction={hideCommentAction}
         author={post.author}
+        text={post.text}
         commentCount={post.commentCount}
         id={post.id}
       />
