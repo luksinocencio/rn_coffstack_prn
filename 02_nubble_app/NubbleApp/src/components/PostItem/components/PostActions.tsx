@@ -24,7 +24,7 @@ export function PostActions({ post, hideCommentAction }: Props) {
   return (
     <Box flexDirection="row" mt="s16">
       <Item
-        marked
+        marked={true}
         onPress={likePost}
         text={post.reactionCount}
         icon={{
