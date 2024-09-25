@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { Box, Icon, IconProps, Text, TouchableOpacityBox } from '@components'
-import { Post } from '@domain'
+import { Post, useReactToPost } from '@domain'
 
 type Props = {
   post: Post
@@ -9,6 +9,12 @@ type Props = {
 }
 
 export function PostActions({ post, hideCommentAction }: Props) {
+  const likeReaction = useReactToPost({ post, postReactionType: 'like' })
+  const favoriteReaction = useReactToPost({
+    post,
+    postReactionType: 'favorite',
+  })
+
   function likePost() {
     //TODO: Implement like post
   }
@@ -24,7 +30,7 @@ export function PostActions({ post, hideCommentAction }: Props) {
   return (
     <Box flexDirection="row" mt="s16">
       <Item
-        marked={true}
+        marked={likeReaction.hasReacted}
         onPress={likePost}
         text={post.reactionCount}
         icon={{
@@ -43,7 +49,7 @@ export function PostActions({ post, hideCommentAction }: Props) {
         }}
       />
       <Item
-        marked={false}
+        marked={favoriteReaction.hasReacted}
         onPress={favoritePost}
         text={post.favoriteCount}
         icon={{

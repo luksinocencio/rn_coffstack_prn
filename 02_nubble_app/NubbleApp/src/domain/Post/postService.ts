@@ -1,33 +1,54 @@
 import { Page } from '@types'
 
 import { apiAdapter } from '@api'
-import { ImageForUpload } from '@services'
 
-import { postAdapter } from './postAdapter'
-import { postApi } from './postApi'
-import { Post } from './postTypes'
+import {
+  PostReaction,
+  PostReactionBase,
+  PostReactionType,
+} from '../PostReaction'
+import { postReactionAdapter } from '../PostReaction/postReactionAdapter.ts'
+import { postReactionApi } from '../PostReaction/postReactionApi.ts'
 
-async function getList(page: number): Promise<Page<Post>> {
-  const postPageAPI = await postApi.getList({ page, per_page: 10 })
+const PER_PAGE = 10
 
-  return apiAdapter.toPageModel(postPageAPI, postAdapter.toPost)
+async function getMyReactions(
+  reactionType: PostReactionType,
+  page: number,
+): Promise<Page<PostReaction>> {
+  const postReactionsApiPage = await postReactionApi.getMyReactions({
+    page,
+    per_page: PER_PAGE,
+    reaction_type: reactionType,
+  })
+
+  return apiAdapter.toPageModel(
+    postReactionsApiPage,
+    postReactionAdapter.toPostReaction,
+  )
 }
 
-async function createPost(
-  text: string,
-  imageCover: ImageForUpload,
-): Promise<Post> {
-  const postApiData = await postApi.createPost(text, imageCover)
-  return postAdapter.toPost(postApiData)
+async function reactToPost(
+  postId: number,
+  reactionType: PostReactionType,
+): Promise<PostReactionBase> {
+  const postReactionBaseAPI = await postReactionApi.createOrUpdateReaction(
+    postId,
+    reactionType,
+  )
+
+  return postReactionAdapter.toPostReactionBase(postReactionBaseAPI)
 }
 
-async function getById(postId: number): Promise<Post> {
-  const postApiData = await postApi.getById(postId.toString())
-  return postAdapter.toPost(postApiData)
+function hasReactedToPost(
+  postReactions: Pick<PostReaction, 'emojiType'>[],
+  postReactionType: PostReactionType,
+): boolean {
+  return postReactions.some(reaction => reaction.emojiType === postReactionType)
 }
 
-export const postService = {
-  getList,
-  createPost,
-  getById,
+export const postReactionService = {
+  getMyReactions,
+  reactToPost,
+  hasReactedToPost,
 }
