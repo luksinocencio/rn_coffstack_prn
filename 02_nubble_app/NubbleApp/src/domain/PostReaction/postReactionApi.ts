@@ -1,10 +1,5 @@
 import { api, PageAPI, PageParams } from '@api'
-
-import {
-  PostReactionAPI,
-  PostReactionBaseAPI,
-  PostReactionType,
-} from './postReactionsType'
+import { PostReactionAPI, PostReactionBaseAPI, PostReactionType } from '@domain'
 
 export const POST_REACTION_PATH = 'user/reactions'
 

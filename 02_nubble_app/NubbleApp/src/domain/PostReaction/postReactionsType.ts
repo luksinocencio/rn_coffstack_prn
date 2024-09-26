@@ -12,7 +12,6 @@ export interface PostReactionBase {
   createdAt: string //'2024-04-15T21:12:15.991+00:00';
   updatedAt: string // '2024-04-15T21:12:15.991+00:00';
 }
-
 export interface PostReaction extends PostReactionBase {
   author: User
   post: Pick<Post, 'id' | 'text' | 'imageURL'>
