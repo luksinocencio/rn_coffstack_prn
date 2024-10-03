@@ -1,31 +1,10 @@
 {
-  "include": [
-    "src/**/*",
-    "src/test/setup.env.ts"
-  ],
   "extends": "@react-native/typescript-config/tsconfig.json",
   "compilerOptions": {
     "baseUrl": "./",
-    "moduleSuffixes": [
-      ".ios",
-      ".android",
-      ".native",
-      ""
-    ],
-    "esModuleInterop": true,
-    "resolveJsonModule": true,
     "paths": {
-      "@api": [
-        "src/api"
-      ],
-      "@brand": [
-        "src/brand"
-      ],
       "@components": [
         "src/components"
-      ],
-      "@domain": [
-        "src/domain"
       ],
       "@hooks": [
         "src/hooks"
@@ -38,6 +17,15 @@
       ],
       "@theme": [
         "src/theme"
+      ],
+      "@domain": [
+        "src/domain"
+      ],
+      "@brand": [
+        "src/brand"
+      ],
+      "@api": [
+        "src/api"
       ],
       "@types": [
         "src/types"
@@ -54,11 +42,11 @@
       "@test": [
         "src/test"
       ],
-      "test-utils": [
-        "src/test/test-utils"
-      ],
       "@assets": [
         "src/assets"
+      ],
+      "test-utils": [
+        "src/test/test-utils"
       ]
     }
   }

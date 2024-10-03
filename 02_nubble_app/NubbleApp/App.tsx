@@ -7,16 +7,20 @@ import { SafeAreaProvider } from 'react-native-safe-area-context'
 
 import { Toast } from '@components'
 import { useAppColorScheme } from '@hooks'
-import { useAppColor } from '@services'
-
-import { Router } from './src/routes/Routes'
-import { AuthCredentialsProvider } from './src/services/authCredentials/Providers/AuthCredentialsProviders'
-import { initializeStorage, MMKVStorage } from './src/services/storage'
-import { darkTheme, theme } from './src/theme/theme'
+import { Router } from '@routes'
+import {
+  AuthCredentialsProvider,
+  initializeStorage,
+  MMKVStorage,
+  useAppColor,
+} from '@services'
+import { darkTheme, theme } from '@theme'
 
 initializeStorage(MMKVStorage)
 
 const queryClient = new QueryClient()
+
+LogBox.ignoreLogs(['Require cycle:'])
 
 function App(): JSX.Element {
   useAppColorScheme()
@@ -39,9 +43,5 @@ function App(): JSX.Element {
     </AuthCredentialsProvider>
   )
 }
-
-LogBox.ignoreAllLogs()
-
-LogBox.ignoreLogs(['Require cycle:'])
 
 export default App
