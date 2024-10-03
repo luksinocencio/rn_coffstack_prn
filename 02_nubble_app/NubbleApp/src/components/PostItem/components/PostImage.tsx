@@ -5,7 +5,7 @@ import { Post } from '@domain'
 
 type PostImagemProps = Pick<Post, 'imageURL'>
 
-export function PostImagem({ imageURL }: PostImagemProps) {
+export function PostImage({ imageURL }: PostImagemProps) {
   return (
     <Image
       source={{ uri: imageURL }}

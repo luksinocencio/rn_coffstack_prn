@@ -21,7 +21,7 @@ export function RadioButtonItem({
         flexDirection="row"
         alignItems="center"
         justifyContent="space-between">
-        <Text medium>{label}</Text>
+        <Text semiBold>{label}</Text>
         <RadioButton {...radioButtonProps} />
       </Box>
       {description && (

@@ -9,3 +9,6 @@ export * from './Auth'
 
 // user
 export * from './User'
+
+// post-reaction
+export * from './PostReaction'

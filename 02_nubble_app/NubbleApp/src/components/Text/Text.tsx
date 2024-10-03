@@ -11,7 +11,7 @@ export type SRTextProps = React.ComponentProps<typeof SRText>
 export interface TextProps extends SRTextProps {
   preset?: TextVariants
   bold?: boolean
-  medium?: boolean
+  semiBold?: boolean
   italic?: boolean
 }
 
@@ -20,11 +20,11 @@ export function Text({
   preset = 'paragraphMedium',
   bold,
   italic,
-  medium,
+  semiBold,
   style,
   ...sRTextProps
 }: TextProps) {
-  const fontFamily = getFontFamily(preset, bold, italic, medium)
+  const fontFamily = getFontFamily(preset, bold, italic, semiBold)
 
   return (
     <SRText

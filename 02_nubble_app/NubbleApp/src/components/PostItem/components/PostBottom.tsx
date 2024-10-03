@@ -2,22 +2,25 @@ import React from 'react'
 
 import { useNavigation } from '@react-navigation/native'
 
-import { Box, Text, TouchableOpacityBox } from '@components'
+import { Box, Text } from '@components'
 import { Post } from '@domain'
 
-type PostBottomProps = Pick<Post, 'author' | 'text' | 'commentCount' | 'id'>
+type Props = Pick<Post, 'author' | 'text' | 'commentCount' | 'id'> & {
+  hideCommentAction?: boolean
+}
 
 export function PostBottom({
   author,
   text,
   commentCount,
   id,
-}: PostBottomProps) {
+  hideCommentAction,
+}: Props) {
   const navigation = useNavigation()
 
-  const commentText = getCommentText(commentCount)
+  const commentText = hideCommentAction ? null : getCommentText(commentCount)
 
-  function navigateToCommentScreen() {
+  function navigateToPostCommentScreen() {
     navigation.navigate('PostCommentScreen', {
       postId: id,
       postAuthorId: author.id,
@@ -26,30 +29,32 @@ export function PostBottom({
 
   return (
     <Box mt="s16">
-      <Text preset="paragraphMedium" medium>
-        {author.name}
+      <Text preset="paragraphMedium" bold>
+        {author.userName}
       </Text>
       <Text preset="paragraphMedium" color="gray1">
         {text}
       </Text>
-      <TouchableOpacityBox mt="s8" onPress={() => navigateToCommentScreen()}>
-        {commentText ? (
-          <Text preset="paragraphSmall" color="primary" bold>
-            {commentText}
-          </Text>
-        ) : null}
-      </TouchableOpacityBox>
+      {commentText && (
+        <Text
+          onPress={navigateToPostCommentScreen}
+          mt="s8"
+          preset="paragraphSmall"
+          bold
+          color="primary">
+          {commentText}
+        </Text>
+      )}
     </Box>
   )
 }
 
 function getCommentText(commentCount: number): string | null {
-  switch (commentCount) {
-    case 0:
-      return null
-    case 1:
-      return 'ver comentário'
-    default:
-      return `ver ${commentCount} comentários`
+  if (commentCount === 0) {
+    return null
+  } else if (commentCount === 1) {
+    return 'ver comentário'
+  } else {
+    return `ver ${commentCount} comentários`
   }
 }

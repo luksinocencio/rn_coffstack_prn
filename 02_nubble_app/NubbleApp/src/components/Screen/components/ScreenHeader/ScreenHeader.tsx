@@ -45,7 +45,7 @@ export function ScreenHeader({
           onPress={navigation.goBack}>
           <Icon size={ICON_SIZE} name="arrowLeft" color="primary" />
           {showBackLabel && (
-            <Text preset="paragraphMedium" medium ml="s8">
+            <Text preset="paragraphMedium" semiBold ml="s8">
               Voltar
             </Text>
           )}

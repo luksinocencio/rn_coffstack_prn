@@ -2,8 +2,8 @@ import axios from 'axios'
 
 import { AuthCredentials, authService } from '@domain'
 
-export const BASE_URL = 'http://127.0.0.1:3333/'
-// export const BASE_URL = 'http://192.168.1.52:3333/'
+// export const BASE_URL = 'http://127.0.0.1:3333/'
+export const BASE_URL = 'http://192.168.1.117:3333/'
 // export const BASE_URL = 'http://localhost:3333/'
 export const api = axios.create({
   baseURL: BASE_URL,
@@ -30,7 +30,7 @@ export function registerInterceptor({
 
       if (responseError.response.status === 401) {
         if (hasNotRefreshToken || isRefreshTokenRequest || failedRequest.sent) {
-          removeCredentials()
+          await removeCredentials()
           return Promise.reject(responseError)
         }
 
@@ -39,7 +39,7 @@ export function registerInterceptor({
         const newAuthCredentials = await authService.authenticateByRefreshToken(
           authCredentials?.refreshToken,
         )
-        saveCredentials(newAuthCredentials)
+        await saveCredentials(newAuthCredentials)
 
         failedRequest.headers.Authorization = `Bearer ${newAuthCredentials.token}`
 
@@ -50,6 +50,6 @@ export function registerInterceptor({
     },
   )
 
-  // remove listener when component unmount
+  // remove listener quando o component unmount
   return () => api.interceptors.response.eject(interceptor)
 }

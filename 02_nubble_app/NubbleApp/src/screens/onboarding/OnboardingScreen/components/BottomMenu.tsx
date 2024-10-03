@@ -21,7 +21,7 @@ export function BottomMenu({
   return (
     <Box flexDirection="row" justifyContent="space-between" padding="s16">
       <PressableBox onPress={onPressSkip} hitSlop={10}>
-        <Text medium color="gray2">
+        <Text semiBold color="gray2">
           Pular
         </Text>
       </PressableBox>

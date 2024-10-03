@@ -83,7 +83,7 @@ export function AppTabBar({
 }
 
 const $label: TextProps = {
-  medium: true,
+  semiBold: true,
   marginTop: 's4',
   preset: 'paragraphCaption',
 }
