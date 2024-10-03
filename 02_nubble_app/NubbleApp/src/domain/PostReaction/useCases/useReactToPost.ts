@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-import { useMutation } from '@tanstack/react-query'
+import { useMutation, useQueryClient } from '@tanstack/react-query'
 
 import {
   Post,
@@ -8,15 +8,21 @@ import {
   postReactionService,
   PostReactionType,
 } from '@domain'
-import { MutationOptions } from '@infra'
+import { MutationOptions, QueryKeys } from '@infra'
 
 type Params = {
   post: Post
   postReactionType: PostReactionType
   options?: MutationOptions<PostReactionBase>
+  queryKeys?: QueryKeys[]
 }
 
-export function useReactToPost({ post, postReactionType, options }: Params) {
+export function useReactToPost({
+  post,
+  postReactionType,
+  options,
+  queryKeys,
+}: Params) {
   const initialHasReacted = postReactionService.hasReactedToPost(
     post.reactions,
     postReactionType,
@@ -30,27 +36,38 @@ export function useReactToPost({ post, postReactionType, options }: Params) {
     reactionCount: initialReactionCount,
   })
 
+  const queryClient = useQueryClient()
+
   const { mutate } = useMutation<PostReactionBase, Error>({
     mutationFn: () =>
       postReactionService.reactToPost(post.id, postReactionType),
     onSuccess: () => {
-      // TODO:
+      if (queryKeys) {
+        queryKeys.forEach(queryKey => {
+          queryClient.invalidateQueries([queryKey])
+        })
+      }
     },
     onError: error => {
       if (options?.onError) {
         options.onError(error.message)
       }
+      toogleReactionState()
     },
   })
 
   function reactToPost() {
+    toogleReactionState()
+    mutate()
+  }
+
+  function toogleReactionState() {
     setReactionState(prev => ({
       hasReacted: !prev.hasReacted,
       reactionCount: prev.hasReacted
         ? prev.reactionCount - 1
         : prev.reactionCount + 1,
     }))
-    mutate()
   }
 
   return {
