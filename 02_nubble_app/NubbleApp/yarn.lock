@@ -4849,7 +4849,7 @@ expo-modules-core@2.1.1:
   dependencies:
     invariant "^2.2.4"
 
-expo@^52.0.17:
+expo@^52.0.0:
   version "52.0.17"
   resolved "https://registry.yarnpkg.com/expo/-/expo-52.0.17.tgz#8a3edc20dabdb69a47f7b4b92e1bb96284044c14"
   integrity sha512-f0WBD2T6p9r/a8v8MqkoWQq7TmbbAgPUg2zZtOp+kBrSCb3obHeNAsPDAUFzh+jEgug2qDVVkauBJa6ACe9AMg==
