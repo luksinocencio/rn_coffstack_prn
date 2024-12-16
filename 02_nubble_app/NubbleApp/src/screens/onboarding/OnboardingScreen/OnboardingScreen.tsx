@@ -1,7 +1,6 @@
 import React, { useRef, useState } from 'react'
 import { FlatList, ListRenderItemInfo } from 'react-native'
 
-
 import { Box } from '@components'
 import { OnboardingScreenProps } from '@routes'
 import { useSettingsService } from '@services'

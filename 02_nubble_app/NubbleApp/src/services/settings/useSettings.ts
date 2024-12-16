@@ -1,6 +1,7 @@
-import AsyncStorage from '@react-native-async-storage/async-storage'
 import { create } from 'zustand'
 import { persist } from 'zustand/middleware'
+
+import { storage } from '../storage'
 
 import { settingsService } from './settingsService'
 import { AppColorScheme, SettingsStore, ThemePreference } from './settingsType'
@@ -31,32 +32,24 @@ const useSettingsStore = create<SettingsStore>()(
     }),
     {
       name: '@Settings',
-      storage: {
-        getItem: async name => {
-          const item = await AsyncStorage.getItem(name)
-          return item ? JSON.parse(item) : null
-        },
-        setItem: async (name, value) => {
-          await AsyncStorage.setItem(name, JSON.stringify(value))
-        },
-        removeItem: async name => {
-          await AsyncStorage.removeItem(name)
-        },
-      },
+      storage: storage,
     },
   ),
 )
 
 export function useAppColor(): AppColorScheme {
-  return useSettingsStore(state => state.appColor)
+  const appTheme = useSettingsStore(state => state.appColor)
+  return appTheme
 }
 
 export function useThemePreference(): ThemePreference {
-  return useSettingsStore(state => state.themePreference)
+  const themePreference = useSettingsStore(state => state.themePreference)
+  return themePreference
 }
 
 export function useShowOnboarding(): boolean {
-  return useSettingsStore(state => state.showOnboarding)
+  const showOnboarding = useSettingsStore(state => state.showOnboarding)
+  return showOnboarding
 }
 
 export function useSettingsService(): Pick<
