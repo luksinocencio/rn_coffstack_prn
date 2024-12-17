@@ -4,7 +4,7 @@
 rm -rf node_modules
 
 # Instalar dependencias
-yarn install
+npm install
 
 # Navega para o diretório ios
 cd ios
@@ -22,7 +22,7 @@ pod install
 cd ..
 
 # Executa o comando yarn ios
-yarn ios --simulator="iPhone 15"
+npm run ios --simulator="iPhone 16 Pro"
 
 # Finalizar script
 echo "Setup concluído!"
