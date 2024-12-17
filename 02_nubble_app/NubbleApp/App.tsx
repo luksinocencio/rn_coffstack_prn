@@ -1,10 +1,15 @@
+if (__DEV__) {
+  require('./ReactotronConfig')
+}
+
 import React, { useEffect } from 'react'
 import { LogBox } from 'react-native'
 
 import { ThemeProvider } from '@shopify/restyle'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
-import { SafeAreaProvider } from 'react-native-safe-area-context'
+import { useFonts } from 'expo-font'
 import * as SplashScreen from 'expo-splash-screen'
+import { SafeAreaProvider } from 'react-native-safe-area-context'
 
 import { Toast } from '@components'
 import { useAppColorScheme } from '@hooks'
@@ -16,7 +21,6 @@ import {
   useAppColor,
 } from '@services'
 import { darkTheme, theme } from '@theme'
-import { useFonts } from 'expo-font'
 
 initializeStorage(MMKVStorage)
 
