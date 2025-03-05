@@ -22,7 +22,7 @@ pod install
 cd ..
 
 # Executa o comando yarn ios
-yarn ios --simulator="iPhone 15"
+yarn ios --simulator="iPhone 16"
 
 # Finalizar script
 echo "Setup concluído!"
