@@ -6,7 +6,7 @@ import { authService } from '../'
 
 export function useAuthRequestNewPassword(options?: MutationOptions<string>) {
   const { mutate, isLoading } = useMutation<string, Error, string>({
-    mutationFn: email => authService.requestNewPassoword(email),
+    mutationFn: email => authService.requestNewPassword(email),
     retry: false,
     onError: error => {
       if (options?.onError) {

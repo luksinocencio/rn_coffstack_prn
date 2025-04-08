@@ -1,27 +1,15 @@
 import React from 'react'
 
-import { Box, Icon, Screen, Text } from '@components'
+import { ProfileTemplate } from '@components'
 import { AppTabScreenProps } from '@routes'
 import { useAuthCredentials } from '@services'
 
-export function MyProfileScreen({
-  navigation,
-}: AppTabScreenProps<'MyProfileScreen'>) {
-  const { authCredentials } = useAuthCredentials()
-  const name = authCredentials?.user?.fullName
+export function MyProfileScreen({}: AppTabScreenProps<'MyProfileScreen'>) {
+  const { userId } = useAuthCredentials()
 
-  return (
-    <Screen>
-      <Box
-        flexDirection="row"
-        justifyContent="space-between"
-        alignItems="center">
-        {name && <Text preset="headingMedium">{name}</Text>}
-        <Icon
-          name="settings"
-          onPress={() => navigation.navigate('SettingsScreen')}
-        />
-      </Box>
-    </Screen>
-  )
+  if (!userId) {
+    return null
+  }
+
+  return <ProfileTemplate userId={userId} />
 }
