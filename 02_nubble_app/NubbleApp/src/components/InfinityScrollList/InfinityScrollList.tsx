@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { RefObject, useRef } from 'react'
 import { FlatList, FlatListProps, RefreshControl } from 'react-native'
 
 import { useScrollToTop } from '@react-navigation/native'
@@ -29,8 +29,9 @@ export function InfinityScrollList<ItemT extends ItemTConstraints>({
     getList,
   )
 
-  const flatListRef = React.useRef<FlatList<ItemT>>(null)
-  useScrollToTop(flatListRef)
+  const flatListRef = useRef<FlatList<ItemT>>(null)
+
+  useScrollToTop(flatListRef as RefObject<any>)
 
   return (
     <FlatList

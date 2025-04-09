@@ -22,7 +22,7 @@ const queryClient = new QueryClient()
 
 LogBox.ignoreLogs(['Require cycle:'])
 
-function App(): JSX.Element {
+function App(): React.JSX.Element {
   useAppColorScheme()
   const appColor = useAppColor()
 
