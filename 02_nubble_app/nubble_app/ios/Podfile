@@ -16,8 +16,9 @@ if linkage != nil
 end
 
 target 'nubble_app' do
+  # config = use_native_modules!
   use_expo_modules!
-
+ 
   if ENV['EXPO_USE_COMMUNITY_AUTOLINKING'] == '1'
     config_command = ['node', '-e', "process.argv=['', '', 'config'];require('@react-native-community/cli').run()"];
   else
@@ -32,7 +33,7 @@ target 'nubble_app' do
       'ios'
     ]
   end
-
+ 
   config = use_native_modules!(config_command)
 
   use_react_native!(
@@ -42,7 +43,6 @@ target 'nubble_app' do
   )
 
   post_install do |installer|
-    # https://github.com/facebook/react-native/blob/main/packages/react-native/scripts/react_native_pods.rb#L197-L202
     react_native_post_install(
       installer,
       config[:reactNativePath],
