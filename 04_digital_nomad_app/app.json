@@ -1,11 +1,11 @@
 {
   "expo": {
-    "name": "04_digital_nomad_app",
-    "slug": "04_digital_nomad_app",
+    "name": "Digital Nomad App",
+    "slug": "digital-nomad-app",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
-    "scheme": "04digitalnomadapp",
+    "scheme": "digitalnomadapp",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "ios": {
