@@ -14,7 +14,7 @@ import { useSharedValue } from 'react-native-reanimated'
 
 export default function CityDetails() {
   const { id } = useLocalSearchParams<{ id: string }>()
-  const city = useCityDetails(id)
+  const { data: city } = useCityDetails(id)
 
   const bottomSheetIsOpen = useSharedValue(false)
 
@@ -43,20 +43,19 @@ export default function CityDetails() {
           country={city.country}
           description={city.description}
         />
-        <Divider paddingHorizontal="padding" />
+        <Divider paddingHorizontal="padding"/>
         <CityDetailsTouristAttractions
           touristAttractions={city.touristAttractions}
         />
 
-        <Divider paddingHorizontal="padding" />
+        <Divider paddingHorizontal="padding"/>
         <Pressable onPress={toggleBottomSheet}>
-          <CityDetailsMap location={city.location} />
+          <CityDetailsMap location={city.location}/>
         </Pressable>
 
-        <Divider paddingHorizontal="padding" />
-        <CityDetailsRelatedCities relatedCitiesIds={city.relatedCitiesIds} />
+        <Divider paddingHorizontal="padding"/>
+        <CityDetailsRelatedCities id={city.id}/>
       </Screen>
-
       <BottomSheetMap
         location={city.location}
         isOpen={bottomSheetIsOpen}

@@ -104,10 +104,38 @@ export type Database = {
             referencedColumns: ['id']
           },
           {
+            foreignKeyName: 'city_categories_category_id_fkey'
+            columns: ['category_id']
+            isOneToOne: false
+            referencedRelation: 'cities_with_categories'
+            referencedColumns: ['category_id']
+          },
+          {
             foreignKeyName: 'city_categories_city_id_fkey'
             columns: ['city_id']
             isOneToOne: false
             referencedRelation: 'cities'
+            referencedColumns: ['id']
+          },
+          {
+            foreignKeyName: 'city_categories_city_id_fkey'
+            columns: ['city_id']
+            isOneToOne: false
+            referencedRelation: 'cities_with_categories'
+            referencedColumns: ['id']
+          },
+          {
+            foreignKeyName: 'city_categories_city_id_fkey'
+            columns: ['city_id']
+            isOneToOne: false
+            referencedRelation: 'cities_with_full_info'
+            referencedColumns: ['id']
+          },
+          {
+            foreignKeyName: 'city_categories_city_id_fkey'
+            columns: ['city_id']
+            isOneToOne: false
+            referencedRelation: 'related_cities'
             referencedColumns: ['id']
           },
         ]
@@ -134,10 +162,52 @@ export type Database = {
             referencedColumns: ['id']
           },
           {
+            foreignKeyName: 'city_cities_city_id_fkey'
+            columns: ['city_id']
+            isOneToOne: false
+            referencedRelation: 'cities_with_categories'
+            referencedColumns: ['id']
+          },
+          {
+            foreignKeyName: 'city_cities_city_id_fkey'
+            columns: ['city_id']
+            isOneToOne: false
+            referencedRelation: 'cities_with_full_info'
+            referencedColumns: ['id']
+          },
+          {
+            foreignKeyName: 'city_cities_city_id_fkey'
+            columns: ['city_id']
+            isOneToOne: false
+            referencedRelation: 'related_cities'
+            referencedColumns: ['id']
+          },
+          {
             foreignKeyName: 'city_cities_related_city_id_fkey'
             columns: ['related_city_id']
             isOneToOne: false
             referencedRelation: 'cities'
+            referencedColumns: ['id']
+          },
+          {
+            foreignKeyName: 'city_cities_related_city_id_fkey'
+            columns: ['related_city_id']
+            isOneToOne: false
+            referencedRelation: 'cities_with_categories'
+            referencedColumns: ['id']
+          },
+          {
+            foreignKeyName: 'city_cities_related_city_id_fkey'
+            columns: ['related_city_id']
+            isOneToOne: false
+            referencedRelation: 'cities_with_full_info'
+            referencedColumns: ['id']
+          },
+          {
+            foreignKeyName: 'city_cities_related_city_id_fkey'
+            columns: ['related_city_id']
+            isOneToOne: false
+            referencedRelation: 'related_cities'
             referencedColumns: ['id']
           },
         ]
@@ -193,10 +263,82 @@ export type Database = {
             referencedRelation: 'cities'
             referencedColumns: ['id']
           },
+          {
+            foreignKeyName: 'tourist_attractions_city_id_fkey'
+            columns: ['city_id']
+            isOneToOne: false
+            referencedRelation: 'cities_with_categories'
+            referencedColumns: ['id']
+          },
+          {
+            foreignKeyName: 'tourist_attractions_city_id_fkey'
+            columns: ['city_id']
+            isOneToOne: false
+            referencedRelation: 'cities_with_full_info'
+            referencedColumns: ['id']
+          },
+          {
+            foreignKeyName: 'tourist_attractions_city_id_fkey'
+            columns: ['city_id']
+            isOneToOne: false
+            referencedRelation: 'related_cities'
+            referencedColumns: ['id']
+          },
         ]
       }
     }
     Views: {
+      cities_with_categories: {
+        Row: {
+          category_code: string | null
+          category_description: string | null
+          category_id: string | null
+          category_name: string | null
+          country: string | null
+          cover_image: string | null
+          description: string | null
+          id: string | null
+          location: unknown | null
+          name: string | null
+        }
+        Relationships: []
+      }
+      cities_with_full_info: {
+        Row: {
+          categories: Json | null
+          country: string | null
+          cover_image: string | null
+          description: string | null
+          id: string | null
+          latitude: number | null
+          longitude: number | null
+          name: string | null
+          tourist_attractions: Json | null
+        }
+        Insert: {
+          categories?: never
+          country?: string | null
+          cover_image?: string | null
+          description?: string | null
+          id?: string | null
+          latitude?: never
+          longitude?: never
+          name?: string | null
+          tourist_attractions?: never
+        }
+        Update: {
+          categories?: never
+          country?: string | null
+          cover_image?: string | null
+          description?: string | null
+          id?: string | null
+          latitude?: never
+          longitude?: never
+          name?: string | null
+          tourist_attractions?: never
+        }
+        Relationships: []
+      }
       geography_columns: {
         Row: {
           coord_dimension: number | null
@@ -238,6 +380,45 @@ export type Database = {
           type?: string | null
         }
         Relationships: []
+      }
+      related_cities: {
+        Row: {
+          country: string | null
+          cover_image: string | null
+          id: string | null
+          name: string | null
+          source_city_id: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: 'city_cities_city_id_fkey'
+            columns: ['source_city_id']
+            isOneToOne: false
+            referencedRelation: 'cities'
+            referencedColumns: ['id']
+          },
+          {
+            foreignKeyName: 'city_cities_city_id_fkey'
+            columns: ['source_city_id']
+            isOneToOne: false
+            referencedRelation: 'cities_with_categories'
+            referencedColumns: ['id']
+          },
+          {
+            foreignKeyName: 'city_cities_city_id_fkey'
+            columns: ['source_city_id']
+            isOneToOne: false
+            referencedRelation: 'cities_with_full_info'
+            referencedColumns: ['id']
+          },
+          {
+            foreignKeyName: 'city_cities_city_id_fkey'
+            columns: ['source_city_id']
+            isOneToOne: false
+            referencedRelation: 'related_cities'
+            referencedColumns: ['id']
+          },
+        ]
       }
     }
     Functions: {
@@ -362,32 +543,32 @@ export type Database = {
       addgeometrycolumn: {
         Args:
           | {
-              catalog_name: string
-              schema_name: string
-              table_name: string
-              column_name: string
-              new_srid_in: number
-              new_type: string
-              new_dim: number
-              use_typmod?: boolean
-            }
+          catalog_name: string
+          schema_name: string
+          table_name: string
+          column_name: string
+          new_srid_in: number
+          new_type: string
+          new_dim: number
+          use_typmod?: boolean
+        }
           | {
-              schema_name: string
-              table_name: string
-              column_name: string
-              new_srid: number
-              new_type: string
-              new_dim: number
-              use_typmod?: boolean
-            }
+          schema_name: string
+          table_name: string
+          column_name: string
+          new_srid: number
+          new_type: string
+          new_dim: number
+          use_typmod?: boolean
+        }
           | {
-              table_name: string
-              column_name: string
-              new_srid: number
-              new_type: string
-              new_dim: number
-              use_typmod?: boolean
-            }
+          table_name: string
+          column_name: string
+          new_srid: number
+          new_type: string
+          new_dim: number
+          use_typmod?: boolean
+        }
         Returns: string
       }
       box: {
@@ -441,11 +622,11 @@ export type Database = {
       dropgeometrycolumn: {
         Args:
           | {
-              catalog_name: string
-              schema_name: string
-              table_name: string
-              column_name: string
-            }
+          catalog_name: string
+          schema_name: string
+          table_name: string
+          column_name: string
+        }
           | { schema_name: string; table_name: string; column_name: string }
           | { table_name: string; column_name: string }
         Returns: string
@@ -994,40 +1175,40 @@ export type Database = {
           | { geog: unknown; maxdecimaldigits?: number; options?: number }
           | { geom: unknown; maxdecimaldigits?: number; options?: number }
           | {
-              r: Record<string, unknown>
-              geom_column?: string
-              maxdecimaldigits?: number
-              pretty_bool?: boolean
-            }
+          r: Record<string, unknown>
+          geom_column?: string
+          maxdecimaldigits?: number
+          pretty_bool?: boolean
+        }
         Returns: string
       }
       st_asgml: {
         Args:
           | { '': string }
           | {
-              geog: unknown
-              maxdecimaldigits?: number
-              options?: number
-              nprefix?: string
-              id?: string
-            }
+          geog: unknown
+          maxdecimaldigits?: number
+          options?: number
+          nprefix?: string
+          id?: string
+        }
           | { geom: unknown; maxdecimaldigits?: number; options?: number }
           | {
-              version: number
-              geog: unknown
-              maxdecimaldigits?: number
-              options?: number
-              nprefix?: string
-              id?: string
-            }
+          version: number
+          geog: unknown
+          maxdecimaldigits?: number
+          options?: number
+          nprefix?: string
+          id?: string
+        }
           | {
-              version: number
-              geom: unknown
-              maxdecimaldigits?: number
-              options?: number
-              nprefix?: string
-              id?: string
-            }
+          version: number
+          geom: unknown
+          maxdecimaldigits?: number
+          options?: number
+          nprefix?: string
+          id?: string
+        }
         Returns: string
       }
       st_ashexewkb: {
@@ -1073,22 +1254,22 @@ export type Database = {
       st_astwkb: {
         Args:
           | {
-              geom: unknown[]
-              ids: number[]
-              prec?: number
-              prec_z?: number
-              prec_m?: number
-              with_sizes?: boolean
-              with_boxes?: boolean
-            }
+          geom: unknown[]
+          ids: number[]
+          prec?: number
+          prec_z?: number
+          prec_m?: number
+          with_sizes?: boolean
+          with_boxes?: boolean
+        }
           | {
-              geom: unknown
-              prec?: number
-              prec_z?: number
-              prec_m?: number
-              with_sizes?: boolean
-              with_boxes?: boolean
-            }
+          geom: unknown
+          prec?: number
+          prec_z?: number
+          prec_m?: number
+          with_sizes?: boolean
+          with_boxes?: boolean
+        }
         Returns: string
       }
       st_asx3d: {
@@ -2015,39 +2196,37 @@ export type Database = {
 type DefaultSchema = Database[Extract<keyof Database, 'public'>]
 
 export type Tables<
-  DefaultSchemaTableNameOrOptions extends
-    | keyof (DefaultSchema['Tables'] & DefaultSchema['Views'])
+  DefaultSchemaTableNameOrOptions extends | keyof (DefaultSchema['Tables'] & DefaultSchema['Views'])
     | { schema: keyof Database },
   TableName extends DefaultSchemaTableNameOrOptions extends {
-    schema: keyof Database
-  }
+      schema: keyof Database
+    }
     ? keyof (Database[DefaultSchemaTableNameOrOptions['schema']]['Tables'] &
-        Database[DefaultSchemaTableNameOrOptions['schema']]['Views'])
+      Database[DefaultSchemaTableNameOrOptions['schema']]['Views'])
     : never = never,
 > = DefaultSchemaTableNameOrOptions extends { schema: keyof Database }
   ? (Database[DefaultSchemaTableNameOrOptions['schema']]['Tables'] &
-      Database[DefaultSchemaTableNameOrOptions['schema']]['Views'])[TableName] extends {
+    Database[DefaultSchemaTableNameOrOptions['schema']]['Views'])[TableName] extends {
       Row: infer R
     }
     ? R
     : never
   : DefaultSchemaTableNameOrOptions extends keyof (DefaultSchema['Tables'] &
       DefaultSchema['Views'])
-  ? (DefaultSchema['Tables'] &
+    ? (DefaultSchema['Tables'] &
       DefaultSchema['Views'])[DefaultSchemaTableNameOrOptions] extends {
-      Row: infer R
-    }
-    ? R
+        Row: infer R
+      }
+      ? R
+      : never
     : never
-  : never
 
 export type TablesInsert<
-  DefaultSchemaTableNameOrOptions extends
-    | keyof DefaultSchema['Tables']
+  DefaultSchemaTableNameOrOptions extends | keyof DefaultSchema['Tables']
     | { schema: keyof Database },
   TableName extends DefaultSchemaTableNameOrOptions extends {
-    schema: keyof Database
-  }
+      schema: keyof Database
+    }
     ? keyof Database[DefaultSchemaTableNameOrOptions['schema']]['Tables']
     : never = never,
 > = DefaultSchemaTableNameOrOptions extends { schema: keyof Database }
@@ -2057,20 +2236,19 @@ export type TablesInsert<
     ? I
     : never
   : DefaultSchemaTableNameOrOptions extends keyof DefaultSchema['Tables']
-  ? DefaultSchema['Tables'][DefaultSchemaTableNameOrOptions] extends {
-      Insert: infer I
-    }
-    ? I
+    ? DefaultSchema['Tables'][DefaultSchemaTableNameOrOptions] extends {
+        Insert: infer I
+      }
+      ? I
+      : never
     : never
-  : never
 
 export type TablesUpdate<
-  DefaultSchemaTableNameOrOptions extends
-    | keyof DefaultSchema['Tables']
+  DefaultSchemaTableNameOrOptions extends | keyof DefaultSchema['Tables']
     | { schema: keyof Database },
   TableName extends DefaultSchemaTableNameOrOptions extends {
-    schema: keyof Database
-  }
+      schema: keyof Database
+    }
     ? keyof Database[DefaultSchemaTableNameOrOptions['schema']]['Tables']
     : never = never,
 > = DefaultSchemaTableNameOrOptions extends { schema: keyof Database }
@@ -2080,42 +2258,40 @@ export type TablesUpdate<
     ? U
     : never
   : DefaultSchemaTableNameOrOptions extends keyof DefaultSchema['Tables']
-  ? DefaultSchema['Tables'][DefaultSchemaTableNameOrOptions] extends {
-      Update: infer U
-    }
-    ? U
+    ? DefaultSchema['Tables'][DefaultSchemaTableNameOrOptions] extends {
+        Update: infer U
+      }
+      ? U
+      : never
     : never
-  : never
 
 export type Enums<
-  DefaultSchemaEnumNameOrOptions extends
-    | keyof DefaultSchema['Enums']
+  DefaultSchemaEnumNameOrOptions extends | keyof DefaultSchema['Enums']
     | { schema: keyof Database },
   EnumName extends DefaultSchemaEnumNameOrOptions extends {
-    schema: keyof Database
-  }
+      schema: keyof Database
+    }
     ? keyof Database[DefaultSchemaEnumNameOrOptions['schema']]['Enums']
     : never = never,
 > = DefaultSchemaEnumNameOrOptions extends { schema: keyof Database }
   ? Database[DefaultSchemaEnumNameOrOptions['schema']]['Enums'][EnumName]
   : DefaultSchemaEnumNameOrOptions extends keyof DefaultSchema['Enums']
-  ? DefaultSchema['Enums'][DefaultSchemaEnumNameOrOptions]
-  : never
+    ? DefaultSchema['Enums'][DefaultSchemaEnumNameOrOptions]
+    : never
 
 export type CompositeTypes<
-  PublicCompositeTypeNameOrOptions extends
-    | keyof DefaultSchema['CompositeTypes']
+  PublicCompositeTypeNameOrOptions extends | keyof DefaultSchema['CompositeTypes']
     | { schema: keyof Database },
   CompositeTypeName extends PublicCompositeTypeNameOrOptions extends {
-    schema: keyof Database
-  }
+      schema: keyof Database
+    }
     ? keyof Database[PublicCompositeTypeNameOrOptions['schema']]['CompositeTypes']
     : never = never,
 > = PublicCompositeTypeNameOrOptions extends { schema: keyof Database }
   ? Database[PublicCompositeTypeNameOrOptions['schema']]['CompositeTypes'][CompositeTypeName]
   : PublicCompositeTypeNameOrOptions extends keyof DefaultSchema['CompositeTypes']
-  ? DefaultSchema['CompositeTypes'][PublicCompositeTypeNameOrOptions]
-  : never
+    ? DefaultSchema['CompositeTypes'][PublicCompositeTypeNameOrOptions]
+    : never
 
 export const Constants = {
   graphql_public: {

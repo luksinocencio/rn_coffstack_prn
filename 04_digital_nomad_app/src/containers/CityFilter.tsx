@@ -5,19 +5,20 @@ import { SearchInput } from '../components/SearchInput'
 import { Category } from '../types'
 
 type CityFilterProps = {
-  categories: Category[]
-  cityName: string
-  onChangeCityName: (cityName: string) => void
-  selectedCategoryId: string | null
-  onChangeSelectedCategoryId: (id: string | null) => void
-}
+  categories?: Category[];
+  cityName: string;
+  onChangeCityName: (cityName: string) => void;
+  selectedCategoryId: string | null;
+  onChangeSelectedCategoryId: (id: string | null) => void;
+};
+
 export function CityFilter({
-  categories,
-  cityName,
-  onChangeCityName,
-  selectedCategoryId,
-  onChangeSelectedCategoryId,
-}: CityFilterProps) {
+                             categories,
+                             cityName,
+                             onChangeCityName,
+                             selectedCategoryId,
+                             onChangeSelectedCategoryId,
+                           }: CityFilterProps) {
   return (
     <Box>
       <Box paddingHorizontal="padding">
@@ -29,14 +30,14 @@ export function CityFilter({
       </Box>
       <ScrollView horizontal showsHorizontalScrollIndicator={false}>
         <Box mt="s16" flexDirection="row" gap="s8" paddingHorizontal="padding">
-          {categories.map(category => (
+          {categories?.map((category) => (
             <CategoryPill
               key={category.id}
               active={category.id === selectedCategoryId}
               category={category}
               onPress={() =>
                 onChangeSelectedCategoryId(
-                  category.id === selectedCategoryId ? null : category.id,
+                  category.id === selectedCategoryId ? null : category.id
                 )
               }
             />

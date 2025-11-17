@@ -2,7 +2,8 @@ import { Box } from '@/src/components/Box'
 import { CityCard } from '@/src/components/CityCard'
 import { Screen } from '@/src/components/Screen'
 import { CityFilter } from '@/src/containers/CityFilter'
-import { categories } from '@/src/data/categories'
+import { useCategories } from '@/src/data/useCategories'
+
 import { useCities } from '@/src/data/useCities'
 import { useDebounce } from '@/src/hooks/useDebounce'
 import { useAppTheme } from '@/src/theme/useAppTheme'
@@ -20,13 +21,15 @@ export default function HomeScreen() {
 
   const debouncedCityName = useDebounce(cityName)
   const [selectedCategoryId, setSelectedCategoryId] = useState<string | null>(
-    null,
+    null
   )
 
-  const { cities } = useCities({
+  const { data: cities } = useCities({
     name: debouncedCityName,
     categoryId: selectedCategoryId,
   })
+
+  const { data: categories } = useCategories()
 
   const flatListRef = useRef(null)
   useScrollToTop(flatListRef)
@@ -34,7 +37,7 @@ export default function HomeScreen() {
   function renderItem({ item }: ListRenderItemInfo<CityPreview>) {
     return (
       <Box paddingHorizontal="padding">
-        <CityCard cityPreview={item} />
+        <CityCard cityPreview={item}/>
       </Box>
     )
   }
@@ -52,7 +55,7 @@ export default function HomeScreen() {
         data={cities}
         renderItem={renderItem}
         showsVerticalScrollIndicator={false}
-        keyExtractor={item => item.id}
+        keyExtractor={(item) => item.id}
         ListHeaderComponent={
           <CityFilter
             categories={categories}
@@ -66,5 +69,3 @@ export default function HomeScreen() {
     </Screen>
   )
 }
-
-// devmeist3r2208#

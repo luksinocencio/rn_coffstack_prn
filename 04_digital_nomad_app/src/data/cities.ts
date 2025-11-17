@@ -1,7 +1,7 @@
 import { City, CityPreview } from '../types'
 import { categories } from './categories'
 
-export const cities: City[] = [
+export const cities: (City & { relatedCitiesIds: string[] })[] = [
   {
     id: 'rio-de-janeiro',
     name: 'Rio de Janeiro',
@@ -650,7 +650,7 @@ export const cities: City[] = [
         id: 'singapore2',
         name: 'Gardens by the Bay',
         description:
-          "Jardins futuristas que apresentam as famosas 'Supertrees' e cúpulas de plantas que criam um espetáculo visual e tecnológico.",
+          'Jardins futuristas que apresentam as famosas \'Supertrees\' e cúpulas de plantas que criam um espetáculo visual e tecnológico.',
         cityId: 'singapore',
       },
       {

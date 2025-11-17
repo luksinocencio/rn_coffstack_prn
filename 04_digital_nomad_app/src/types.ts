@@ -1,9 +1,9 @@
 export type TouristAttraction = {
-  id: string
-  name: string
-  description: string
-  cityId: string
-}
+  id: string;
+  name: string;
+  description: string;
+  cityId: string;
+};
 
 export type CategoryCode =
   | 'ADVENTURE'
@@ -15,28 +15,28 @@ export type CategoryCode =
   | 'NATURE'
   | 'SHOPPING'
   | 'URBAN'
-  | 'FAVORITE'
+  | 'FAVORITE';
 
 export type Category = {
-  id: string
-  name: string
-  description: string | null
-  code: CategoryCode
-}
+  id: string;
+  name: string;
+  description: string | null;
+  code: CategoryCode;
+};
 
 export type City = {
-  id: string
-  name: string
-  country: string
-  coverImage: number | string
-  description: string
-  touristAttractions: TouristAttraction[]
+  id: string;
+  name: string;
+  country: string;
+  coverImage: number | string;
+  description: string;
+  touristAttractions: TouristAttraction[];
   location: {
-    latitude: number
-    longitude: number
-  }
-  categories: Category[]
-  relatedCitiesIds: string[]
-}
+    latitude: number;
+    longitude: number;
+  };
+  categories: Category[];
+  // relatedCitiesIds: string[];
+};
 
-export type CityPreview = Pick<City, 'id' | 'name' | 'country' | 'coverImage'>
+export type CityPreview = Pick<City, 'id' | 'name' | 'country' | 'coverImage'>;
