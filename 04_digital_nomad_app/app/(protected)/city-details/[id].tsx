@@ -54,14 +54,14 @@ export default function CityDetails() {
         </Pressable>
 
         <Divider paddingHorizontal="padding" />
-        <CityDetailsRelatedCities />
-
-        <BottomSheetMap
-          location={city.location}
-          isOpen={bottomSheetIsOpen}
-          onPress={toggleBottomSheet}
-        />
+        <CityDetailsRelatedCities relatedCitiesIds={city.relatedCitiesIds} />
       </Screen>
+
+      <BottomSheetMap
+        location={city.location}
+        isOpen={bottomSheetIsOpen}
+        onPress={toggleBottomSheet}
+      />
     </>
   )
 }
