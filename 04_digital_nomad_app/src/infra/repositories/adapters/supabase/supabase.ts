@@ -1,7 +1,7 @@
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import { createClient } from '@supabase/supabase-js'
 import 'react-native-url-polyfill/auto'
-import { Database } from './types'
+import type { Database } from './types'
 
 function getSupabaseEnvs(): { url: string; anonKey: string } {
   const url = process.env.EXPO_PUBLIC_SUPABASE_URL
