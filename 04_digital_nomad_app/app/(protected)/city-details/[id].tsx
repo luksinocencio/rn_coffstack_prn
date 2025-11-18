@@ -7,14 +7,14 @@ import { CityDetailsInfo } from '@/src/containers/CityDetailsInfo'
 import { CityDetailsMap } from '@/src/containers/CityDetailsMap'
 import { CityDetailsRelatedCities } from '@/src/containers/CityDetailsRelatedCities'
 import { CityDetailsTouristAttractions } from '@/src/containers/CityDetailsTouristAttractions'
-import { useCityDetails } from '@/src/data/useCityDetails'
+import { useCityFindById } from '@/src/domain/city/operations/useCityFindById'
 import { useLocalSearchParams } from 'expo-router'
 import { Pressable } from 'react-native'
 import { useSharedValue } from 'react-native-reanimated'
 
 export default function CityDetails() {
   const { id } = useLocalSearchParams<{ id: string }>()
-  const { data: city } = useCityDetails(id)
+  const { data: city } = useCityFindById(id)
 
   const bottomSheetIsOpen = useSharedValue(false)
 
@@ -33,34 +33,20 @@ export default function CityDetails() {
   return (
     <>
       <Screen style={{ paddingHorizontal: 0 }} scrollable>
-        <CityDetailsHeader
-          id={city.id}
-          coverImage={city.coverImage}
-          categories={city.categories}
-        />
-        <CityDetailsInfo
-          name={city.name}
-          country={city.country}
-          description={city.description}
-        />
-        <Divider paddingHorizontal="padding"/>
-        <CityDetailsTouristAttractions
-          touristAttractions={city.touristAttractions}
-        />
+        <CityDetailsHeader id={city.id} coverImage={city.coverImage} categories={city.categories} />
+        <CityDetailsInfo name={city.name} country={city.country} description={city.description} />
+        <Divider paddingHorizontal="padding" />
+        <CityDetailsTouristAttractions touristAttractions={city.touristAttractions} />
 
-        <Divider paddingHorizontal="padding"/>
+        <Divider paddingHorizontal="padding" />
         <Pressable onPress={toggleBottomSheet}>
-          <CityDetailsMap location={city.location}/>
+          <CityDetailsMap location={city.location} />
         </Pressable>
 
-        <Divider paddingHorizontal="padding"/>
-        <CityDetailsRelatedCities id={city.id}/>
+        <Divider paddingHorizontal="padding" />
+        <CityDetailsRelatedCities id={city.id} />
       </Screen>
-      <BottomSheetMap
-        location={city.location}
-        isOpen={bottomSheetIsOpen}
-        onPress={toggleBottomSheet}
-      />
+      <BottomSheetMap location={city.location} isOpen={bottomSheetIsOpen} onPress={toggleBottomSheet} />
     </>
   )
 }
