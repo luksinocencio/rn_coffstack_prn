@@ -1,5 +1,5 @@
-import { Icon } from '@/src/components/Icon'
-import { useAppTheme } from '@/src/theme/useAppTheme'
+import { Icon } from '@/src/ui/components/Icon'
+import { useAppTheme } from '@/src/ui/theme/useAppTheme'
 import { Tabs } from 'expo-router'
 import React from 'react'
 
@@ -28,12 +28,7 @@ export default function TabLayout() {
         options={{
           title: 'Início',
           tabBarIcon: ({ focused }) => {
-            return (
-              <Icon
-                name={focused ? 'Home-fill' : 'Home-outline'}
-                color={focused ? 'primary' : 'gray2'}
-              />
-            )
+            return <Icon name={focused ? 'Home-fill' : 'Home-outline'} color={focused ? 'primary' : 'gray2'} />
           },
         }}
       />
@@ -42,9 +37,7 @@ export default function TabLayout() {
         options={{
           title: 'Explorar',
           tabBarIcon: ({ focused }) => {
-            return (
-              <Icon name={'Explore'} color={focused ? 'primary' : 'gray2'} />
-            )
+            return <Icon name={'Explore'} color={focused ? 'primary' : 'gray2'} />
           },
         }}
       />
@@ -53,12 +46,7 @@ export default function TabLayout() {
         options={{
           title: 'Perfil',
           tabBarIcon: ({ focused }) => {
-            return (
-              <Icon
-                name={focused ? 'Person-fill' : 'Person-outline'}
-                color={focused ? 'primary' : 'gray2'}
-              />
-            )
+            return <Icon name={focused ? 'Person-fill' : 'Person-outline'} color={focused ? 'primary' : 'gray2'} />
           },
         }}
       />
