@@ -1,7 +1,5 @@
 # Welcome to your Expo app 👋
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
-
 ## Get started
 
 1. Install dependencies
@@ -16,35 +14,36 @@ This is an [Expo](https://expo.dev) project created with [`create-expo-app`](htt
    npx expo start
    ```
 
-In the output, you'll find options to open the app in a
+## Foco do projeto
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+* Animações com **react-native-reanimated**
+* Arquitetura e padrões de projeto focando em **testability, maintainability, flexibility**
+* Expo Router
+* Componetização e **Design System**
+* Autenticação e Formulários
+* Testes unidades, integração e snapshot
+* TanStack Query (react query)
+* EAS Build
+* CI/CD com EAS workflows
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+## Alguns conceitos importante
 
-## Get a fresh project
+### Dominio e Modelo
 
-When you're ready, run:
+O termo "dominio" se refere ao assunto central ou area de conhecimento para a qual o software esta sendo criado. Em
+outras palavras, é o "mundo real" que o sistema representa ou resolve problemas. O Modelo nada mais é do que a
+representação em código simplificada de algo do dominio.
 
-```bash
-npm run reset-project
-```
+### Casos de Use (Operações)
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+São as ações ou operações que o sistema executa em cima de um modelo para atender uma necessidade do usuário ou resolver
+um problema do dominio.
 
-## Learn more
+### Repository Pattern
 
-To learn more about developing your project with Expo, look at the following resources:
+O padrão Repositório visa manter a infraestrutura de persistência da dados foda do modelo de domínio do sistema.
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+### Inversão de dependência
 
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+A inversão de dependência é a estratégica de depender de interfaces ou funções e classes abstratas, em vez de funções e
+classes concretas.

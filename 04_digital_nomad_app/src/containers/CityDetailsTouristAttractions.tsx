@@ -1,7 +1,7 @@
 import { Accordion } from '../components/Accordion'
 import { Box } from '../components/Box'
 import { Text } from '../components/Text'
-import { City } from '../types'
+import { City } from '../domain/city/City'
 
 type Props = Pick<City, 'touristAttractions'>
 export function CityDetailsTouristAttractions({ touristAttractions }: Props) {
@@ -12,11 +12,7 @@ export function CityDetailsTouristAttractions({ touristAttractions }: Props) {
       </Text>
       <Box gap="s8">
         {touristAttractions.map(attraction => (
-          <Accordion
-            key={attraction.id}
-            title={attraction.name}
-            description={attraction.description}
-          />
+          <Accordion key={attraction.id} title={attraction.name} description={attraction.description} />
         ))}
       </Box>
     </Box>

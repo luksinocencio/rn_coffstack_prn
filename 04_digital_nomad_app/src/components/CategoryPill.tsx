@@ -1,4 +1,4 @@
-import { Category, CategoryCode } from '../types'
+import { Category, CategoryCode } from '../domain/category/Category'
 import { IconName } from './Icon'
 import { Pill, PillProps } from './Pill'
 
@@ -6,13 +6,7 @@ type CategoryPillProps = {
   category: Category
 } & Pick<PillProps, 'active' | 'onPress'>
 export function CategoryPill({ category, ...pillProps }: CategoryPillProps) {
-  return (
-    <Pill
-      iconName={categoryIconMap[category.code]}
-      label={category.name}
-      {...pillProps}
-    />
-  )
+  return <Pill iconName={categoryIconMap[category.code]} label={category.name} {...pillProps} />
 }
 
 const categoryIconMap: Record<CategoryCode, IconName> = {

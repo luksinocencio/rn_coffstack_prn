@@ -1,14 +1,10 @@
 import { Box } from '../components/Box'
 import { Text } from '../components/Text'
-import { City } from '../types'
+import { City } from '../domain/city/City'
 
 type CityDetailsInfoProps = Pick<City, 'name' | 'country' | 'description'>
 
-export function CityDetailsInfo({
-  name,
-  country,
-  description,
-}: CityDetailsInfoProps) {
+export function CityDetailsInfo({ name, country, description }: CityDetailsInfoProps) {
   return (
     <Box padding="padding">
       <Text variant="title28" mb="s2">

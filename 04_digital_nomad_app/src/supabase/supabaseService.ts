@@ -1,11 +1,14 @@
-import { Category, CategoryCode, City, CityPreview } from '../types'
+import { Category, CategoryCode } from '../domain/category/Category'
+import { City, CityPreview } from '../domain/city/City'
+import { ICityRepo } from '../domain/city/ICityRepo'
+
 import { supabase } from './supabase'
 import { supabaseAdapter } from './supabaseAdapter'
 
 export type CityFilters = {
-  name?: string;
-  categoryId?: string | null;
-};
+  name?: string
+  categoryId?: string | null
+}
 
 async function findAll(filters: CityFilters): Promise<CityPreview[]> {
   try {
@@ -21,10 +24,7 @@ async function findAll(filters: CityFilters): Promise<CityPreview[]> {
 
       cities = data
     } else {
-      const { data } = await supabase
-        .from('cities')
-        .select(fields)
-        .ilike('name', `%${filters.name}%`)
+      const { data } = await supabase.from('cities').select(fields).ilike('name', `%${filters.name}%`)
 
       cities = data
     }
@@ -45,7 +45,7 @@ async function listCategory(): Promise<Category[]> {
     throw new Error('error trying to list categories')
   }
 
-  return data.map((row) => ({
+  return data.map(row => ({
     id: row.id,
     description: row.description,
     name: row.name,
@@ -54,11 +54,7 @@ async function listCategory(): Promise<Category[]> {
 }
 
 async function findById(id: string): Promise<City> {
-  const { data, error } = await supabase
-    .from('cities_with_full_info')
-    .select('*')
-    .eq('id', id)
-    .single()
+  const { data, error } = await supabase.from('cities_with_full_info').select('*').eq('id', id).single()
 
   if (error) {
     throw new Error('city not found')
@@ -68,18 +64,13 @@ async function findById(id: string): Promise<City> {
 }
 
 async function getRelatedCities(cityId: string): Promise<CityPreview[]> {
-  const { data } = await supabase
-    .from('related_cities')
-    .select('*')
-    .eq('source_city_id', cityId)
-    .throwOnError()
+  const { data } = await supabase.from('related_cities').select('*').eq('source_city_id', cityId).throwOnError()
 
   return data.map(supabaseAdapter.toCityPreview)
 }
 
-export const supabaseService = {
+export const supabaseCityRepo: ICityRepo = {
   findAll,
-  listCategory,
   findById,
   getRelatedCities,
 }

@@ -4,10 +4,10 @@ import { Box } from '../components/Box'
 import { CityCard } from '../components/CityCard'
 import { Text } from '../components/Text'
 import { useRelatedCities } from '../data/useRelatedCities'
+import { City } from '../domain/city/City'
 import { useAppTheme } from '../theme/useAppTheme'
-import { City } from '../types'
 
-type Props = Pick<City, 'id'>;
+type Props = Pick<City, 'id'>
 
 export function CityDetailsRelatedCities({ id }: Props) {
   const { data: cities } = useRelatedCities(id)
@@ -30,14 +30,9 @@ export function CityDetailsRelatedCities({ id }: Props) {
         contentContainerStyle={{
           gap: spacing.padding,
           paddingHorizontal: spacing.padding,
-        }}
-      >
-        {cities?.map((city) => (
-          <CityCard
-            key={city.id}
-            cityPreview={city}
-            style={{ width: cardWith, height: cardHeight }}
-          />
+        }}>
+        {cities?.map(city => (
+          <CityCard key={city.id} cityPreview={city} style={{ width: cardWith, height: cardHeight }} />
         ))}
       </ScrollView>
     </Box>

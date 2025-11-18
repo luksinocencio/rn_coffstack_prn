@@ -3,11 +3,12 @@ import { CityCard } from '@/src/components/CityCard'
 import { Screen } from '@/src/components/Screen'
 import { CityFilter } from '@/src/containers/CityFilter'
 import { useCategories } from '@/src/data/useCategories'
+import { CityPreview } from '@/src/domain/city/City'
 
-import { useCities } from '@/src/data/useCities'
+import { useCityFindAll } from '@/src/domain/city/operations/useCityFindAll'
 import { useDebounce } from '@/src/hooks/useDebounce'
 import { useAppTheme } from '@/src/theme/useAppTheme'
-import { CityPreview } from '@/src/types'
+
 import { useScrollToTop } from '@react-navigation/native'
 import { useRef, useState } from 'react'
 import { ListRenderItemInfo } from 'react-native'
@@ -20,11 +21,9 @@ export default function HomeScreen() {
   const [cityName, setCityName] = useState('')
 
   const debouncedCityName = useDebounce(cityName)
-  const [selectedCategoryId, setSelectedCategoryId] = useState<string | null>(
-    null
-  )
+  const [selectedCategoryId, setSelectedCategoryId] = useState<string | null>(null)
 
-  const { data: cities } = useCities({
+  const { data: cities } = useCityFindAll({
     name: debouncedCityName,
     categoryId: selectedCategoryId,
   })
@@ -37,7 +36,7 @@ export default function HomeScreen() {
   function renderItem({ item }: ListRenderItemInfo<CityPreview>) {
     return (
       <Box paddingHorizontal="padding">
-        <CityCard cityPreview={item}/>
+        <CityCard cityPreview={item} />
       </Box>
     )
   }
@@ -55,7 +54,7 @@ export default function HomeScreen() {
         data={cities}
         renderItem={renderItem}
         showsVerticalScrollIndicator={false}
-        keyExtractor={(item) => item.id}
+        keyExtractor={item => item.id}
         ListHeaderComponent={
           <CityFilter
             categories={categories}

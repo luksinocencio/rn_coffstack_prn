@@ -7,34 +7,27 @@ import { CategoryPill } from '../components/CategoryPill'
 import { Icon } from '../components/Icon'
 import { IconButton } from '../components/IconButton'
 import { PILL_HEIGHT } from '../components/Pill'
-import { City } from '../types'
+import { City } from '../domain/city/City'
 
-type CityDetailsHeaderProps = Pick<City, 'id' | 'coverImage' | 'categories'>;
+type CityDetailsHeaderProps = Pick<City, 'id' | 'coverImage' | 'categories'>
 
-export function CityDetailsHeader({
-                                    coverImage,
-                                    categories,
-                                  }: CityDetailsHeaderProps) {
+export function CityDetailsHeader({ coverImage, categories }: CityDetailsHeaderProps) {
   const { top } = useSafeAreaInsets()
   return (
     <Box>
       <ImageBackground
-        source={
-          typeof coverImage === 'number' ? coverImage : { uri: coverImage }
-        }
+        source={typeof coverImage === 'number' ? coverImage : { uri: coverImage }}
         style={{ width: '100%', height: 250 }}
-        imageStyle={{ borderBottomRightRadius: 40 }}
-      >
-        <BlackOpacity/>
+        imageStyle={{ borderBottomRightRadius: 40 }}>
+        <BlackOpacity />
         <Box
           flexDirection="row"
           justifyContent="space-between"
           alignItems="center"
           padding="padding"
-          style={{ paddingTop: top }}
-        >
-          <IconButton iconName="Chevron-left" onPress={router.back}/>
-          <Icon name="Favorite-outline" size={30} color="pureWhite"/>
+          style={{ paddingTop: top }}>
+          <IconButton iconName="Chevron-left" onPress={router.back} />
+          <Icon name="Favorite-outline" size={30} color="pureWhite" />
         </Box>
       </ImageBackground>
 
@@ -42,11 +35,10 @@ export function CityDetailsHeader({
         horizontal
         bounces={false}
         showsHorizontalScrollIndicator={false}
-        style={{ marginTop: -PILL_HEIGHT / 2 }}
-      >
+        style={{ marginTop: -PILL_HEIGHT / 2 }}>
         <Box flexDirection="row" gap="s8" paddingHorizontal="padding">
-          {categories.map((category) => (
-            <CategoryPill active={true} key={category.id} category={category}/>
+          {categories.map(category => (
+            <CategoryPill active={true} key={category.id} category={category} />
           ))}
         </Box>
       </ScrollView>

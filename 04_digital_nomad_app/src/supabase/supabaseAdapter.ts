@@ -1,26 +1,24 @@
-import { Category, CategoryCode, City, CityPreview, TouristAttraction, } from '../types'
+import { Category, CategoryCode } from '../domain/category/Category'
+import { City, CityPreview, TouristAttraction } from '../domain/city/City'
 import { Database } from './types'
 
 export const storageURL = process.env.EXPO_PUBLIC_SUPABASE_STORAGE_URL
 
-type CityWithFullInfo =
-  Database['public']['Views']['cities_with_full_info']['Row'];
+type CityWithFullInfo = Database['public']['Views']['cities_with_full_info']['Row']
 
-type CategoryRow = Database['public']['Tables']['categories']['Row'];
-type TouristAttractionRow =
-  Database['public']['Tables']['tourist_attractions']['Row'];
+type CategoryRow = Database['public']['Tables']['categories']['Row']
+type TouristAttractionRow = Database['public']['Tables']['tourist_attractions']['Row']
 
 type CityPreviewRow = {
-  id: string | null;
-  name: string | null;
-  country: string | null;
-  cover_image: string | null;
-};
+  id: string | null
+  name: string | null
+  country: string | null
+  cover_image: string | null
+}
 
 function toCity(data: CityWithFullInfo): City {
   const categories = data.categories as CategoryRow[]
-  const tourist_attractions =
-    data.tourist_attractions as TouristAttractionRow[]
+  const tourist_attractions = data.tourist_attractions as TouristAttractionRow[]
 
   return {
     id: data.id as string,
