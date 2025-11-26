@@ -12,10 +12,17 @@ export default function SignInScreen() {
   function handleSignIn() {
     signIng({ email, password })
   }
+
   return (
     <Screen>
       <SafeAreaView>
-        <TextInput style={styles.input} value={email} onChangeText={setEmail} placeholder="seu email" />
+        <TextInput
+          style={styles.input}
+          value={email}
+          onChangeText={setEmail}
+          placeholder="seu email"
+          autoCapitalize="none"
+        />
         <TextInput style={styles.input} value={password} onChangeText={setPassword} placeholder="digite sua senha" />
         <Button title="Entrar" onPress={handleSignIn} />
       </SafeAreaView>
