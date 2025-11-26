@@ -41,3 +41,7 @@ app-example
 
 .idea
 .vscode
+
+# Expo
+.expo/
+.expo-shared/
