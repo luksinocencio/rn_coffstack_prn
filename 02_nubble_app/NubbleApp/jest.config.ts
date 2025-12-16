@@ -1,4 +1,4 @@
-import { Config } from 'jest'
+import { Config } from 'jest';
 
 const config: Config = {
   preset: 'react-native',
@@ -13,6 +13,6 @@ const config: Config = {
   ],
   moduleDirectories: ['node_modules', './src/test'],
   modulePathIgnorePatterns: ['.*/mockedData/.*'],
-}
+};
 
-export default config
+export default config;

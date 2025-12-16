@@ -2,6 +2,7 @@
   "name": "NubbleApp",
   "displayName": "NubbleApp",
   "plugins": [
-    "expo-font"
+    "expo-font",
+    ["react-native-bootsplash", { "assetsDir": "assets/bootsplash" }]
   ]
 }

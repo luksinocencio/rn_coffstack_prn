@@ -1,21 +1,18 @@
-import React from 'react'
-import { Linking, Platform } from 'react-native'
+import React from 'react';
+import { Linking, Platform } from 'react-native';
 
-import {
-  ActivityIndicator,
-  Box,
-  Button,
-  Screen,
-  Text,
-  TextProps,
-} from '@components'
-import { PermissionName, usePermission } from '@services'
+import { PermissionName, usePermission } from '@services';
 
+import { ActivityIndicator } from '../ActivityIndicator/ActivityIndicator';
+import { Box } from '../Box/Box';
+import { Button } from '../Button/Button';
+import { Screen } from '../Screen/Screen';
+import { Text, TextProps } from '../Text/Text';
 
 interface PermissionManagerProps {
-  permissionName: PermissionName
-  description: string
-  children: React.ReactElement
+  permissionName: PermissionName;
+  description: string;
+  children: React.ReactElement;
 }
 
 export function PermissionManager({
@@ -23,10 +20,10 @@ export function PermissionManager({
   description,
   children,
 }: PermissionManagerProps) {
-  const { status, isLoading } = usePermission(permissionName)
+  const { status, isLoading } = usePermission(permissionName);
 
   if (status === 'granted') {
-    return children
+    return children;
   }
 
   return (
@@ -58,7 +55,7 @@ export function PermissionManager({
         )}
       </Box>
     </Screen>
-  )
+  );
 }
 
 const $messageStyle: TextProps = {
@@ -67,4 +64,4 @@ const $messageStyle: TextProps = {
   bold: true,
   marginVertical: 's16',
   textAlign: 'center',
-}
+};
