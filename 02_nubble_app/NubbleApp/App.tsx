@@ -1,31 +1,35 @@
-import React from 'react';
-import { LogBox } from 'react-native';
+import React from 'react'
+import { LogBox } from 'react-native'
 
-import { ThemeProvider } from '@shopify/restyle';
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { useFonts } from 'expo-font';
-import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { ThemeProvider } from '@shopify/restyle'
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import { useFonts } from 'expo-font'
+import { SafeAreaProvider } from 'react-native-safe-area-context'
 
-import { Toast } from '@components';
-import { useAppColorScheme } from '@hooks';
-import { Router } from '@routes';
+import { Toast } from '@components'
+import { useAppColorScheme } from '@hooks'
+import { Router } from '@routes'
 import {
   AuthCredentialsProvider,
   initializeStorage,
   MMKVStorage,
   useAppColor,
-} from '@services';
-import { darkTheme, theme } from '@theme';
+} from '@services'
+import { darkTheme, theme } from '@theme'
 
-initializeStorage(MMKVStorage);
+initializeStorage(MMKVStorage)
 
-const queryClient = new QueryClient();
+const queryClient = new QueryClient()
 
-LogBox.ignoreLogs(['Require cycle:']);
+LogBox.ignoreLogs(['Require cycle:'])
+
+if (__DEV__) {
+  require('./ReactotronConfig')
+}
 
 function App() {
-  useAppColorScheme();
-  const appColor = useAppColor();
+  useAppColorScheme()
+  const appColor = useAppColor()
 
   const [loaded, error] = useFonts({
     'Satoshi-Black': require('./src/assets/fonts/Satoshi-Black.otf'),
@@ -38,10 +42,10 @@ function App() {
     'Satoshi-Medium': require('./src/assets/fonts/Satoshi-Medium.otf'),
     'Satoshi-MediumItalic': require('./src/assets/fonts/Satoshi-MediumItalic.otf'),
     'Satoshi-Regular': require('./src/assets/fonts/Satoshi-Regular.otf'),
-  });
+  })
 
   if (!loaded && !error) {
-    return null;
+    return null
   }
 
   return (
@@ -59,7 +63,7 @@ function App() {
         </SafeAreaProvider>
       </QueryClientProvider>
     </AuthCredentialsProvider>
-  );
+  )
 }
 
-export default App;
+export default App

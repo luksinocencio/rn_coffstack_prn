@@ -1,8 +1,9 @@
 import React from 'react'
 
+import { useAuthCredentials } from '@services'
+
 import { ProfileTemplate } from '@components'
 import { AppTabScreenProps } from '@routes'
-import { useAuthCredentials } from '@services'
 
 export function MyProfileScreen({}: AppTabScreenProps<'MyProfileScreen'>) {
   const { userId } = useAuthCredentials()
@@ -11,5 +12,5 @@ export function MyProfileScreen({}: AppTabScreenProps<'MyProfileScreen'>) {
     return null
   }
 
-  return <ProfileTemplate userId={userId} />
+  return <ProfileTemplate userId={userId} isMyProfile />
 }
