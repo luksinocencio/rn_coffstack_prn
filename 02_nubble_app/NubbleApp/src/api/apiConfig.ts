@@ -2,15 +2,14 @@ import { AuthCredentials, authService } from '@domain'
 import axios from 'axios'
 
 /**
- * use your computer network IP Address when running on a real device.
- *
- * i.e: `'http://192.168.20.15:3333/'`
- * // export const BASE_URL = 'http://127.0.0.1:3333/'
-// export const BASE_URL = 'http://192.168.1.117:3333/'
-// export const BASE_URL = 'https://nubble-api.coffstack.com.br/'
-export const BASE_URL = 'http://192.168.1.27:3333/'
+ * export const BASE_URL = 'http://127.0.0.1:3333/'
+ * export const BASE_URL = 'http://192.168.1.117:3333/'
+ * export const BASE_URL = 'https://nubble-api.coffstack.com.br/'
+ * export const BASE_URL = 'http://192.168.1.27:3333/'
  */
-export const BASE_URL = 'http://192.168.1.27:3333/'
+
+export const BASE_URL = 'http://192.168.1.25:3333/'
+
 export const api = axios.create({
   baseURL: BASE_URL,
 })

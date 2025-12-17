@@ -36,10 +36,9 @@ type ItemType = {
   value: string
   label: string
 }
-
 function Item({ value, label }: ItemType) {
   return (
-    <Box key={label} alignItems="center">
+    <Box alignItems="center">
       <Text preset="headingSmall">{value}</Text>
       <Text preset="paragraphSmall">{label}</Text>
     </Box>

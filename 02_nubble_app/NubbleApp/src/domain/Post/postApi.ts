@@ -1,8 +1,11 @@
 import { api, PageAPI, PageParams } from '@api'
-import { PostAPI } from '@domain'
 import { ImageForUpload } from '@services'
 
-async function getList(params?: PageParams): Promise<PageAPI<PostAPI>> {
+import { PostAPI } from './postTypes'
+
+async function getList(
+  params?: PageParams & { user_id?: number },
+): Promise<PageAPI<PostAPI>> {
   const response = await api.get<PageAPI<PostAPI>>('user/post', {
     params,
   })
