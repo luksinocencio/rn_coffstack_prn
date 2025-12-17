@@ -13,6 +13,10 @@ import { AuthCredentialsProvider } from './src/services/authCredentials/Provider
 import { initializeStorage, MMKVStorage } from './src/services/storage'
 import { darkTheme, theme } from './src/theme/theme'
 
+if (__DEV__) {
+  require('./ReactotronConfig')
+}
+
 initializeStorage(MMKVStorage)
 
 const queryClient = new QueryClient()
