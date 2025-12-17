@@ -7,28 +7,32 @@ const mateusUserAPI: UserAPI = {
   id: 7,
   first_name: 'Mateus',
   last_name: 'de Souza',
-  username: 'mateusdesouza',
+  username: 'mateussouza',
   email: 'msouza@coffstack.com',
   profile_url:
-    'https://nubble-development.s3.sa-east-1.amazonaws.com/backend-integration/7-mateus.png',
+    'https://nubble-development.s3.sa-east-1.amazonaws.com/backend-integration/8-mateus.png',
   is_online: false,
   full_name: 'Mateus de Souza',
+  meta: {
+    followers_count: '30',
+    following_count: '23',
+  },
 }
 
-const mateusAuthCredentials: AuthCredentials = {
+export const mateusAuthCredentials: AuthCredentials = {
   token: 'access-token',
-  tokenExpiresAt: '2023-10-21T07:46:21.821+00:00',
+  tokenExpiresAt: '2030-10-07T12:08:50.433+00:00',
   refreshToken: 'refresh-token',
   user: userAdapter.toUser(mateusUserAPI),
 }
 
-const mateusPostCommentAPI: PostCommentAPI = {
+export const mateusPostCommentAPI: PostCommentAPI = {
   id: 113,
   message: 'Iure bene angelus.',
   user_id: 7,
   post_id: POST_ID,
-  created_at: '2023-10-18T22:19:17.000+00:00',
-  updated_at: '2023-10-21T07:46:21.821+00:00',
+  created_at: '2023-10-20T10:26:18.000+00:00',
+  updated_at: '2023-10-21T07:46:21.828+00:00',
   user: mateusUserAPI,
   meta: {},
 }
@@ -51,6 +55,10 @@ const postCommentAPI: PostCommentAPI = {
       'https://nubble-development.s3.sa-east-1.amazonaws.com/backend-integration/6-marcelo.png',
     is_online: false,
     full_name: 'Marcelo Tavares',
+    meta: {
+      followers_count: '30',
+      following_count: '23',
+    },
   },
 
   meta: {},

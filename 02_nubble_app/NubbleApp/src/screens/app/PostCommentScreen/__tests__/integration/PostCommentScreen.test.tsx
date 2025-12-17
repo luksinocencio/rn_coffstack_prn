@@ -1,6 +1,7 @@
 import React from 'react'
 import { Alert, AlertButton } from 'react-native'
 
+import { authCredentialsStorage } from '@services'
 import { mockedPostComment, resetInMemoryResponse, server } from '@test'
 import {
   act,
@@ -10,8 +11,6 @@ import {
   waitFor,
   waitForElementToBeRemoved,
 } from 'test-utils'
-
-import { authCredentialsStorage } from '@services'
 
 import { PostCommentScreen } from '../../PostCommentScreen'
 
@@ -32,7 +31,7 @@ afterAll(() => {
 })
 
 describe('integration: PostCommentScreen', () => {
-  it('When ADDING a comment, the list is automatically updated', async () => {
+  test('When ADDING a comment, the list is automatically updated', async () => {
     renderScreen(
       <PostCommentScreen
         navigation={{} as any}
@@ -69,7 +68,7 @@ describe('integration: PostCommentScreen', () => {
     expect(comments.length).toBe(3)
   })
 
-  it('When DELETING a comment, the list is automatically updated and a toast message is displayed ', async () => {
+  test('When DELETING a comment, the list is automatically updated and a toast message is displayed ', async () => {
     jest
       .spyOn(authCredentialsStorage, 'get')
       .mockResolvedValue(mockedPostComment.mateusAuthCredentials)

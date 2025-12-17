@@ -1,5 +1,3 @@
-export {}
-
 //@ts-ignore
 import mockSafeAreaContext from 'react-native-safe-area-context/jest/mock'
 
@@ -17,6 +15,7 @@ jest.mock('@react-navigation/native', () => {
     ...originalModule,
     useNavigation: () => ({
       navigate: jest.fn(),
+      push: jest.fn(),
     }),
   }
 })
