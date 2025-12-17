@@ -13,6 +13,8 @@ export function HomeScreen({}: AppTabScreenProps<'HomeScreen'>) {
     return <PostItem post={item} />
   }
 
+  console.log(postService.getList)
+
   return (
     <Screen style={$screen}>
       <InfinityScrollList

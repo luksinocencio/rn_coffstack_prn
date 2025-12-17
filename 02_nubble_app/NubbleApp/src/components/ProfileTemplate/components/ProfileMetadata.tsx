@@ -26,7 +26,7 @@ export function ProfileMetadata({
       mt="s24"
       columnGap="s32">
       {items.map(item => (
-        <Item {...item} />
+        <Item key={item.label} {...item} />
       ))}
     </Box>
   )
@@ -36,6 +36,7 @@ type ItemType = {
   value: string
   label: string
 }
+
 function Item({ value, label }: ItemType) {
   return (
     <Box key={label} alignItems="center">

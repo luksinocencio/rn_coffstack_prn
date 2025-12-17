@@ -1,11 +1,16 @@
+import { AuthCredentials, authService } from '@domain'
 import axios from 'axios'
 
-import { AuthCredentials, authService } from '@domain'
-
-// export const BASE_URL = 'http://127.0.0.1:3333/'
+/**
+ * use your computer network IP Address when running on a real device.
+ *
+ * i.e: `'http://192.168.20.15:3333/'`
+ * // export const BASE_URL = 'http://127.0.0.1:3333/'
 // export const BASE_URL = 'http://192.168.1.117:3333/'
 // export const BASE_URL = 'https://nubble-api.coffstack.com.br/'
-export const BASE_URL = 'http://localhost:3333/'
+export const BASE_URL = 'http://192.168.1.27:3333/'
+ */
+export const BASE_URL = 'http://192.168.1.27:3333/'
 export const api = axios.create({
   baseURL: BASE_URL,
 })
@@ -31,7 +36,7 @@ export function registerInterceptor({
 
       if (responseError.response.status === 401) {
         if (hasNotRefreshToken || isRefreshTokenRequest || failedRequest.sent) {
-          await removeCredentials()
+          removeCredentials()
           return Promise.reject(responseError)
         }
 
@@ -40,7 +45,7 @@ export function registerInterceptor({
         const newAuthCredentials = await authService.authenticateByRefreshToken(
           authCredentials?.refreshToken,
         )
-        await saveCredentials(newAuthCredentials)
+        saveCredentials(newAuthCredentials)
 
         failedRequest.headers.Authorization = `Bearer ${newAuthCredentials.token}`
 
@@ -51,6 +56,6 @@ export function registerInterceptor({
     },
   )
 
-  // remove listener quando o component unmount
+  // remove listener when component unmount
   return () => api.interceptors.response.eject(interceptor)
 }
