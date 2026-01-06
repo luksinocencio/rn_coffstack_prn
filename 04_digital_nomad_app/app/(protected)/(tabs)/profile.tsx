@@ -1,9 +1,26 @@
-import { Text, View } from 'react-native'
+import { Pressable } from 'react-native'
+import { SafeAreaView } from 'react-native-safe-area-context'
+
+import { useAuthSignOut } from '@/src/domain/auth/operations/useAuthSignOut'
+import { Box } from '@/src/ui/components/Box'
+import { Icon } from '@/src/ui/components/Icon'
+import { Screen } from '@/src/ui/components/Screen'
+import { Text } from '@/src/ui/components/Text'
 
 export default function ProfileScreen() {
+  const { mutate: signOut } = useAuthSignOut()
+
   return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text>Profile Screen</Text>
-    </View>
+    <Screen>
+      <SafeAreaView>
+        <Text>Profile Screen</Text>
+        <Pressable onPress={signOut}>
+          <Box flexDirection="row" alignItems="center">
+            <Text>Sair</Text>
+            <Icon name="Logout" color="primary" />
+          </Box>
+        </Pressable>
+      </SafeAreaView>
+    </Screen>
   )
 }
