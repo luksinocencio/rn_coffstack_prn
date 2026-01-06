@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "Digital Nomad App",
+    "name": "Digital Nomad",
     "slug": "digital-nomad-app",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -34,7 +34,8 @@
           "backgroundColor": "#ffffff"
         }
       ],
-      "expo-sqlite"
+      "expo-sqlite",
+      "expo-web-browser"
     ],
     "experiments": {
       "typedRoutes": true

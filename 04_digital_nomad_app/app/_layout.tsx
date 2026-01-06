@@ -1,14 +1,19 @@
+import 'react-native-reanimated'
+
+import { ThemeProvider } from '@shopify/restyle'
+
+import { useFonts } from 'expo-font'
+import { Stack } from 'expo-router'
+import { StatusBar } from 'expo-status-bar'
+
 import { AuthProvider } from '@/src/domain/auth/AuthContext'
 import { AlertFeedback } from '@/src/infra/feedbackService/adapters/Alert/AlertFeedback'
 import { FeedbackProvider } from '@/src/infra/feedbackService/FeedbackProvider'
 import { InMemoryRepository } from '@/src/infra/repositories/adapters/inMemory'
 import { RepositoryProvider } from '@/src/infra/repositories/RepositoryProvider'
+import { AsyncStorage } from '@/src/infra/storage/adapters/AsyncStorage'
+import { StorageProvider } from '@/src/infra/storage/StorageContext'
 import theme from '@/src/ui/theme/theme'
-import { ThemeProvider } from '@shopify/restyle'
-import { useFonts } from 'expo-font'
-import { Stack } from 'expo-router'
-import { StatusBar } from 'expo-status-bar'
-import 'react-native-reanimated'
 
 if (__DEV__) {
   require('../ReactotronConfig')
@@ -17,24 +22,24 @@ if (__DEV__) {
 export default function RootLayout() {
   const [loaded] = useFonts({
     IcoMoon: require('../assets/icons/icomoon.ttf'),
-    PoppinsBlack: require('../assets/fonts/Poppins-Black.ttf'),
-    PoppinsBlackItalic: require('../assets/fonts/Poppins-BlackItalic.ttf'),
-    PoppinsBold: require('../assets/fonts/Poppins-Bold.ttf'),
-    PoppinsBoldItalic: require('../assets/fonts/Poppins-BoldItalic.ttf'),
-    PoppinsExtraBold: require('../assets/fonts/Poppins-ExtraBold.ttf'),
-    PoppinsExtraBoldItalic: require('../assets/fonts/Poppins-ExtraBoldItalic.ttf'),
-    PoppinsExtraLight: require('../assets/fonts/Poppins-ExtraLight.ttf'),
-    PoppinsExtraLightItalic: require('../assets/fonts/Poppins-ExtraLightItalic.ttf'),
-    PoppinsItalic: require('../assets/fonts/Poppins-Italic.ttf'),
-    PoppinsLight: require('../assets/fonts/Poppins-Light.ttf'),
-    PoppinsLightItalic: require('../assets/fonts/Poppins-LightItalic.ttf'),
-    PoppinsMedium: require('../assets/fonts/Poppins-Medium.ttf'),
-    PoppinsMediumItalic: require('../assets/fonts/Poppins-MediumItalic.ttf'),
-    PoppinsRegular: require('../assets/fonts/Poppins-Regular.ttf'),
-    PoppinsSemiBold: require('../assets/fonts/Poppins-SemiBold.ttf'),
-    PoppinsSemiBoldItalic: require('../assets/fonts/Poppins-SemiBoldItalic.ttf'),
-    PoppinsThin: require('../assets/fonts/Poppins-Thin.ttf'),
-    PoppinsThinItalic: require('../assets/fonts/Poppins-ThinItalic.ttf'),
+    MontserratBlack: require('../assets/fonts/Montserrat-Black.ttf'),
+    MontserratBlackItalic: require('../assets/fonts/Montserrat-BlackItalic.ttf'),
+    MontserratBold: require('../assets/fonts/Montserrat-Bold.ttf'),
+    MontserratBoldItalic: require('../assets/fonts/Montserrat-BoldItalic.ttf'),
+    MontserratExtraBold: require('../assets/fonts/Montserrat-ExtraBold.ttf'),
+    MontserratExtraBoldItalic: require('../assets/fonts/Montserrat-ExtraBoldItalic.ttf'),
+    MontserratExtraLight: require('../assets/fonts/Montserrat-ExtraLight.ttf'),
+    MontserratExtraLightItalic: require('../assets/fonts/Montserrat-ExtraLightItalic.ttf'),
+    MontserratItalic: require('../assets/fonts/Montserrat-Italic.ttf'),
+    MontserratLight: require('../assets/fonts/Montserrat-Light.ttf'),
+    MontserratLightItalic: require('../assets/fonts/Montserrat-LightItalic.ttf'),
+    MontserratMedium: require('../assets/fonts/Montserrat-Medium.ttf'),
+    MontserratMediumItalic: require('../assets/fonts/Montserrat-MediumItalic.ttf'),
+    MontserratRegular: require('../assets/fonts/Montserrat-Regular.ttf'),
+    MontserratSemiBold: require('../assets/fonts/Montserrat-SemiBold.ttf'),
+    MontserratSemiBoldItalic: require('../assets/fonts/Montserrat-SemiBoldItalic.ttf'),
+    MontserratThin: require('../assets/fonts/Montserrat-Thin.ttf'),
+    MontserratThinItalic: require('../assets/fonts/Montserrat-ThinItalic.ttf'),
   })
 
   if (!loaded) {
@@ -43,24 +48,26 @@ export default function RootLayout() {
   }
 
   return (
-    <AuthProvider>
-      <FeedbackProvider value={AlertFeedback}>
-        <RepositoryProvider value={InMemoryRepository}>
-          <ThemeProvider theme={theme}>
-            <Stack
-              screenOptions={{
-                contentStyle: { backgroundColor: theme.colors.background },
-                headerShown: false,
-                fullScreenGestureEnabled: true,
-              }}>
-              <Stack.Screen name="(protected)" options={{ headerShown: false }} />
-              <Stack.Screen name="+not-found" />
-              <Stack.Screen name="sign-in" />
-            </Stack>
-            <StatusBar style="light" />
-          </ThemeProvider>
-        </RepositoryProvider>
-      </FeedbackProvider>
-    </AuthProvider>
+    <StorageProvider storage={AsyncStorage}>
+      <AuthProvider>
+        <FeedbackProvider value={AlertFeedback}>
+          <RepositoryProvider value={InMemoryRepository}>
+            <ThemeProvider theme={theme}>
+              <Stack
+                screenOptions={{
+                  contentStyle: { backgroundColor: theme.colors.background },
+                  headerShown: false,
+                  fullScreenGestureEnabled: true,
+                }}>
+                <Stack.Screen name="(protected)" options={{ headerShown: false }} />
+                <Stack.Screen name="+not-found" />
+                <Stack.Screen name="sign-in" />
+              </Stack>
+              <StatusBar style="light" />
+            </ThemeProvider>
+          </RepositoryProvider>
+        </FeedbackProvider>
+      </AuthProvider>
+    </StorageProvider>
   )
 }

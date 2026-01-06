@@ -7,6 +7,18 @@ const palette = {
   stoneGrey: '#5C5C5C',
   pureWhite: '#FFFFFF',
   transparent: 'transparent',
+
+  fbErrorBg: '#3A1B1B',
+  fbErrorSurface: '#D32F2F',
+
+  fbSuccessBg: '#1E3320',
+  fbSuccessSurface: '#4CAF50',
+
+  fbWarningBg: '#1A2B3A',
+  fbWarningSurface: '#FFC107',
+
+  fbInfoBg: '#332B1A',
+  fbInfoSurface: '#42A5F5',
 }
 const theme = createTheme({
   colors: {
@@ -36,39 +48,48 @@ const theme = createTheme({
   textVariants: {
     defaults: {
       color: 'text',
-      fontFamily: 'PoppinsRegular',
+      fontFamily: 'MontserratRegular',
       fontSize: 16,
       lineHeight: 18,
     },
     title28: {
       fontSize: 28,
-      fontFamily: 'PoppinsSemiBold',
+      fontFamily: 'MontserratSemiBold',
       lineHeight: 30,
     },
     title22: {
       fontSize: 22,
-      fontFamily: 'PoppinsSemiBold',
+      fontFamily: 'MontserratSemiBold',
       lineHeight: 24,
     },
     title16: {
       fontSize: 16,
-      fontFamily: 'PoppinsSemiBold',
+      fontFamily: 'MontserratSemiBold',
       lineHeight: 18,
+    },
+    title14: {
+      fontSize: 14,
+      fontFamily: 'MontserratSemiBold',
+      lineHeight: 16,
     },
     text18: {
       fontSize: 18,
+      fontFamily: 'MontserratRegular',
       lineHeight: 20,
     },
     text16: {
       fontSize: 16,
+      fontFamily: 'MontserratRegular',
       lineHeight: 18,
     },
     text14: {
       fontSize: 14,
+      fontFamily: 'MontserratRegular',
       lineHeight: 16,
     },
     text12: {
       fontSize: 12,
+      fontFamily: 'MontserratRegular',
       lineHeight: 14,
     },
   },
