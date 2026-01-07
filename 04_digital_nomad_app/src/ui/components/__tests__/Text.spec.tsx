@@ -1,0 +1,10 @@
+import { renderComponent } from '@/src/test-utils/renderComponent'
+import { screen } from '@testing-library/react-native'
+import { Text } from '../Text'
+
+describe('<Text />', () => {
+  it('should render component', () => {
+    renderComponent(<Text>Hello World</Text>)
+    expect(screen.getByText('Hello World')).toBeOnTheScreen()
+  })
+})
