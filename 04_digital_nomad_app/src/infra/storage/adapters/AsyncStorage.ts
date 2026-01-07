@@ -4,6 +4,7 @@ import RNAsynvStorage from '@react-native-async-storage/async-storage'
 export const AsyncStorage: IStorage = {
   getItem: async key => {
     const item = await RNAsynvStorage.getItem(key)
+
     if (item) {
       return JSON.parse(item)
     }
@@ -12,7 +13,7 @@ export const AsyncStorage: IStorage = {
   },
 
   setItem: async (key, value) => {
-    await RNAsynvStorage.setItem(key, value)
+    await RNAsynvStorage.setItem(key, JSON.stringify(value))
   },
 
   removeItem: async key => {
