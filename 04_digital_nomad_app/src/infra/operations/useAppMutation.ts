@@ -20,7 +20,7 @@ export function useAppMutation<TData, TVariables>({
   onSuccess,
   onError,
 }: UseAppMutationParams<TData, TVariables>): UseAppMutationReturn<TData, TVariables> {
-  const [isLoading, setIsLoading] = useState(true)
+  const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState<unknown>(null)
 
   async function mutate(variables: TVariables) {

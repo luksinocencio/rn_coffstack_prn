@@ -44,3 +44,6 @@ app-example
 # Editor
 .idea
 .vscode
+
+# coverage
+coverage/
