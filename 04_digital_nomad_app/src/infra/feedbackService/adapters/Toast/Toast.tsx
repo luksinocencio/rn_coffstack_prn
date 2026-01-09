@@ -25,6 +25,7 @@ const toastColors: Record<FeedbackType, { backgroundColor: ThemeColors; textColo
 
 function CustomToast({ type, description, message }: Feedback) {
   const { backgroundColor, textColor } = toastColors[type ?? 'success']
+
   return (
     <Box backgroundColor={backgroundColor} paddingHorizontal="s24" paddingVertical="s12" borderRadius="default">
       <Text color={textColor} variant="title16">

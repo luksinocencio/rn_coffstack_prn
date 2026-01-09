@@ -7,8 +7,9 @@ import { Text } from './Text'
 type TextInputProps = RNTextInputProps & {
   label: string
   errorMessage?: string
+  testID?: string
 }
-export function TextInput({ label, errorMessage, ...textInputProps }: TextInputProps) {
+export function TextInput({ label, testID, errorMessage, ...textInputProps }: TextInputProps) {
   const { colors, textVariants } = useAppTheme()
   const [isFocused, setIsFocused] = useState(false)
 
@@ -19,8 +20,9 @@ export function TextInput({ label, errorMessage, ...textInputProps }: TextInputP
       <Text mb="s4" variant="title14">
         {label}
       </Text>
-      <Box {...textInputBoxStyle} borderColor={borderColor}>
+      <Box testID={`${testID}-container`} {...textInputBoxStyle} borderColor={borderColor}>
         <RNTextInput
+          testID={testID}
           onFocus={() => setIsFocused(true)}
           onBlur={() => setIsFocused(false)}
           placeholderTextColor={colors.gray2}
