@@ -30,31 +30,17 @@ export function Accordion({ title, description }: AccordionProps) {
     <Pressable onPress={handleOpenPress}>
       <View>
         <AccordionHeader title={title} progress={progress} />
-        <AccordionBody
-          description={description}
-          isOpen={isOpen}
-          progress={progress}
-        />
+        <AccordionBody description={description} isOpen={isOpen} progress={progress} />
       </View>
     </Pressable>
   )
 }
 
-function AccordionHeader({
-  title,
-  progress,
-}: {
-  title: string
-  progress: SharedValue<number>
-}) {
+function AccordionHeader({ title, progress }: { title: string; progress: SharedValue<number> }) {
   const { colors, borderRadii } = useAppTheme()
 
   const iconAnimatedStyle = useAnimatedStyle(() => ({
-    tintColor: interpolateColor(
-      progress.value,
-      [0, 1],
-      [colors.gray2, colors.primary],
-    ),
+    tintColor: interpolateColor(progress.value, [0, 1], [colors.gray2, colors.primary]),
     transform: [
       {
         rotate: interpolate(progress.value, [0, 1], [0, -180]) + 'deg',
@@ -63,21 +49,9 @@ function AccordionHeader({
   }))
 
   const animatedStyle = useAnimatedStyle(() => ({
-    backgroundColor: interpolateColor(
-      progress.value,
-      [0, 1],
-      [colors.transparent, colors.gray1],
-    ),
-    borderBottomLeftRadius: interpolate(
-      progress.value,
-      [0, 1],
-      [borderRadii.default, 0],
-    ),
-    borderBottomRightRadius: interpolate(
-      progress.value,
-      [0, 1],
-      [borderRadii.default, 0],
-    ),
+    backgroundColor: interpolateColor(progress.value, [0, 1], [colors.transparent, colors.gray1]),
+    borderBottomLeftRadius: interpolate(progress.value, [0, 1], [borderRadii.default, 0]),
+    borderBottomRightRadius: interpolate(progress.value, [0, 1], [borderRadii.default, 0]),
   }))
 
   return (
@@ -110,16 +84,8 @@ function AccordionBody({
     return {
       opacity: interpolate(progress.value, [0, 1], [0, 1]),
       height: interpolate(progress.value, [0, 1], [0, height.value]),
-      borderTopLeftRadius: interpolate(
-        progress.value,
-        [0, 1],
-        [borderRadii.default, 0],
-      ),
-      borderTopRightRadius: interpolate(
-        progress.value,
-        [0, 1],
-        [borderRadii.default, 0],
-      ),
+      borderTopLeftRadius: interpolate(progress.value, [0, 1], [borderRadii.default, 0]),
+      borderTopRightRadius: interpolate(progress.value, [0, 1], [borderRadii.default, 0]),
     }
   })
 
