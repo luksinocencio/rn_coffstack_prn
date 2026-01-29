@@ -3,7 +3,6 @@ import 'react-native-reanimated'
 import { ThemeProvider } from '@shopify/restyle'
 
 import { useFonts } from 'expo-font'
-import { Stack } from 'expo-router'
 import { StatusBar } from 'expo-status-bar'
 
 import { AuthProvider } from '@/src/domain/auth/AuthContext'
@@ -13,6 +12,7 @@ import { SupabaseRepositories } from '@/src/infra/repositories/adapters/supabase
 import { RepositoryProvider } from '@/src/infra/repositories/RepositoryProvider'
 import { AsyncStorage } from '@/src/infra/storage/adapters/AsyncStorage'
 import { StorageProvider } from '@/src/infra/storage/StorageContext'
+import AppStack from '@/src/ui/navigation/AppStack'
 import theme from '@/src/ui/theme/theme'
 
 if (__DEV__) {
@@ -53,16 +53,7 @@ export default function RootLayout() {
         <FeedbackProvider value={AlertFeedback}>
           <RepositoryProvider value={SupabaseRepositories}>
             <ThemeProvider theme={theme}>
-              <Stack
-                screenOptions={{
-                  contentStyle: { backgroundColor: theme.colors.background },
-                  headerShown: false,
-                  fullScreenGestureEnabled: true,
-                }}>
-                <Stack.Screen name="(protected)" options={{ headerShown: false }} />
-                <Stack.Screen name="+not-found" />
-                <Stack.Screen name="sign-in" />
-              </Stack>
+              <AppStack />
               <StatusBar style="light" />
             </ThemeProvider>
           </RepositoryProvider>

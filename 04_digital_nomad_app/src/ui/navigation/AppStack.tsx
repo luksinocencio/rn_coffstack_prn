@@ -1,0 +1,17 @@
+import theme from '@/src/ui/theme/theme'
+import { Stack } from 'expo-router'
+
+export default function AppStack() {
+  return (
+    <Stack
+      screenOptions={{
+        contentStyle: { backgroundColor: theme.colors.background },
+        headerShown: false,
+        fullScreenGestureEnabled: true,
+      }}>
+      <Stack.Screen name="(protected)" options={{ headerShown: false }} />
+      <Stack.Screen name="+not-found" />
+      <Stack.Screen name="sign-in" />
+    </Stack>
+  )
+}
