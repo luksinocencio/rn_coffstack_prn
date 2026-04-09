@@ -9,9 +9,9 @@
     "ios": "expo run:ios",
     "web": "expo start --web",
     "lint": "expo lint",
-    "test": "jest --watchAll --verbose",
-    "test:watchAll": "jest --watchAll --verbose",
-    "test:coverage": "jest --verbose --coverage"
+    "test": "jest --config jest.config.js --verbose --no-watchman",
+    "test:watchAll": "jest --config jest.config.js --watchAll --verbose",
+    "test:coverage": "jest --config jest.config.js --verbose --coverage"
   },
   "dependencies": {
     "@expo/vector-icons": "^15.0.3",
@@ -42,7 +42,7 @@
     "react-native": "0.83.4",
     "react-native-gesture-handler": "~2.30.0",
     "react-native-maps": "1.27.2",
-    "react-native-reanimated": "4.2.1",
+    "react-native-reanimated": "^4.3.0",
     "react-native-safe-area-context": "~5.6.0",
     "react-native-screens": "~4.23.0",
     "react-native-toast-message": "^2.3.3",
@@ -56,21 +56,17 @@
   "devDependencies": {
     "@babel/core": "^7.25.2",
     "@testing-library/react-native": "^13.3.3",
-    "@types/jest": "^29.5.14",
+    "@types/jest": "29.5.14",
     "@types/react": "~19.2.10",
     "baseline-browser-mapping": "^2.9.18",
     "eslint": "^9.25.0",
     "eslint-config-expo": "~55.0.0",
+    "eslint-plugin-jest": "^29.15.1",
     "jest": "~29.7.0",
     "jest-expo": "~55.0.15",
     "react-test-renderer": "19.2.0",
+    "ts-node": "^10.9.2",
     "typescript": "~5.9.2"
-  },
-  "jest": {
-    "preset": "jest-expo",
-    "collectCoverageFrom": [
-      "{src,app}/**/*.{ts,tsx}"
-    ]
   },
   "private": true
 }

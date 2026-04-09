@@ -12,7 +12,7 @@ import { SupabaseRepositories } from '@/src/infra/repositories/adapters/supabase
 import { RepositoryProvider } from '@/src/infra/repositories/RepositoryProvider'
 import { AsyncStorage } from '@/src/infra/storage/adapters/AsyncStorage'
 import { StorageProvider } from '@/src/infra/storage/StorageContext'
-import AppStack from '@/src/ui/navigation/AppStack'
+import { AppStack } from '@/src/ui/navigation/AppStack'
 import theme from '@/src/ui/theme/theme'
 
 if (__DEV__) {
