@@ -7,16 +7,15 @@
     "icon": "./assets/images/icon.png",
     "scheme": "digitalnomadapp",
     "userInterfaceStyle": "automatic",
-    "newArchEnabled": true,
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.anonymous.digitalnomadapp"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "edgeToEdgeEnabled": true,
       "package": "com.anonymous.digitalnomadapp"
     },
     "web": {
@@ -36,7 +35,9 @@
         }
       ],
       "expo-sqlite",
-      "expo-web-browser"
+      "expo-web-browser",
+      "expo-font",
+      "expo-image"
     ],
     "experiments": {
       "typedRoutes": true
