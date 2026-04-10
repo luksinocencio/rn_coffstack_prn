@@ -9,10 +9,14 @@ import {
   useCameraFormat,
 } from 'react-native-vision-camera'
 
-import { Box, BoxProps, Icon, PermissionManager } from '@components'
-import { useAppSafeArea, useAppState } from '@hooks'
-import { AppScreenProps } from '@routes'
-import { multimediaService } from '@services'
+import { Box } from '../../../components/Box/Box'
+import type { BoxProps } from '../../../components/Box/Box'
+import { Icon } from '../../../components/Icon/Icon'
+import { PermissionManager } from '../../../components/PermissionManager/PermissionManager'
+import { useAppSafeArea } from '../../../hooks/useAppSafeArea'
+import { useAppState } from '../../../hooks/useAppState'
+import type { AppScreenProps } from '../../../routes/navigationType'
+import { multimediaService } from '../../../services/multimedia/multimediaService'
 
 const CAMERA_VIEW = Dimensions.get('screen').width
 const CONTROL_HEIGHT = (Dimensions.get('screen').height - CAMERA_VIEW) / 2

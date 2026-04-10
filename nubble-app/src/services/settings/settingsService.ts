@@ -2,7 +2,7 @@ import { Appearance, ColorSchemeName, Platform, StatusBar } from 'react-native'
 
 import * as SplashScreen from 'expo-splash-screen'
 
-import { colors } from '@theme'
+import { colors } from '../../theme/colors'
 
 import { AppColorScheme, ThemePreference } from './settingsType'
 

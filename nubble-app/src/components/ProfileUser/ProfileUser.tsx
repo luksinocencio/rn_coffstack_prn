@@ -6,7 +6,7 @@ import { useNavigation } from '@react-navigation/native'
 import { Box, PressableBox, PressableBoxProps } from '../Box/Box'
 import { ProfileAvatar, ProfileAvatarProps } from '../ProfileAvatar/ProfileAvatar'
 import { Text } from '../Text/Text'
-import { User } from '@domain'
+import type { User } from '../../domain/User/userTypes'
 
 type Props = {
   user: Pick<User, 'username' | 'profileUrl' | 'id'>

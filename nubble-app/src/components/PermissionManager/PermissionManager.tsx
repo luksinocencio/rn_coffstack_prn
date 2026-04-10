@@ -1,7 +1,8 @@
 import React from 'react';
 import { Linking, Platform } from 'react-native';
 
-import { PermissionName, usePermission } from '@services';
+import type { PermissionName } from '../../services/permission/permissionTypes'
+import { usePermission } from '../../services/permission/usePermission'
 
 import { ActivityIndicator } from '../ActivityIndicator/ActivityIndicator';
 import { Box } from '../Box/Box';

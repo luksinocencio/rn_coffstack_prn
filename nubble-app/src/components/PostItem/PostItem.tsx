@@ -2,7 +2,7 @@ import React from 'react'
 
 import { Box } from '../Box/Box'
 import { ProfileUser } from '../ProfileUser/ProfileUser'
-import { Post } from '@domain'
+import type { Post } from '../../domain/Post/postTypes'
 
 import { PostActions } from './components/PostActions'
 import { PostBottom } from './components/PostBottom'

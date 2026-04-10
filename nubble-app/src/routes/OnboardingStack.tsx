@@ -2,7 +2,7 @@ import React from 'react'
 
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 
-import { OnboardingScreen } from '@screens'
+import { OnboardingScreen } from '../screens/onboarding/OnboardingScreen/OnboardingScreen'
 
 export type OnboardingStackParamList = {
   OnboardingScreen: undefined

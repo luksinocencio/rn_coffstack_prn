@@ -1,7 +1,7 @@
 import React from 'react'
 import { Dimensions, Image } from 'react-native'
 
-import { Post } from '@domain'
+import type { Post } from '../../../domain/Post/postTypes'
 
 type PostImagemProps = Pick<Post, 'imageURL'>
 

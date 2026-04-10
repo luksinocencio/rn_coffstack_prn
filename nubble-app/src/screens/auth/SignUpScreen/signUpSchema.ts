@@ -1,4 +1,4 @@
-import { stringUtils } from '@utils'
+import { stringUtils } from '../../../utils/stringUtils'
 import { z } from 'zod'
 
 const userNameRegex = /^(?!.*\.\.)(?!.*\.$)[^\W][\w.]{5,29}$/gim

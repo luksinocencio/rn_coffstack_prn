@@ -1,4 +1,5 @@
-import { AuthCredentials, authService } from '@domain'
+import { authService } from '../domain/Auth/authService'
+import { AuthCredentials } from '../domain/Auth/authTypes'
 import axios from 'axios'
 
 /**
@@ -55,6 +56,5 @@ export function registerInterceptor({
     },
   )
 
-  // remove listener when component unmount
   return () => api.interceptors.response.eject(interceptor)
 }

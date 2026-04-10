@@ -1,7 +1,7 @@
 import { useQuery } from '@tanstack/react-query'
 
-import { postService } from '@domain'
-import { QueryKeys } from '@infra'
+import { postService } from '../postService'
+import { QueryKeys } from '../../../infra/infraTypes'
 
 export function usePostGetById(id: number, enabled: boolean) {
   const { data, isLoading, isError, refetch, isFetching } = useQuery({

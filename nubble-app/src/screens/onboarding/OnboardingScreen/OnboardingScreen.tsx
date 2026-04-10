@@ -2,9 +2,9 @@ import React, { useRef, useState } from 'react'
 import { FlatList, ListRenderItemInfo } from 'react-native'
 
 
-import { Box } from '@components'
-import { OnboardingScreenProps } from '@routes'
-import { useSettingsService } from '@services'
+import { Box } from '../../../components/Box/Box'
+import type { OnboardingScreenProps } from '../../../routes/navigationType'
+import { useSettingsService } from '../../../services/settings/useSettings'
 
 import { OnboardingPage } from './components/OnboardingPage'
 import { OnboardingPageItem, onboardingPages } from './onboardingData'

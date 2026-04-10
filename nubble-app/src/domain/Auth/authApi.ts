@@ -1,8 +1,8 @@
 import { AxiosRequestConfig } from 'axios'
 
-import { api } from '@api'
+import { api } from '../../api/apiConfig'
 
-import { UserAPI } from '../User'
+import { UserAPI } from '../User/userTypes'
 
 import {
   AuthCredentialsAPI,

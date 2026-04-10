@@ -1,10 +1,12 @@
 import React from 'react'
 
-import { mockUtils, server, userMocked } from '@test'
+import { mockUtils } from '../../../../test/mocks/mockUtils'
+import { server } from '../../../../test/server/server'
+import { userMocked } from '../../../../test/server/User/userMocked'
 import { act, fireEvent, renderScreen, screen } from 'test-utils'
 
-import { AppStack } from '@routes'
-import { authCredentialsStorage } from '@services'
+import { AppStack } from '../../../../routes/AppStack'
+import { authCredentialsStorage } from '../../../../services/authCredentials/authCredentialsStorage'
 
 jest.unmock('@react-navigation/native')
 

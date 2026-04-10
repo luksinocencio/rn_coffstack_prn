@@ -1,7 +1,7 @@
 import React from 'react'
 import { Dimensions } from 'react-native'
 
-import { Box } from '@components'
+import { Box } from '../../../../components/Box/Box'
 
 import { OnboardingPageItem } from '../onboardingData'
 

@@ -1,7 +1,7 @@
 import {useEffect} from 'react';
 import {Appearance} from 'react-native';
 
-import {useSettingsService} from '@services';
+import { useSettingsService } from '../services/settings/useSettings'
 
 /**
  * To listen to device color scheme changes (dark mode and light mode)

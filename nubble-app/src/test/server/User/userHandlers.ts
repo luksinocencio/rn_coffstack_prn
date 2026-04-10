@@ -1,7 +1,9 @@
 import { http, HttpResponse } from 'msw'
 
-import { BASE_URL, PageAPI } from '@api'
-import { USER_PATH, UserAPI } from '@domain'
+import { BASE_URL } from '../../../api/apiConfig'
+import type { PageAPI } from '../../../api/apiTypes'
+import { USER_PATH } from '../../../domain/User/userApi'
+import type { UserAPI } from '../../../domain/User/userTypes'
 
 import { userMocked } from './userMocked'
 

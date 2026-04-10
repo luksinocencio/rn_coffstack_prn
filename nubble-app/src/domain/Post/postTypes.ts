@@ -1,4 +1,4 @@
-import { PostReaction, PostReactionAPI } from '../PostReaction'
+import { PostReaction, PostReactionAPI } from '../PostReaction/postReactionsType'
 
 export interface Post {
   id: number

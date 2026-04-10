@@ -3,17 +3,16 @@ import React from 'react'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
 
-import {
-  ActivityIndicator,
-  Button,
-  FormPasswordInput,
-  FormTextInput,
-  Screen,
-  Text,
-} from '@components'
-import { useAuthSignUp } from '@domain'
-import { useResetNavigationSuccess } from '@hooks'
-import { AuthScreenProps, AuthStackParamList } from '@routes'
+import { ActivityIndicator } from '../../../components/ActivityIndicator/ActivityIndicator'
+import { Button } from '../../../components/Button/Button'
+import { FormPasswordInput } from '../../../components/Form/FormPasswordInput'
+import { FormTextInput } from '../../../components/Form/FormTextInput'
+import { Screen } from '../../../components/Screen/Screen'
+import { Text } from '../../../components/Text/Text'
+import { useAuthSignUp } from '../../../domain/Auth/useCases/useAuthSignUp'
+import { useResetNavigationSuccess } from '../../../hooks/useResetNavigationSuccess'
+import type { AuthScreenProps } from '../../../routes/navigationType'
+import type { AuthStackParamList } from '../../../routes/AuthStack'
 
 import { signUpSchema, SignUpSchema } from './signUpSchema'
 import { useAsyncValidation } from './useAsyncValidation'

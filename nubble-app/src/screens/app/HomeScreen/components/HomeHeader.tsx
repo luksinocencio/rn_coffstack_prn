@@ -2,9 +2,11 @@ import React from 'react'
 
 import { useNavigation } from '@react-navigation/native'
 
-import { LogoSimples } from '@brand'
-import { Box, BoxProps, Icon, TouchableOpacityBox } from '@components'
-import { useAppSafeArea } from '@hooks'
+import { LogoSimples } from '../../../../brand/LogoSimples'
+import { Box, TouchableOpacityBox } from '../../../../components/Box/Box'
+import type { BoxProps } from '../../../../components/Box/Box'
+import { Icon } from '../../../../components/Icon/Icon'
+import { useAppSafeArea } from '../../../../hooks/useAppSafeArea'
 
 export function HomeHeader() {
   const { top } = useAppSafeArea()

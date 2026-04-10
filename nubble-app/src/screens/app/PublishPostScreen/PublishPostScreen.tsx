@@ -1,10 +1,13 @@
 import React, { useState } from 'react'
 import { Dimensions, Image } from 'react-native'
 
-import { Button, Screen, Text, TextInput } from '@components'
-import { usePostCreate } from '@domain'
-import { AppScreenProps } from '@routes'
-import { useToastService } from '@services'
+import { Button } from '../../../components/Button/Button'
+import { Screen } from '../../../components/Screen/Screen'
+import { Text } from '../../../components/Text/Text'
+import { TextInput } from '../../../components/TextInput/TextInput'
+import { usePostCreate } from '../../../domain/Post/useCases/usePostCreate'
+import type { AppScreenProps } from '../../../routes/navigationType'
+import { useToastService } from '../../../services/toast/useToast'
 
 
 const IMAGE_WIDTH = Dimensions.get('screen').width / 2

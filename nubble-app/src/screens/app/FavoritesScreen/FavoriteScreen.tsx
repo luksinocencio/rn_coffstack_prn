@@ -1,12 +1,15 @@
 import React from 'react'
 import { Dimensions, Image, ListRenderItemInfo, Pressable } from 'react-native'
 
-import { PostReaction, postReactionService } from '@domain'
-import { QueryKeys } from '@infra'
+import type { PostReaction } from '../../../domain/PostReaction/postReactionsType'
+import { postReactionService } from '../../../domain/PostReaction/postReactionService'
+import { QueryKeys } from '../../../infra/infraTypes'
 import { useNavigation } from '@react-navigation/native'
 
-import { InfinityScrollList, Screen, Text } from '@components'
-import { AppTabScreenProps } from '@routes'
+import { InfinityScrollList } from '../../../components/InfinityScrollList/InfinityScrollList'
+import { Screen } from '../../../components/Screen/Screen'
+import { Text } from '../../../components/Text/Text'
+import type { AppTabScreenProps } from '../../../routes/navigationType'
 
 const NUM_COLUMNS = 2
 const SCREEN_WIDTH = Dimensions.get('window').width

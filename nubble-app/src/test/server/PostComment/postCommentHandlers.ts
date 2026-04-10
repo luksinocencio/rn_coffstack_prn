@@ -1,8 +1,10 @@
 import { cloneDeep } from 'lodash'
 import { http, HttpResponse } from 'msw'
 
-import { BASE_URL, PageAPI } from '@api'
-import { POST_COMMENT_PATH, PostCommentAPI } from '@domain'
+import { BASE_URL } from '../../../api/apiConfig'
+import type { PageAPI } from '../../../api/apiTypes'
+import { POST_COMMENT_PATH } from '../../../domain/PostComment/postCommentApi'
+import type { PostCommentAPI } from '../../../domain/PostComment/postCommentTypes'
 
 import { mockedData } from './mocks'
 

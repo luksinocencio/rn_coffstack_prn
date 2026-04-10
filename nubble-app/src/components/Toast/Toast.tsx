@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useRef } from 'react'
 import { Animated } from 'react-native'
 
-import { useToast, useToastService } from '@services'
+import { useToast, useToastService } from '../../services/toast/useToast'
 
 import { ToasContent } from './components/ToastContent'
 

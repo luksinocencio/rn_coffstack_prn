@@ -1,7 +1,7 @@
 import React from 'react'
 
-import { ProfileTemplate } from '@components'
-import { AppScreenProps } from '@routes'
+import { ProfileTemplate } from '../../../components/ProfileTemplate/ProfileTemplate'
+import type { AppScreenProps } from '../../../routes/navigationType'
 
 export function ProfileScreen({ route }: AppScreenProps<'ProfileScreen'>) {
   const userId = route.params.userId

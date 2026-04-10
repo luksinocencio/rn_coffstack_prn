@@ -1,6 +1,9 @@
 import React, { Fragment } from 'react'
 
-import { ActivityIndicator, Box, Button, Text } from '@components'
+import { ActivityIndicator } from '../../../../components/ActivityIndicator/ActivityIndicator'
+import { Box } from '../../../../components/Box/Box'
+import { Button } from '../../../../components/Button/Button'
+import { Text } from '../../../../components/Text/Text'
 
 interface Props {
   loading: boolean

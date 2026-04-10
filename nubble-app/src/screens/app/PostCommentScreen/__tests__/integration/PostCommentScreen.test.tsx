@@ -1,8 +1,10 @@
 import React from 'react'
 import { Alert, AlertButton } from 'react-native'
 
-import { authCredentialsStorage } from '@services'
-import { mockedPostComment, resetInMemoryResponse, server } from '@test'
+import { authCredentialsStorage } from '../../../../../services/authCredentials/authCredentialsStorage'
+import { mockedData as mockedPostComment } from '../../../../../test/server/PostComment/mocks'
+import { resetInMemoryResponse } from '../../../../../test/server/PostComment/postCommentHandlers'
+import { server } from '../../../../../test/server/server'
 import {
   act,
   fireEvent,

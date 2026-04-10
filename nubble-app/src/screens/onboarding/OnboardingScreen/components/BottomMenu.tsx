@@ -1,6 +1,8 @@
 import React from 'react'
 
-import { Box, Icon, PressableBox, Text } from '@components'
+import { Box, PressableBox } from '../../../../components/Box/Box'
+import { Icon } from '../../../../components/Icon/Icon'
+import { Text } from '../../../../components/Text/Text'
 
 import { OnboardingPageProps } from './OnboardingPage'
 

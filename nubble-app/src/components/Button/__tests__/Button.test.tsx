@@ -4,7 +4,7 @@ import { StyleSheet } from 'react-native'
 import { ReactTestInstance } from 'react-test-renderer'
 import { fireEvent, render, screen } from 'test-utils'
 
-import { theme } from '@theme'
+import { theme } from '../../../theme/theme'
 
 import { Button, ButtonProps } from '../Button'
 

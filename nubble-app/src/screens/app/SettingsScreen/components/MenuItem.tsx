@@ -1,6 +1,8 @@
 import React from 'react'
 
-import { Icon, PressableBox, Text } from '@components'
+import { Icon } from '../../../../components/Icon/Icon'
+import { PressableBox } from '../../../../components/Box/Box'
+import { Text } from '../../../../components/Text/Text'
 
 export type MenuItemProps = {
   label: string

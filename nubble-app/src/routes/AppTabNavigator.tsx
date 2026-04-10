@@ -5,12 +5,10 @@ import {
   createBottomTabNavigator,
 } from '@react-navigation/bottom-tabs'
 
-import {
-  FavoriteScreen,
-  HomeScreen,
-  MyProfileScreen,
-  NewPostScreen,
-} from '@screens'
+import { FavoriteScreen } from '../screens/app/FavoritesScreen/FavoriteScreen'
+import { HomeScreen } from '../screens/app/HomeScreen/HomeScreen'
+import { MyProfileScreen } from '../screens/app/MyProfileScreen/MyProfileScreen'
+import { NewPostScreen } from '../screens/app/NewPostScreen/NewPostScreen'
 
 import { AppTabBar } from './components/AppTabBar/AppTabBar'
 

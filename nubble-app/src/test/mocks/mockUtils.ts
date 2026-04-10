@@ -1,4 +1,6 @@
-import { AuthCredentials, UserAPI, userAdapter } from '@domain'
+import type { AuthCredentials } from '../../domain/Auth/authTypes'
+import type { UserAPI } from '../../domain/User/userTypes'
+import { userAdapter } from '../../domain/User/userAdapter'
 
 const mateusUserAPI: UserAPI = {
   id: 7,

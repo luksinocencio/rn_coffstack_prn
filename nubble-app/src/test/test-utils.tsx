@@ -14,9 +14,9 @@ import {
   renderHook,
 } from '@testing-library/react-native'
 
-import { Toast } from '@components'
-import { AuthCredentialsProvider } from '@services'
-import { theme } from '@theme'
+import { Toast } from '../components/Toast/Toast'
+import { AuthCredentialsProvider } from '../services/authCredentials/Providers/AuthCredentialsProviders'
+import { theme } from '../theme/theme'
 
 const queryClientConfig: QueryClientConfig = {
   logger: {

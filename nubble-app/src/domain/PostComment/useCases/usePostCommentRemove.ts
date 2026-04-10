@@ -1,6 +1,7 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 
-import { MutationOptions, QueryKeys } from '@infra'
+import type { MutationOptions } from '../../../infra/hooks/useMutation'
+import { QueryKeys } from '../../../infra/infraTypes'
 
 import { postCommentService } from '../postCommentService'
 

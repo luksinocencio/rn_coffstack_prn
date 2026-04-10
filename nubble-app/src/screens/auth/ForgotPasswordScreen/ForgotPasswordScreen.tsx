@@ -3,11 +3,15 @@ import React from 'react'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
 
-import { Button, FormTextInput, Screen, Text } from '@components'
-import { useAuthRequestNewPassword } from '@domain'
-import { useResetNavigationSuccess } from '@hooks'
-import { AuthScreenProps, AuthStackParamList } from '@routes'
-import { useToastService } from '@services'
+import { Button } from '../../../components/Button/Button'
+import { FormTextInput } from '../../../components/Form/FormTextInput'
+import { Screen } from '../../../components/Screen/Screen'
+import { Text } from '../../../components/Text/Text'
+import { useAuthRequestNewPassword } from '../../../domain/Auth/useCases/useAuthRequestNewPassword'
+import { useResetNavigationSuccess } from '../../../hooks/useResetNavigationSuccess'
+import type { AuthScreenProps } from '../../../routes/navigationType'
+import type { AuthStackParamList } from '../../../routes/AuthStack'
+import { useToastService } from '../../../services/toast/useToast'
 
 import {
   ForgotPasswordSchema,

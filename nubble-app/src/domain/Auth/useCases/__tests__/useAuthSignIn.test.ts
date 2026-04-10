@@ -7,8 +7,8 @@ import { mockedAuthCredentialsMock } from './mockedData/mocks'
 
 const mockedSaveCredentials = jest.fn()
 
-jest.mock('@services', () => {
-  const originalModule = jest.requireActual('@services')
+jest.mock('../../../../services/authCredentials/useAuthCredentials', () => {
+  const originalModule = jest.requireActual('../../../../services/authCredentials/useAuthCredentials')
   return {
     ...originalModule,
     useAuthCredentials: () => ({

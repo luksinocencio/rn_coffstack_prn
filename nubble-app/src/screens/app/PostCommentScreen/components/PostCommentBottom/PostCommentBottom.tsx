@@ -1,7 +1,7 @@
 import React from 'react'
 import { Pressable } from 'react-native'
 
-import { Text } from '@components'
+import { Text } from '../../../../../components/Text/Text'
 
 interface PostCommentBottomProps {
   fetchNextPage: () => void

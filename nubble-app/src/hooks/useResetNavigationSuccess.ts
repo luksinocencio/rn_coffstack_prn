@@ -1,6 +1,6 @@
 import { useNavigation } from '@react-navigation/native'
 
-import { AuthStackParamList } from '@routes'
+import type { AuthStackParamList } from '../routes/AuthStack'
 
 export function useResetNavigationSuccess() {
   const navigation = useNavigation()

@@ -2,7 +2,8 @@ import React from 'react'
 
 import { NavigationContainer } from '@react-navigation/native'
 
-import { ActivityIndicator, Box } from '@components'
+import { ActivityIndicator } from '../components/ActivityIndicator/ActivityIndicator'
+import { Box } from '../components/Box/Box'
 
 import { AppStack } from './AppStack'
 import { AuthStack } from './AuthStack'

@@ -2,8 +2,11 @@ import React from 'react'
 
 import {createNativeStackNavigator} from '@react-navigation/native-stack'
 
-import {IconProps} from '@components'
-import {ForgotPasswordScreen, SignInScreen, SignUpScreen, SuccessScreen} from '@screens'
+import type { IconProps } from '../components/Icon/Icon'
+import { ForgotPasswordScreen } from '../screens/auth/ForgotPasswordScreen/ForgotPasswordScreen'
+import { SignInScreen } from '../screens/auth/SignInScreen/SignInScreen'
+import { SignUpScreen } from '../screens/auth/SignUpScreen/SignUpScreen'
+import { SuccessScreen } from '../screens/auth/SuccessScreen/SuccessScreen'
 
 /**
  * undefined -> usamos mesmo que nossas rotas não precisem de parametros

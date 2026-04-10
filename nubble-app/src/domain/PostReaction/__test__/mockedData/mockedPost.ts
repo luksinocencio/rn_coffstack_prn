@@ -1,4 +1,5 @@
-import { Post, PostReactionBase } from '@domain'
+import type { Post } from '../../../Post/postTypes'
+import type { PostReactionBase } from '../../postReactionsType'
 
 export const postWithoutLike: Post = {
   id: 1,

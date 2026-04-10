@@ -1,5 +1,5 @@
-import { Post, PostAPI } from '../Post'
-import { User, UserAPI } from '../User'
+import { Post, PostAPI } from '../Post/postTypes'
+import { User, UserAPI } from '../User/userTypes'
 
 export type PostReactionType = 'favorite' | 'like'
 

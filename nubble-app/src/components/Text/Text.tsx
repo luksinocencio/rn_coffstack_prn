@@ -3,7 +3,7 @@ import { TextStyle } from 'react-native'
 
 import { createText } from '@shopify/restyle'
 
-import { Theme } from '@theme'
+import type { Theme } from '../../theme/theme'
 
 export const SRText = createText<Theme>()
 export type SRTextProps = React.ComponentProps<typeof SRText>

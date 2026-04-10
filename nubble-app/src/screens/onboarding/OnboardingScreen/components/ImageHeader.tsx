@@ -1,7 +1,7 @@
 import React from 'react'
 import { Dimensions, Image } from 'react-native'
 
-import { useAppColor } from '@services'
+import { useAppColor } from '../../../../services/settings/useSettings'
 
 import { OnboardingPageItem } from '../onboardingData'
 

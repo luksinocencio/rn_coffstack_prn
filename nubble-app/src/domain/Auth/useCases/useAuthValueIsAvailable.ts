@@ -1,7 +1,7 @@
 import { useQuery } from '@tanstack/react-query'
 
-import { useDebounce } from '@hooks'
-import { QueryKeys } from '@infra'
+import { useDebounce } from '../../../hooks/useDebounce'
+import { QueryKeys } from '../../../infra/infraTypes'
 
 import { authService } from '../authService'
 

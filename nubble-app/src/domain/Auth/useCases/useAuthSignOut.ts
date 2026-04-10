@@ -1,6 +1,7 @@
 import { useMutation } from '@tanstack/react-query'
 
-import { useAuthCredentials, useSearchHistoryService } from '@services'
+import { useAuthCredentials } from '../../../services/authCredentials/useAuthCredentials'
+import { useSearchHistoryService } from '../../../services/searchHistory/useSearchHistory'
 
 import { authService } from '../authService'
 

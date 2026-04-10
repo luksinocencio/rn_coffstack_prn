@@ -1,6 +1,6 @@
-import { Page } from '@types'
+import type { Page } from '../../types/Pages'
 
-import { apiAdapter } from '@api'
+import { apiAdapter } from '../../api/apiAdapter'
 
 import { userAdapter } from './userAdapter'
 import { userApi } from './userApi'

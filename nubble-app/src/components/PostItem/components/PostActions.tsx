@@ -5,8 +5,9 @@ import { useNavigation } from '@react-navigation/native'
 import { Box, TouchableOpacityBox } from '../../Box/Box'
 import { Icon, IconProps } from '../../Icon/Icon'
 import { Text } from '../../Text/Text'
-import { Post, useReactToPost } from '@domain'
-import { QueryKeys } from '@infra'
+import type { Post } from '../../../domain/Post/postTypes'
+import { useReactToPost } from '../../../domain/PostReaction/useCases/useReactToPost'
+import { QueryKeys } from '../../../infra/infraTypes'
 
 type Props = {
   post: Post

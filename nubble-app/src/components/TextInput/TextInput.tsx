@@ -6,8 +6,8 @@ import {
   TextStyle,
 } from 'react-native'
 
-import { useAppTheme } from '@hooks'
-import { colors as colorsThemeHook } from '@theme'
+import { useAppTheme } from '../../hooks/useAppTheme'
+import { colors as colorsThemeHook } from '../../theme/colors'
 
 import { Box, BoxProps } from '../Box/Box'
 import { $fontFamily, $fontSizes, Text } from '../Text/Text'

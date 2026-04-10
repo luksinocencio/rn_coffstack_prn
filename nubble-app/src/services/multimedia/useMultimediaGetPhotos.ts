@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 
 import { useInfiniteQuery } from '@tanstack/react-query'
 
-import { QueryKeys } from '@infra'
+import { QueryKeys } from '../../infra/infraTypes'
 
 import { multimediaService } from './multimediaService'
 

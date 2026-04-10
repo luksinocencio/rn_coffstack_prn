@@ -3,16 +3,14 @@ import React from 'react'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
 
-import {
-  Button,
-  FormPasswordInput,
-  FormTextInput,
-  Screen,
-  Text,
-} from '@components'
-import { useAuthSignIn } from '@domain'
-import { AuthScreenProps } from '@routes'
-import { useToastService } from '@services'
+import { Button } from '../../../components/Button/Button'
+import { FormPasswordInput } from '../../../components/Form/FormPasswordInput'
+import { FormTextInput } from '../../../components/Form/FormTextInput'
+import { Screen } from '../../../components/Screen/Screen'
+import { Text } from '../../../components/Text/Text'
+import { useAuthSignIn } from '../../../domain/Auth/useCases/useAuthSignIn'
+import type { AuthScreenProps } from '../../../routes/navigationType'
+import { useToastService } from '../../../services/toast/useToast'
 
 import { SignInSchema, signInSchema } from './signInSchema'
 

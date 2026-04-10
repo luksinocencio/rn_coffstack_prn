@@ -1,7 +1,7 @@
 import React from 'react'
 import { FlatList, FlatListProps, RefreshControl } from 'react-native'
 
-import { usePaginatedList } from '@infra'
+import { usePaginatedList } from '../../infra/hooks/usePaginatedList'
 import { useScrollToTop } from '@react-navigation/native'
 
 import { EmptyList, EmptyListProps } from './components/EmptyList'

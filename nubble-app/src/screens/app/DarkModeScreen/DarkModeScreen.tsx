@@ -1,9 +1,10 @@
 import React from 'react'
 
 
-import { RadioButtonSelector, Screen } from '@components'
-import { AppScreenProps } from '@routes'
-import { useSettingsService, useThemePreference } from '@services'
+import { RadioButtonSelector } from '../../../components/RadioButton/RadioButtonSelector'
+import { Screen } from '../../../components/Screen/Screen'
+import type { AppScreenProps } from '../../../routes/navigationType'
+import { useSettingsService, useThemePreference } from '../../../services/settings/useSettings'
 
 type ThemePreference = 'light' | 'dark' | 'system'
 

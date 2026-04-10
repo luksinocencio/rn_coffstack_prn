@@ -1,4 +1,5 @@
-import { QueryKeys, usePaginatedList } from '@infra'
+import { QueryKeys } from '../../../infra/infraTypes'
+import { usePaginatedList } from '../../../infra/hooks/usePaginatedList'
 
 import { postCommentService } from '../postCommentService'
 

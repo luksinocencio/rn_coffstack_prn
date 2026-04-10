@@ -1,9 +1,13 @@
 import React from 'react'
 import { Alert, Pressable } from 'react-native'
 
-import { Box, ProfileAvatar, Text } from '@components'
-import { PostComment, postCommentService, usePostCommentRemove } from '@domain'
-import { useToastService } from '@services'
+import { Box } from '../../../../../components/Box/Box'
+import { ProfileAvatar } from '../../../../../components/ProfileAvatar/ProfileAvatar'
+import { Text } from '../../../../../components/Text/Text'
+import type { PostComment } from '../../../../../domain/PostComment/postCommentTypes'
+import { postCommentService } from '../../../../../domain/PostComment/postCommentService'
+import { usePostCommentRemove } from '../../../../../domain/PostComment/useCases/usePostCommentRemove'
+import { useToastService } from '../../../../../services/toast/useToast'
 
 interface Props {
   postId: number

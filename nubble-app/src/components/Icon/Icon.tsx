@@ -1,8 +1,8 @@
 import React, { ComponentProps } from 'react'
 import { Pressable } from 'react-native'
 
-import { useAppTheme } from '@hooks'
-import { ThemeColors } from '@theme'
+import { useAppTheme } from '../../hooks/useAppTheme'
+import type { ThemeColors } from '../../theme/theme'
 
 import { ArrowLeftIcon } from '../../assets/icons/ArrowLeftIcon'
 import { ArrowRightIcon } from '../../assets/icons/ArrowRightIcon'

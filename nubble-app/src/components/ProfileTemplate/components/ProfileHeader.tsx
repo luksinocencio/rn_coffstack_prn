@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { User } from '@domain'
+import type { User } from '../../../domain/User/userTypes'
 import { useNavigation } from '@react-navigation/native'
 
 import { Box } from '../../Box/Box'

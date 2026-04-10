@@ -1,10 +1,8 @@
 import { useEffect } from 'react'
 
-import {
-  settingsService,
-  useAuthCredentials,
-  useShowOnboarding,
-} from '@services'
+import { settingsService } from '../../services/settings/settingsService'
+import { useAuthCredentials } from '../../services/authCredentials/useAuthCredentials'
+import { useShowOnboarding } from '../../services/settings/useSettings'
 
 export type Stacks = 'Loading' | 'Auth' | 'App' | 'Onboarding'
 

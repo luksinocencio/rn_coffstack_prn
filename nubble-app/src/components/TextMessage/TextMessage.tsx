@@ -8,7 +8,7 @@ import {
 import { Box, TouchableOpacityBox } from '../Box/Box'
 import { Text } from '../Text/Text'
 import { $textInputStyle } from '../TextInput/TextInput'
-import { useAppTheme } from '@hooks'
+import { useAppTheme } from '../../hooks/useAppTheme'
 
 interface TextMessageProps extends RNTextInputProps {
   onPressSend: (message: string) => void

@@ -8,9 +8,11 @@ import {
 } from 'react-native'
 
 
-import { PermissionManager, Screen } from '@components'
-import { AppTabScreenProps } from '@routes'
-import { useMultimediaGetPhotos, usePermission } from '@services'
+import { PermissionManager } from '../../../components/PermissionManager/PermissionManager'
+import { Screen } from '../../../components/Screen/Screen'
+import type { AppTabScreenProps } from '../../../routes/navigationType'
+import { useMultimediaGetPhotos } from '../../../services/multimedia/useMultimediaGetPhotos'
+import { usePermission } from '../../../services/permission/usePermission'
 
 import { Header } from './components/Header'
 

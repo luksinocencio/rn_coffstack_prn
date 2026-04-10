@@ -1,8 +1,8 @@
 import { useMutation } from '@tanstack/react-query'
 
-import { MutationOptions } from '@infra'
+import type { MutationOptions } from '../../../infra/hooks/useMutation'
 
-import { authService } from '../'
+import { authService } from '../authService'
 
 export function useAuthRequestNewPassword(options?: MutationOptions<string>) {
   const { mutate, isPending } = useMutation<string, Error, string>({

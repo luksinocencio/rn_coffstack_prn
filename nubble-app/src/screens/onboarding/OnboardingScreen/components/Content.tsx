@@ -1,6 +1,8 @@
 import React from 'react'
 
-import { Box, ProgressIndicator, Text } from '@components'
+import { Box } from '../../../../components/Box/Box'
+import { ProgressIndicator } from '../../../../components/ProgressIndicator/ProgressIndicator'
+import { Text } from '../../../../components/Text/Text'
 
 import { OnboardingPageItem } from '../onboardingData'
 

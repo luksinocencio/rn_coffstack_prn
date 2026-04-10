@@ -1,4 +1,4 @@
-import { UserAPI } from '../User'
+import { UserAPI } from '../User/userTypes'
 
 export interface PostComment {
   id: number

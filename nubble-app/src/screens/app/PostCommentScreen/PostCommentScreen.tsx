@@ -1,11 +1,15 @@
 import React from 'react'
 import { FlatList, ListRenderItemInfo } from 'react-native'
 
-import { Box, PostItem, Screen } from '@components'
-import { PostComment, usePostCommentList, usePostGetById } from '@domain'
-import { useAppSafeArea } from '@hooks'
-import { AppScreenProps } from '@routes'
-import { useAuthCredentials } from '@services'
+import { Box } from '../../../components/Box/Box'
+import { PostItem } from '../../../components/PostItem/PostItem'
+import { Screen } from '../../../components/Screen/Screen'
+import type { PostComment } from '../../../domain/PostComment/postCommentTypes'
+import { usePostCommentList } from '../../../domain/PostComment/useCases/usePostCommentList'
+import { usePostGetById } from '../../../domain/Post/useCases/usePostGetById'
+import { useAppSafeArea } from '../../../hooks/useAppSafeArea'
+import type { AppScreenProps } from '../../../routes/navigationType'
+import { useAuthCredentials } from '../../../services/authCredentials/useAuthCredentials'
 
 import {
   PostCommentBottom,

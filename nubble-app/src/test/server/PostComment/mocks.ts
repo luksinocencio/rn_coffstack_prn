@@ -1,5 +1,8 @@
-import { PageAPI } from '@api'
-import { AuthCredentials, PostCommentAPI, UserAPI, userAdapter } from '@domain'
+import type { PageAPI } from '../../../api/apiTypes'
+import type { AuthCredentials } from '../../../domain/Auth/authTypes'
+import type { PostCommentAPI } from '../../../domain/PostComment/postCommentTypes'
+import type { UserAPI } from '../../../domain/User/userTypes'
+import { userAdapter } from '../../../domain/User/userAdapter'
 
 const POST_ID = 1
 

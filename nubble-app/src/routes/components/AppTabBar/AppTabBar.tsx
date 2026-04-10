@@ -2,18 +2,14 @@ import React from 'react'
 
 import { BottomTabBarProps } from '@react-navigation/bottom-tabs'
 
-import {
-  Box,
-  BoxProps,
-  Icon,
-  Text,
-  TextProps,
-  TouchableOpacityBox,
-  TouchableOpacityBoxProps,
-} from '@components'
-import { useAppSafeArea } from '@hooks'
-import { AppTabBottomTabParamList } from '@routes'
-import { $shadowProps } from '@theme'
+import { Box, TouchableOpacityBox } from '../../../components/Box/Box'
+import type { BoxProps, TouchableOpacityBoxProps } from '../../../components/Box/Box'
+import { Icon } from '../../../components/Icon/Icon'
+import { Text } from '../../../components/Text/Text'
+import type { TextProps } from '../../../components/Text/Text'
+import { useAppSafeArea } from '../../../hooks/useAppSafeArea'
+import type { AppTabBottomTabParamList } from '../../AppTabNavigator'
+import { $shadowProps } from '../../../theme/theme'
 
 import { mapScreenToProps } from './mapScreenToProps'
 

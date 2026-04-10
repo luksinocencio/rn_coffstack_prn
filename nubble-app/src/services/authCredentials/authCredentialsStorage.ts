@@ -1,4 +1,4 @@
-import { AuthCredentials } from '@domain'
+import type { AuthCredentials } from '../../domain/Auth/authTypes'
 
 import { storage } from '../storage'
 

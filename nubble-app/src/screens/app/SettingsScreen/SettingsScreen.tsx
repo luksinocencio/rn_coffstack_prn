@@ -1,9 +1,11 @@
 import React from 'react'
 import { Alert, FlatList, ListRenderItemInfo } from 'react-native'
 
-import { Button, Screen, Separator } from '@components'
-import { useAuthSignOut } from '@domain'
-import { AppScreenProps } from '@routes'
+import { Button } from '../../../components/Button/Button'
+import { Screen } from '../../../components/Screen/Screen'
+import { Separator } from '../../../components/Separator/Separator'
+import { useAuthSignOut } from '../../../domain/Auth/useCases/useAuthSignOut'
+import type { AppScreenProps } from '../../../routes/navigationType'
 
 import { MenuItem, MenuItemProps } from './components/MenuItem.tsx'
 

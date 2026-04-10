@@ -1,11 +1,15 @@
 import React, { useState } from 'react'
 import { FlatList, ListRenderItemInfo } from 'react-native'
 
-import { Icon, ProfileUser, Screen, TextInput } from '@components'
-import { User, useUserSearch } from '@domain'
-import { useDebounce } from '@hooks'
-import { AppScreenProps } from '@routes'
-import { useSearchHistoryService } from '@services'
+import { Icon } from '../../../components/Icon/Icon'
+import { ProfileUser } from '../../../components/ProfileUser/ProfileUser'
+import { Screen } from '../../../components/Screen/Screen'
+import { TextInput } from '../../../components/TextInput/TextInput'
+import type { User } from '../../../domain/User/userTypes'
+import { useUserSearch } from '../../../domain/User/useCases/useUserSearch'
+import { useDebounce } from '../../../hooks/useDebounce'
+import type { AppScreenProps } from '../../../routes/navigationType'
+import { useSearchHistoryService } from '../../../services/searchHistory/useSearchHistory'
 
 import { SearchHistory } from './components/SearchHistory'
 

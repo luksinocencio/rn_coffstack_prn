@@ -1,4 +1,4 @@
-import { MetaDataPage, Page } from '@types'
+import type { MetaDataPage, Page } from '../types/Pages'
 
 import { MetaDataPageAPI, PageAPI } from './apiTypes'
 

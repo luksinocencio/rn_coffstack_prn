@@ -3,15 +3,13 @@ import React from 'react'
 import { NavigatorScreenParams } from '@react-navigation/native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 
-import {
-  CameraScreen,
-  DarkModeScreen,
-  PostCommentScreen,
-  ProfileScreen,
-  PublishPostScreen,
-  SearchScreen,
-  SettingsScreen,
-} from '@screens'
+import { CameraScreen } from '../screens/app/CameraScreen/CameraScreen'
+import { DarkModeScreen } from '../screens/app/DarkModeScreen/DarkModeScreen'
+import { PostCommentScreen } from '../screens/app/PostCommentScreen/PostCommentScreen'
+import { ProfileScreen } from '../screens/app/ProfileScreen/ProfileScreen'
+import { PublishPostScreen } from '../screens/app/PublishPostScreen/PublishPostScreen'
+import { SearchScreen } from '../screens/app/SearchScreen/SearchScreen'
+import { SettingsScreen } from '../screens/app/SettingsScreen/SettingsScreen'
 
 import { AppTabBottomTabParamList, AppTabNavigator } from './AppTabNavigator'
 

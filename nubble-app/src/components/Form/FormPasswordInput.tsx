@@ -6,7 +6,6 @@ import {
   PasswordInputProps,
 } from '../PasswordInput/PasswordInput';
 
-// import { PasswordInput, PasswordInputProps } from '@components'
 
 export function FormPasswordInput<FormType extends FieldValues>({
   control,

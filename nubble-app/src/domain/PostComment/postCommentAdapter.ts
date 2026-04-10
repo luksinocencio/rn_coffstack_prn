@@ -1,4 +1,4 @@
-import { dateUtils } from '@utils'
+import { dateUtils } from '../../utils/dateUtils'
 
 import { PostComment, PostCommentAPI } from './postCommentTypes'
 

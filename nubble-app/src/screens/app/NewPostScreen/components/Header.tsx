@@ -1,10 +1,14 @@
 import React from 'react'
 import { ImageBackground, StyleSheet } from 'react-native'
 
-import { images } from '@assets'
+import { images } from '../../../../assets'
 import { useNavigation } from '@react-navigation/native'
 
-import { Box, BoxProps, Button, Icon, Text } from '@components'
+import { Box } from '../../../../components/Box/Box'
+import type { BoxProps } from '../../../../components/Box/Box'
+import { Button } from '../../../../components/Button/Button'
+import { Icon } from '../../../../components/Icon/Icon'
+import { Text } from '../../../../components/Text/Text'
 
 interface Props {
   imageUri?: string

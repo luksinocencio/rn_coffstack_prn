@@ -1,6 +1,6 @@
 import { ImageProps } from 'react-native'
 
-import { images } from '@assets'
+import { images } from '../../../assets'
 
 export type OnboardingPageItem = {
   title: Array<{ text: string; highlight: boolean }>

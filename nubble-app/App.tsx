@@ -1,13 +1,14 @@
 import React, { useEffect } from 'react'
 
 import * as SplashScreen from 'expo-splash-screen'
-import { settingsService, useAppColor } from '@services'
+import { settingsService } from './src/services/settings/settingsService'
+import { useAppColor } from './src/services/settings/useSettings'
 import { ThemeProvider } from '@shopify/restyle'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { SafeAreaProvider } from 'react-native-safe-area-context'
 
-import { Toast } from '@components'
-import { useAppColorScheme } from '@hooks'
+import { Toast } from './src/components/Toast/Toast'
+import { useAppColorScheme } from './src/hooks/useAppColorScheme'
 
 import { Router } from './src/routes/Routes'
 import { AuthCredentialsProvider } from './src/services/authCredentials/Providers/AuthCredentialsProviders'

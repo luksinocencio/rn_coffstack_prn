@@ -1,5 +1,6 @@
-import { userService } from '@domain'
-import { QueryKeys, usePaginatedList } from '@infra'
+import { userService } from '../userService'
+import { QueryKeys } from '../../../infra/infraTypes'
+import { usePaginatedList } from '../../../infra/hooks/usePaginatedList'
 
 export function useUserSearch(search: string) {
   return usePaginatedList(

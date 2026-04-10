@@ -1,4 +1,4 @@
-import { Post } from '@domain'
+import type { Post } from '../../../../../domain/Post/postTypes'
 
 export const mockedPost: Post = {
   id: 1,

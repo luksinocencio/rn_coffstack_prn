@@ -4,7 +4,7 @@ import { useNavigation } from '@react-navigation/native'
 
 import { Box } from '../../Box/Box'
 import { Text } from '../../Text/Text'
-import { Post } from '@domain'
+import type { Post } from '../../../domain/Post/postTypes'
 
 type Props = Pick<Post, 'author' | 'text' | 'commentCount' | 'id'> & {
   hideCommentAction?: boolean

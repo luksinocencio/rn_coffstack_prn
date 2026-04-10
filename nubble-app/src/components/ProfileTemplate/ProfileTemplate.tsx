@@ -7,8 +7,10 @@ import {
   ViewStyle,
 } from 'react-native'
 
-import { Post, postService, useUserGetById } from '@domain'
-import { QueryKeys } from '@infra'
+import type { Post } from '../../domain/Post/postTypes'
+import { postService } from '../../domain/Post/postService'
+import { useUserGetById } from '../../domain/User/useCases/useUserGetById'
+import { QueryKeys } from '../../infra/infraTypes'
 
 import { InfinityScrollList } from '../InfinityScrollList/InfinityScrollList'
 import { Screen } from '../Screen/Screen'

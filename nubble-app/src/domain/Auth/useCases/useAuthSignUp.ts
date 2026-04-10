@@ -1,6 +1,6 @@
 import { useMutation } from '@tanstack/react-query'
 
-import { MutationOptions } from '@infra'
+import type { MutationOptions } from '../../../infra/hooks/useMutation'
 
 import { authService } from '../authService'
 import { SignUpData } from '../authTypes'

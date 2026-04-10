@@ -1,4 +1,4 @@
-import { User } from '@domain'
+import type { User } from '../../domain/User/userTypes'
 
 export type SearchHistoryService = {
   userList: User[]

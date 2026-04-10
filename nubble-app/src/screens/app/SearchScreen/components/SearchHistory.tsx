@@ -1,9 +1,12 @@
 import React from 'react'
 import { FlatList, ListRenderItemInfo } from 'react-native'
 
-import { Box, Icon, ProfileUser, Text } from '@components'
-import { User } from '@domain'
-import { useSearchHistory, useSearchHistoryService } from '@services'
+import { Box } from '../../../../components/Box/Box'
+import { Icon } from '../../../../components/Icon/Icon'
+import { ProfileUser } from '../../../../components/ProfileUser/ProfileUser'
+import { Text } from '../../../../components/Text/Text'
+import type { User } from '../../../../domain/User/userTypes'
+import { useSearchHistory, useSearchHistoryService } from '../../../../services/searchHistory/useSearchHistory'
 
 export function SearchHistory() {
   const userList = useSearchHistory()

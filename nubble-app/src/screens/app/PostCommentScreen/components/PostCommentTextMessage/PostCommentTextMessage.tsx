@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
 import { Keyboard } from 'react-native'
 
-import { Box, TextMessage } from '@components'
-import { usePostCommentCreate } from '@domain'
+import { Box } from '../../../../../components/Box/Box'
+import { TextMessage } from '../../../../../components/TextMessage/TextMessage'
+import { usePostCommentCreate } from '../../../../../domain/PostComment/useCases/usePostCommentCreate'
 
 
 interface Props {

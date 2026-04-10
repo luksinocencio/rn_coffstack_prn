@@ -1,4 +1,4 @@
-import { dateUtils } from '@utils'
+import { dateUtils } from '../dateUtils'
 import { Duration, add, formatISO, sub } from 'date-fns'
 
 const MOCKED_NOW = 1696573824333

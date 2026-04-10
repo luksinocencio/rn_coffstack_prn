@@ -2,8 +2,8 @@
 import React from 'react'
 import { Dimensions } from 'react-native'
 
-import { Toast, ToastPosition, ToastType } from '@services'
-import { $shadowProps } from '@theme'
+import type { Toast, ToastPosition, ToastType } from '../../../services/toast/toastTypes'
+import { $shadowProps } from '../../../theme/theme'
 
 import { Box, BoxProps } from '../../Box/Box'
 import { Icon, IconProps } from '../../Icon/Icon'

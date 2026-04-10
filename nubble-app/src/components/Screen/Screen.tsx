@@ -2,7 +2,8 @@ import React, { ReactNode } from 'react'
 import { KeyboardAvoidingView, Platform } from 'react-native'
 
 import { Box, BoxProps } from '../Box/Box'
-import { useAppSafeArea, useAppTheme } from '@hooks'
+import { useAppSafeArea } from '../../hooks/useAppSafeArea'
+import { useAppTheme } from '../../hooks/useAppTheme'
 
 import { ScreenHeader, ScrollViewContainer, ViewContainer } from './components'
 

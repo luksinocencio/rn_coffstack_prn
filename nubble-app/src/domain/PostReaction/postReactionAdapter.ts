@@ -1,4 +1,4 @@
-import { userAdapter } from '../User'
+import { userAdapter } from '../User/userAdapter'
 
 import {
   PostReaction,

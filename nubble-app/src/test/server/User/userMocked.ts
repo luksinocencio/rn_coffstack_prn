@@ -1,5 +1,5 @@
-import { PageAPI } from '@api'
-import { UserAPI } from '@domain'
+import type { PageAPI } from '../../../api/apiTypes'
+import type { UserAPI } from '../../../domain/User/userTypes'
 
 const user1: UserAPI = {
   id: 4,

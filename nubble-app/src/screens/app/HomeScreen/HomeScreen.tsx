@@ -1,11 +1,14 @@
 import React from 'react'
 import { ListRenderItemInfo, StyleProp, ViewStyle } from 'react-native'
 
-import { Post, postService } from '@domain'
-import { QueryKeys } from '@infra'
+import type { Post } from '../../../domain/Post/postTypes'
+import { postService } from '../../../domain/Post/postService'
+import { QueryKeys } from '../../../infra/infraTypes'
 
-import { InfinityScrollList, PostItem, Screen } from '@components'
-import { AppTabScreenProps } from '@routes'
+import { InfinityScrollList } from '../../../components/InfinityScrollList/InfinityScrollList'
+import { PostItem } from '../../../components/PostItem/PostItem'
+import { Screen } from '../../../components/Screen/Screen'
+import type { AppTabScreenProps } from '../../../routes/navigationType'
 
 import { HomeHeader } from './components/HomeHeader'
 
