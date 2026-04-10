@@ -47,15 +47,12 @@ jest.mock('expo-image-manipulator', () => ({
   manipulateAsync: jest.fn(),
 }))
 
-jest.mock('react-native-bootsplash', () => {
+jest.mock('expo-splash-screen', () => {
   return {
-    hide: jest.fn().mockImplementation(() => Promise.resolve()),
-    isVisible: jest.fn().mockResolvedValue(false),
-    useHideAnimation: jest.fn().mockReturnValue({
-      container: {},
-      logo: { source: 0 },
-      brand: { source: 0 },
-    }),
+    preventAutoHideAsync: jest.fn().mockResolvedValue(true),
+    hide: jest.fn(),
+    hideAsync: jest.fn().mockResolvedValue(undefined),
+    setOptions: jest.fn(),
   }
 })
 

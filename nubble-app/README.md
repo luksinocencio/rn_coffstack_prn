@@ -1,23 +1,8 @@
-```
-yarn react-native generate-bootsplash src/assets/svgs/logo-splash.svg \
---platforms=android,ios \
---background=074C4E \
---logo-width=105
-```
+Splash screen nativa do Expo:
 
-```
-yarn react-native-bootsplash generate src/assets/svgs/logo-splash.svg \
-  --platforms=android,ios \
-  --background=074C4E \
-  --logo-width=105
-```
-
-```
-npx react-native-bootsplash generate src/assets/svgs/logo-splash.svg \
---platforms=android,ios \
---background=074C4E \
---logo-width=105
-```
+- Configurada em `app.json` dentro de `expo.splash`.
+- Mantida visivel no bootstrap com `expo-splash-screen`.
+- Escondida quando a hidratacao inicial do app termina.
 
 ```
 version: '3.8'
@@ -128,3 +113,4 @@ volumes:
   minio_storage_v2:
     driver: local
 ```
+

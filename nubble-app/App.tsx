@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react'
 
+import * as SplashScreen from 'expo-splash-screen'
 import { settingsService, useAppColor } from '@services'
 import { ThemeProvider } from '@shopify/restyle'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
@@ -18,6 +19,7 @@ if (__DEV__) {
 }
 
 initializeStorage(MMKVStorage)
+void SplashScreen.preventAutoHideAsync()
 
 const queryClient = new QueryClient()
 

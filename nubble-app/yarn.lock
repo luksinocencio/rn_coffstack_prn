@@ -3175,6 +3175,13 @@ expo-server@^55.0.7:
   resolved "https://registry.yarnpkg.com/expo-server/-/expo-server-55.0.7.tgz#51bdb292daa87194ce19fe163e32d34b704d50b9"
   integrity sha512-Cc1btFyPsD9P4DT2xd1pG/uR96TLVMx0W+dPm9Gjk1uDV9xuzvMcUsY7nf9bt4U5pGyWWkCXmPJcKwWfdl51Pw==
 
+expo-splash-screen@~55.0.17:
+  version "55.0.17"
+  resolved "https://registry.yarnpkg.com/expo-splash-screen/-/expo-splash-screen-55.0.17.tgz#b44129be1f5968ae681b84a808bf4e7c9565c243"
+  integrity sha512-zVMYh6YvEhnmRI6WOKA82rxVo8eA4u3lzSF6qhXtgR9H9+idq3BhU0hZc0bqV/hOfGcYscrslj9G8aSM7d5ALg==
+  dependencies:
+    "@expo/prebuild-config" "^55.0.14"
+
 expo-status-bar@~55.0.5:
   version "55.0.5"
   resolved "https://registry.yarnpkg.com/expo-status-bar/-/expo-status-bar-55.0.5.tgz#85c244bee0325db84fbd02d66c752f8cd3e61d3f"

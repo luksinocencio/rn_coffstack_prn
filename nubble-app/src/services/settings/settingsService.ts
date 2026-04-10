@@ -1,6 +1,6 @@
 import { Appearance, ColorSchemeName, Platform, StatusBar } from 'react-native'
 
-import BootSplash from 'react-native-bootsplash'
+import * as SplashScreen from 'expo-splash-screen'
 
 import { colors } from '@theme'
 
@@ -42,13 +42,8 @@ function handleStatusBar(appColor: AppColorScheme) {
 
 async function hideSplashScreen() {
   try {
-    const isVisible = await BootSplash.isVisible()
-    if (isVisible) {
-      BootSplash.hide({ fade: true })
-    }
-  } catch (error) {
-    BootSplash.hide()
-  }
+    await SplashScreen.hideAsync()
+  } catch {}
 }
 
 export const settingsService = {
