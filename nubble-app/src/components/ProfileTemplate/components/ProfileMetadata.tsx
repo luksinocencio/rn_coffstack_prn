@@ -1,6 +1,7 @@
 import React from 'react'
 
-import { Box, Text } from '@components'
+import { Box } from '../../Box/Box'
+import { Text } from '../../Text/Text'
 
 type Props = {
   followersCount: string
@@ -44,3 +45,4 @@ function Item({ value, label }: ItemType) {
     </Box>
   )
 }
+

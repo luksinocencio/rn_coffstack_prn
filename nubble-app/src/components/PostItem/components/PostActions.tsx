@@ -2,7 +2,9 @@ import React from 'react'
 
 import { useNavigation } from '@react-navigation/native'
 
-import { Box, Icon, IconProps, Text, TouchableOpacityBox } from '@components'
+import { Box, TouchableOpacityBox } from '../../Box/Box'
+import { Icon, IconProps } from '../../Icon/Icon'
+import { Text } from '../../Text/Text'
 import { Post, useReactToPost } from '@domain'
 import { QueryKeys } from '@infra'
 
@@ -95,3 +97,4 @@ function Item({ onPress, icon, marked, text, disabled }: ItemProps) {
     </TouchableOpacityBox>
   )
 }
+

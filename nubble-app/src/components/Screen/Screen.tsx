@@ -1,7 +1,7 @@
 import React, { ReactNode } from 'react'
 import { KeyboardAvoidingView, Platform } from 'react-native'
 
-import { Box, BoxProps } from '@components'
+import { Box, BoxProps } from '../Box/Box'
 import { useAppSafeArea, useAppTheme } from '@hooks'
 
 import { ScreenHeader, ScrollViewContainer, ViewContainer } from './components'
@@ -50,3 +50,4 @@ export function Screen({
     </KeyboardAvoidingView>
   )
 }
+

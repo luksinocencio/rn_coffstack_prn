@@ -1,4 +1,6 @@
-import { ButtonPreset, TextProps, TouchableOpacityBoxProps } from '@components'
+import { TouchableOpacityBoxProps } from '../Box/Box'
+import { TextProps } from '../Text/Text'
+import { ButtonPreset } from './Button'
 import { ThemeColors } from '@theme'
 
 interface ButtonUI {
@@ -64,3 +66,4 @@ export const buttonPresets: Record<
     },
   },
 }
+

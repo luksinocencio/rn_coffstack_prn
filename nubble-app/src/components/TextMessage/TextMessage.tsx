@@ -5,7 +5,9 @@ import {
   TextInputProps as RNTextInputProps,
 } from 'react-native'
 
-import { $textInputStyle, Box, Text, TouchableOpacityBox } from '@components'
+import { Box, TouchableOpacityBox } from '../Box/Box'
+import { Text } from '../Text/Text'
+import { $textInputStyle } from '../TextInput/TextInput'
 import { useAppTheme } from '@hooks'
 
 interface TextMessageProps extends RNTextInputProps {

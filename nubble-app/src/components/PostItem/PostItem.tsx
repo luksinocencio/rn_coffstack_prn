@@ -1,6 +1,7 @@
 import React from 'react'
 
-import { Box, ProfileUser } from '@components'
+import { Box } from '../Box/Box'
+import { ProfileUser } from '../ProfileUser/ProfileUser'
 import { Post } from '@domain'
 
 import { PostActions } from './components/PostActions'
@@ -34,3 +35,4 @@ export function PostItem({ post, hideCommentAction }: Props) {
     </Box>
   )
 }
+

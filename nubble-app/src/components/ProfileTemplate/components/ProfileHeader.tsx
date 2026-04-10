@@ -3,7 +3,11 @@ import React from 'react'
 import { User } from '@domain'
 import { useNavigation } from '@react-navigation/native'
 
-import { Box, Button, Icon, ProfileAvatar, Text } from '@components'
+import { Box } from '../../Box/Box'
+import { Button } from '../../Button/Button'
+import { Icon } from '../../Icon/Icon'
+import { ProfileAvatar } from '../../ProfileAvatar/ProfileAvatar'
+import { Text } from '../../Text/Text'
 
 import { ProfileMetadata } from './ProfileMetadata'
 
@@ -47,3 +51,4 @@ export function ProfileHeader({ user, isMyProfile, publicationCount }: Props) {
     </Box>
   )
 }
+
