@@ -1,4 +1,6 @@
-import { useEffect, useState } from 'react'
+import { useCallback, useState } from 'react'
+
+import { useFocusEffect } from '@react-navigation/native'
 
 import { permissionService } from './permissionService'
 import { PermissionName, PermissionStatus } from './permissionTypes'
@@ -7,30 +9,49 @@ export function usePermission(permissionName: PermissionName) {
   const [isLoading, setIsLoading] = useState(true)
   const [status, setStatus] = useState<PermissionStatus>()
 
-  async function checkPermission() {
+  const checkPermission = useCallback(async () => {
     try {
       setIsLoading(true)
       const initialStatus = await permissionService.check(permissionName)
-      if (initialStatus === 'denied') {
-        const _status = await permissionService.request(permissionName)
-        setStatus(_status)
-      } else {
-        setStatus(initialStatus)
-      }
+      setStatus(initialStatus)
     } catch (error) {
       setStatus('unavailable')
     } finally {
       setIsLoading(false)
     }
-  }
+  }, [permissionName])
 
-  useEffect(() => {
-    checkPermission()
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  const requestPermission = useCallback(async () => {
+    try {
+      setIsLoading(true)
+      const currentStatus = await permissionService.check(permissionName)
+
+      if (currentStatus === 'granted') {
+        setStatus(currentStatus)
+        return currentStatus
+      }
+
+      const requestedStatus = await permissionService.request(permissionName)
+      setStatus(requestedStatus)
+      return requestedStatus
+    } catch (error) {
+      setStatus('unavailable')
+      return 'unavailable'
+    } finally {
+      setIsLoading(false)
+    }
+  }, [permissionName])
+
+  useFocusEffect(
+    useCallback(() => {
+      checkPermission()
+    }, [checkPermission]),
+  )
 
   return {
     status,
     isLoading,
+    checkPermission,
+    requestPermission,
   }
 }

@@ -21,7 +21,7 @@ export function PermissionManager({
   description,
   children,
 }: PermissionManagerProps) {
-  const { status, isLoading } = usePermission(permissionName);
+  const { status, isLoading, requestPermission } = usePermission(permissionName);
 
   if (status === 'granted') {
     return children;
@@ -34,6 +34,13 @@ export function PermissionManager({
           {description}
         </Text>
         {isLoading && <ActivityIndicator color="primary" />}
+        {status === 'denied' && !isLoading && (
+          <Button
+            title="Permitir acesso"
+            onPress={requestPermission}
+            mt="s16"
+          />
+        )}
         {status === 'unavailable' && (
           <Text {...$messageStyle}>
             Esse recurso não está disponível para esse dispositivo

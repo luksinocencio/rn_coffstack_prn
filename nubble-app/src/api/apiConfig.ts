@@ -1,28 +1,34 @@
-import { authService } from '../domain/Auth/authService'
-import { AuthCredentials } from '../domain/Auth/authTypes'
+import type { AxiosRequestConfig } from 'axios'
 import axios from 'axios'
 
+import { Platform } from 'react-native'
+import type { AuthCredentials } from '../domain/Auth/authTypes'
+
 /**
- * export const BASE_URL = 'http://127.0.0.1:3333/'
- * export const BASE_URL = 'http://192.168.1.117:3333/'
- * export const BASE_URL = 'https://nubble-api.coffstack.com.br/'
- * export const BASE_URL = 'http://192.168.1.27:3333/'
+ * export const baseURL = 'https://nubble-api.coffstack.com.br/'
  */
 
-export const BASE_URL = 'http://192.168.1.25:3333/'
+const baseURL = Platform.select({
+  ios: 'http://localhost:3333',
+  android: 'http://10.0.2.2:3333',
+})
 
 export const api = axios.create({
-  baseURL: BASE_URL,
+  baseURL,
 })
 
 type InterceptorProps = {
   authCredentials: AuthCredentials | null
   saveCredentials: (ac: AuthCredentials) => Promise<void>
   removeCredentials: () => Promise<void>
+  authenticateByRefreshToken: (refreshToken: string) => Promise<AuthCredentials>
+  isRefreshTokenRequest: (request: AxiosRequestConfig) => boolean
 }
 
 export function registerInterceptor({
+  authenticateByRefreshToken,
   authCredentials,
+  isRefreshTokenRequest,
   removeCredentials,
   saveCredentials,
 }: InterceptorProps) {
@@ -31,18 +37,21 @@ export function registerInterceptor({
     async responseError => {
       const failedRequest = responseError.config
       const hasNotRefreshToken = !authCredentials?.refreshToken
-      const isRefreshTokenRequest =
-        authService.isRefreshTokenRequest(failedRequest)
+      const isFailedRefreshTokenRequest = isRefreshTokenRequest(failedRequest)
 
       if (responseError.response.status === 401) {
-        if (hasNotRefreshToken || isRefreshTokenRequest || failedRequest.sent) {
+        if (
+          hasNotRefreshToken ||
+          isFailedRefreshTokenRequest ||
+          failedRequest.sent
+        ) {
           removeCredentials()
           return Promise.reject(responseError)
         }
 
         failedRequest.sent = true
 
-        const newAuthCredentials = await authService.authenticateByRefreshToken(
+        const newAuthCredentials = await authenticateByRefreshToken(
           authCredentials?.refreshToken,
         )
         saveCredentials(newAuthCredentials)

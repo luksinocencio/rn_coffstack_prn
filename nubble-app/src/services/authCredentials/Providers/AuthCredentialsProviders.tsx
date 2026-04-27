@@ -29,7 +29,9 @@ export function AuthCredentialsProvider({
 
   useEffect(() => {
     const interceptor = registerInterceptor({
+      authenticateByRefreshToken: authService.authenticateByRefreshToken,
       authCredentials,
+      isRefreshTokenRequest: authService.isRefreshTokenRequest,
       removeCredentials,
       saveCredentials,
     })

@@ -7,43 +7,61 @@ import {
 } from './permissionTypes'
 
 async function check(name: PermissionName): Promise<PermissionStatus> {
-  const permission = mapNameToPermission(name)
-  if (permission) {
-    const result = await PermissionsAndroid.check(permission)
-    if (result) {
-      return 'granted'
-    }
-    return 'denied'
+  const permissions = mapNameToPermissions(name)
+  if (permissions.length > 0) {
+    const results = await Promise.all(
+      permissions.map(permission => PermissionsAndroid.check(permission)),
+    )
+
+    return results.some(Boolean) ? 'granted' : 'denied'
   }
 
   return 'unavailable'
 }
 
 async function request(name: PermissionName): Promise<PermissionStatus> {
-  const permission = mapNameToPermission(name)
-  if (permission) {
-    const result = await PermissionsAndroid.request(permission)
-    return result
+  const permissions = mapNameToPermissions(name)
+  if (permissions.length > 0) {
+    const results = await PermissionsAndroid.requestMultiple(permissions)
+    const statusList = Object.values(results)
+
+    if (statusList.includes(PermissionsAndroid.RESULTS.GRANTED)) {
+      return 'granted'
+    }
+
+    if (statusList.includes(PermissionsAndroid.RESULTS.NEVER_ASK_AGAIN)) {
+      return 'never_ask_again'
+    }
+
+    return 'denied'
   }
+
   return 'unavailable'
 }
 
-function mapNameToPermission(name: PermissionName): Permission | null {
+function mapNameToPermissions(name: PermissionName): Permission[] {
   const platform = Platform.Version as number
 
   switch (name) {
     case 'photoLibrary':
-      // @ts-ignore
-      if (platform >= 33) {
-        return 'android.permission.READ_MEDIA_IMAGES'
-      } else {
-        return 'android.permission.READ_EXTERNAL_STORAGE'
+      if (platform >= 34) {
+        return [
+          PermissionsAndroid.PERMISSIONS.READ_MEDIA_IMAGES,
+          PermissionsAndroid.PERMISSIONS.READ_MEDIA_VISUAL_USER_SELECTED,
+        ]
       }
+
+      if (platform >= 33) {
+        return [PermissionsAndroid.PERMISSIONS.READ_MEDIA_IMAGES]
+      }
+
+      return [PermissionsAndroid.PERMISSIONS.READ_EXTERNAL_STORAGE]
+
     case 'camera':
-      return 'android.permission.CAMERA'
+      return [PermissionsAndroid.PERMISSIONS.CAMERA]
 
     default:
-      return null
+      return []
   }
 }
 

@@ -4,6 +4,13 @@ Splash screen nativa do Expo:
 - Mantida visivel no bootstrap com `expo-splash-screen`.
 - Escondida quando a hidratacao inicial do app termina.
 
+## Senha e usuarios padrão
+
+```
+mariajulia@coffstack.com
+supersecret
+```
+
 ```
 version: '3.8'
 
@@ -113,4 +120,3 @@ volumes:
   minio_storage_v2:
     driver: local
 ```
-

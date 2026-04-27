@@ -1,7 +1,7 @@
 import { Platform } from 'react-native'
 
 import { CameraRoll } from '@react-native-camera-roll/camera-roll'
-import { manipulateAsync, SaveFormat } from 'expo-image-manipulator'
+import { ImageManipulator, SaveFormat } from 'expo-image-manipulator'
 
 import { ImageForUpload, PhotoListPaginated } from './multimediaType'
 
@@ -26,10 +26,15 @@ async function prepareImageForUpload(
   imageUri: string,
 ): Promise<ImageForUpload> {
   console.log('imageUri:', imageUri)
-  const image = await manipulateAsync(prepareImageUri(imageUri), [], {
+  const context = ImageManipulator.manipulate(prepareImageUri(imageUri))
+  const imageRef = await context.renderAsync()
+  const image = await imageRef.saveAsync({
     compress: 0.5,
     format: SaveFormat.JPEG,
   })
+  context.release()
+  imageRef.release()
+
   return {
     uri: image.uri,
     name: Date.now().toString(),
