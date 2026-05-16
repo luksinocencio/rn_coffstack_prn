@@ -4,15 +4,8 @@ import { useAppTheme } from '../theme/useAppTheme'
 import { Box, BoxProps } from './Box'
 import { IconButton } from './IconButton'
 
-type SearchInputProps = {} & Pick<
-  TextInputProps,
-  'value' | 'onChangeText' | 'placeholder'
->
-export function SearchInput({
-  value,
-  onChangeText,
-  placeholder,
-}: SearchInputProps) {
+type SearchInputProps = {} & Pick<TextInputProps, 'value' | 'onChangeText' | 'placeholder'>
+export function SearchInput({ value, onChangeText, placeholder }: SearchInputProps) {
   const { colors, textVariants } = useAppTheme()
   const [isFocused, setIsFocused] = useState(false)
 
@@ -23,10 +16,9 @@ export function SearchInput({
   }
 
   return (
-    <Box
-      {...boxStyle}
-      style={{ borderColor: isFocused ? colors.primary : colors.gray1 }}>
+    <Box {...boxStyle} style={{ borderColor: isFocused ? colors.primary : colors.gray1 }}>
       <TextInput
+        testID="search-input"
         value={value}
         onChangeText={onChangeText}
         placeholder={placeholder}
@@ -42,10 +34,7 @@ export function SearchInput({
           flexShrink: 1,
         }}
       />
-      <IconButton
-        iconName={value!.length > 0 ? 'Close' : 'Search-outline'}
-        onPress={onPressIconButton}
-      />
+      <IconButton iconName={value!.length > 0 ? 'Close' : 'Search-outline'} onPress={onPressIconButton} />
     </Box>
   )
 }

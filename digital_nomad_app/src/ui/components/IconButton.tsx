@@ -11,7 +11,7 @@ type IconButtonProps = {
 export function IconButton({ onPress, iconName }: IconButtonProps) {
   const { boxShadows } = useAppTheme()
   return (
-    <Pressable onPress={onPress}>
+    <Pressable testID={iconName} onPress={onPress}>
       <Box
         backgroundColor="primary"
         width={50}
