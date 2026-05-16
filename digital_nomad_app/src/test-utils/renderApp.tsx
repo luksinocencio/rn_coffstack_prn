@@ -4,16 +4,15 @@ import ExploreScreen from '@/app/(protected)/(tabs)/explore'
 import ProfileScreen from '@/app/(protected)/(tabs)/profile'
 import ProtectedLayout from '@/app/(protected)/_layout'
 import CityDetails from '@/app/(protected)/city-details/[id]'
-import NotFoundScreen from '@/app/+not-found'
 import SignInScreen from '@/app/sign-in'
 import SignUpScreen from '@/app/sign-up'
 import { renderRouter } from 'expo-router/testing-library'
-import AppStack from '../ui/navigation/AppStack'
+import { AppStack } from '../ui/navigation/AppStack'
 
 import { ThemeProvider } from '@shopify/restyle'
-import { PropsWithChildren } from 'react'
 import { AuthContext, AuthProvider } from '../domain/auth/AuthContext'
 import { AuthUser } from '../domain/auth/AuthUser'
+import { Repositories } from '../domain/Repositories'
 import { Toast } from '../infra/feedbackService/adapters/Toast/Toast'
 import { ToastFeedback } from '../infra/feedbackService/adapters/Toast/ToastFeedback'
 import { FeedbackProvider } from '../infra/feedbackService/FeedbackProvider'
@@ -23,11 +22,18 @@ import { inMemoryStorage } from '../infra/storage/adapters/InMemoryStorage'
 import { StorageProvider } from '../infra/storage/StorageContext'
 import theme from '../ui/theme/theme'
 
-function MockedAuthProvider({ children }: PropsWithChildren) {
+import clonedeep from 'lodash.clonedeep'
+import merge from 'lodash.merge'
+
+type DeepPartial<T> = {
+  [P in keyof T]?: T[P] extends object ? DeepPartial<T[P]> : T[P]
+}
+
+function MockedAuthProvider({ children }: React.PropsWithChildren) {
   const authUser: AuthUser = {
-    email: 'lucas@mail.com',
+    email: 'lucas@coffstack.com',
     id: '1',
-    fullname: 'Lucas',
+    fullname: 'Lucas Garcez',
   }
 
   return (
@@ -43,7 +49,9 @@ function MockedAuthProvider({ children }: PropsWithChildren) {
   )
 }
 
-export function renderApp(options?: { isAuthenticated?: boolean }) {
+export function renderApp(options?: { isAuthenticated?: boolean; repositories?: DeepPartial<Repositories> }) {
+  const finalRepository: Repositories = merge(clonedeep(InMemoryRepository), options?.repositories ?? {})
+
   const FinalAuthProvider = options?.isAuthenticated ? MockedAuthProvider : AuthProvider
 
   function Wrapper({ children }: React.PropsWithChildren) {
@@ -51,7 +59,7 @@ export function renderApp(options?: { isAuthenticated?: boolean }) {
       <StorageProvider storage={inMemoryStorage}>
         <FinalAuthProvider>
           <FeedbackProvider value={ToastFeedback}>
-            <RepositoryProvider value={InMemoryRepository}>
+            <RepositoryProvider value={finalRepository}>
               <ThemeProvider theme={theme}>
                 {children}
                 <Toast />
@@ -74,7 +82,6 @@ export function renderApp(options?: { isAuthenticated?: boolean }) {
       '(protected)/city-details/[id]': () => <CityDetails />,
       'sign-in': () => <SignInScreen />,
       'sign-up': () => <SignUpScreen />,
-      '+not-found': () => <NotFoundScreen />,
     },
     { wrapper: Wrapper, initialUrl: '/' },
   )
