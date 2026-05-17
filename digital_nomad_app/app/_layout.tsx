@@ -2,6 +2,7 @@ import 'react-native-reanimated'
 
 import { ThemeProvider } from '@shopify/restyle'
 
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { useFonts } from 'expo-font'
 import { StatusBar } from 'expo-status-bar'
 
@@ -14,6 +15,8 @@ import { AsyncStorage } from '@/src/infra/storage/adapters/AsyncStorage'
 import { StorageProvider } from '@/src/infra/storage/StorageContext'
 import { AppStack } from '@/src/ui/navigation/AppStack'
 import theme from '@/src/ui/theme/theme'
+
+const client = new QueryClient()
 
 if (__DEV__) {
   require('../ReactotronConfig')
@@ -48,17 +51,20 @@ export default function RootLayout() {
   }
 
   return (
-    <StorageProvider storage={AsyncStorage}>
-      <AuthProvider>
-        <FeedbackProvider value={AlertFeedback}>
-          <RepositoryProvider value={SupabaseRepositories}>
-            <ThemeProvider theme={theme}>
-              <AppStack />
-              <StatusBar style="light" />
-            </ThemeProvider>
-          </RepositoryProvider>
-        </FeedbackProvider>
-      </AuthProvider>
-    </StorageProvider>
+    <QueryClientProvider client={client}>
+      <StorageProvider storage={AsyncStorage}>
+        <AuthProvider>
+          <FeedbackProvider value={AlertFeedback}>
+            {/* <RepositoryProvider value={InMemoryRepository}> */}
+            <RepositoryProvider value={SupabaseRepositories}>
+              <ThemeProvider theme={theme}>
+                <AppStack />
+                <StatusBar style="light" />
+              </ThemeProvider>
+            </RepositoryProvider>
+          </FeedbackProvider>
+        </AuthProvider>
+      </StorageProvider>
+    </QueryClientProvider>
   )
 }
