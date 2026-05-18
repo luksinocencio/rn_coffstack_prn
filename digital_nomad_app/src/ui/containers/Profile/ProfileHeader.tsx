@@ -1,8 +1,9 @@
 import { AuthUser } from '@/src/domain/auth/AuthUser'
+import { dateUtils } from '@/src/utils/dateUtils'
+import { router } from 'expo-router'
 import { Box } from '../../components/Box'
 import { Button } from '../../components/Button'
 import { Text } from '../../components/Text'
-import { dateUtils } from '@/src/utils/dateUtils'
 
 type ProfileHeaderProps = {
   authUser: AuthUser;
@@ -33,14 +34,22 @@ export function ProfileHeader({ authUser }: ProfileHeaderProps) {
           <Button
             title="Editar perfil"
             variant="secondary"
-            onPress={() => {}}
+            onPress={() =>
+              router.navigate({
+                pathname: '/update-profile',
+                params: {
+                  fullname: authUser.fullname,
+                  email: authUser.email,
+                },
+              })
+            }
           />
         </Box>
         <Box flex={1}>
           <Button
             title="Alterar senha"
             variant="secondary"
-            onPress={() => {}}
+            onPress={() => router.navigate('/update-password')}
           />
         </Box>
       </Box>
