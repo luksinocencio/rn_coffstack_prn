@@ -11,8 +11,8 @@ export function AppStack() {
       }}
     >
       <Stack.Screen name="(protected)" options={{ headerShown: false }} />
-      <Stack.Screen name="+not-found" />
       <Stack.Screen name="sign-in" />
+      <Stack.Screen name="sign-up" />
     </Stack>
   );
 }

@@ -22,7 +22,9 @@ export default function HomeScreen() {
   const [cityName, setCityName] = useState('')
 
   const debouncedCityName = useDebounce(cityName)
-  const [selectedCategoryId, setSelectedCategoryId] = useState<string | null>(null)
+  const [selectedCategoryId, setSelectedCategoryId] = useState<string | null>(
+    null
+  )
 
   const {
     data: cities,
@@ -77,7 +79,7 @@ export default function HomeScreen() {
         data={cities}
         renderItem={renderItem}
         showsVerticalScrollIndicator={false}
-        keyExtractor={item => item.id}
+        keyExtractor={(item) => item.id}
         ListEmptyComponent={renderEmptyComponent()}
         ListHeaderComponent={
           <CityFilter

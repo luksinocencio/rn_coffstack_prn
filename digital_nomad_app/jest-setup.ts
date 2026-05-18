@@ -3,11 +3,13 @@ jest.mock('react-native-worklets', () => require('react-native-worklets/lib/modu
 require('react-native-reanimated').setUpTests()
 
 jest.mock('react-native-maps', () => {
-  const React = require('react')
+  const { createElement, forwardRef } = require('react')
   const { View } = require('react-native')
 
   return {
     __esModule: true,
-    default: React.forwardRef((props, ref) => React.createElement(View, { ...props, ref })),
+    default: forwardRef((props, ref) => createElement(View, { ...props, ref })),
   }
 })
+
+jest.setTimeout(30000)

@@ -1,4 +1,4 @@
-import { fireEvent, screen, waitForElementToBeRemoved } from '@testing-library/react-native'
+import { fireEvent, screen, waitForElementToBeRemoved, } from '@testing-library/react-native'
 import { renderApp } from '../test-utils/renderApp'
 
 describe('integration: Home', () => {
@@ -18,8 +18,8 @@ describe('integration: Home', () => {
 
     await waitForElementToBeRemoved(() => screen.getByText('Dubai'))
 
-    expect(screen.getByText('Barcelona')).toBeOnTheScreen()
-    expect(screen.getByText('Espanha')).toBeOnTheScreen()
+    expect(await screen.findByText('Barcelona')).toBeOnTheScreen()
+    expect(await screen.findByText('Espanha')).toBeOnTheScreen()
   })
 
   it('should display an error message when city list does not load', async () => {
@@ -34,7 +34,9 @@ describe('integration: Home', () => {
       },
     })
 
-    expect(await screen.findByText(/erro ao carregar cidades/i)).toBeOnTheScreen()
+    expect(
+      await screen.findByText(/erro ao carregar cidades/i)
+    ).toBeOnTheScreen()
     expect(await screen.findByText(/server is down!/i)).toBeOnTheScreen()
   })
 
@@ -51,6 +53,8 @@ describe('integration: Home', () => {
     })
 
     expect(await screen.findByText(/carregando cidades/i)).toBeOnTheScreen()
-    expect(await screen.findByText(/não há cidades no momento/i)).toBeOnTheScreen()
+    expect(
+      await screen.findByText(/não há cidades no momento/i)
+    ).toBeOnTheScreen()
   })
 })

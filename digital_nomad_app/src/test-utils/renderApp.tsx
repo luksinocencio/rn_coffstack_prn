@@ -22,12 +22,14 @@ import { inMemoryStorage } from '../infra/storage/adapters/InMemoryStorage'
 import { StorageProvider } from '../infra/storage/StorageContext'
 import theme from '../ui/theme/theme'
 
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import clonedeep from 'lodash.clonedeep'
 import merge from 'lodash.merge'
+import { queryClientOptions } from './queryClientOptions'
 
 type DeepPartial<T> = {
-  [P in keyof T]?: T[P] extends object ? DeepPartial<T[P]> : T[P]
-}
+  [P in keyof T]?: T[P] extends object ? DeepPartial<T[P]> : T[P];
+};
 
 function MockedAuthProvider({ children }: React.PropsWithChildren) {
   const authUser: AuthUser = {
@@ -43,31 +45,44 @@ function MockedAuthProvider({ children }: React.PropsWithChildren) {
         authUser,
         saveAuthUser: async () => {},
         removeAuthUser: async () => {},
-      }}>
+      }}
+    >
       {children}
     </AuthContext.Provider>
   )
 }
 
-export function renderApp(options?: { isAuthenticated?: boolean; repositories?: DeepPartial<Repositories> }) {
-  const finalRepository: Repositories = merge(clonedeep(InMemoryRepository), options?.repositories ?? {})
+export function renderApp(options?: {
+  isAuthenticated?: boolean;
+  repositories?: DeepPartial<Repositories>;
+}) {
+  const finalRepository: Repositories = merge(
+    clonedeep(InMemoryRepository),
+    options?.repositories ?? {}
+  )
 
-  const FinalAuthProvider = options?.isAuthenticated ? MockedAuthProvider : AuthProvider
+  const client = new QueryClient(queryClientOptions)
+
+  const FinalAuthProvider = options?.isAuthenticated
+    ? MockedAuthProvider
+    : AuthProvider
 
   function Wrapper({ children }: React.PropsWithChildren) {
     return (
-      <StorageProvider storage={inMemoryStorage}>
-        <FinalAuthProvider>
-          <FeedbackProvider value={ToastFeedback}>
-            <RepositoryProvider value={finalRepository}>
-              <ThemeProvider theme={theme}>
-                {children}
-                <Toast />
-              </ThemeProvider>
-            </RepositoryProvider>
-          </FeedbackProvider>
-        </FinalAuthProvider>
-      </StorageProvider>
+      <QueryClientProvider client={client}>
+        <StorageProvider storage={inMemoryStorage}>
+          <FinalAuthProvider>
+            <FeedbackProvider value={ToastFeedback}>
+              <RepositoryProvider value={finalRepository}>
+                <ThemeProvider theme={theme}>
+                  {children}
+                  <Toast />
+                </ThemeProvider>
+              </RepositoryProvider>
+            </FeedbackProvider>
+          </FinalAuthProvider>
+        </StorageProvider>
+      </QueryClientProvider>
     )
   }
 
@@ -83,6 +98,6 @@ export function renderApp(options?: { isAuthenticated?: boolean; repositories?: 
       'sign-in': () => <SignInScreen />,
       'sign-up': () => <SignUpScreen />,
     },
-    { wrapper: Wrapper, initialUrl: '/' },
+    { wrapper: Wrapper, initialUrl: '/' }
   )
 }
