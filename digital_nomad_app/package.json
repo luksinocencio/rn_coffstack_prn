@@ -23,6 +23,7 @@
     "@shopify/restyle": "^2.4.5",
     "@supabase/supabase-js": "^2.81.1",
     "@tanstack/react-query": "^5.100.10",
+    "date-fns": "^4.1.0",
     "expo": "^55.0.0",
     "expo-blur": "~55.0.14",
     "expo-constants": "~55.0.16",
