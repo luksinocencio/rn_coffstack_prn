@@ -1,0 +1,56 @@
+# Learn more https://docs.github.com/en/get-started/getting-started-with-git/ignoring-files
+
+# Dependencies
+node_modules/
+
+# Expo
+.expo/
+.expo-shared/
+dist/
+web-build/
+expo-env.d.ts
+
+# Native
+.kotlin/
+*.orig.*
+*.jks
+*.p8
+*.p12
+*.key
+*.mobileprovision
+*.apk
+
+# Metro
+.metro-health-check*
+
+# Debug
+npm-debug.*
+yarn-debug.*
+yarn-error.*
+
+# macOS
+.DS_Store
+*.pem
+
+# Local env files
+.env
+.env*.local
+
+# TypeScript
+*.tsbuildinfo
+
+# Examples / Playground
+app-example
+
+# Editor
+.idea
+.vscode
+
+# coverage
+coverage/
+
+android/
+ios/
+
+# Allow SQL scripts (overrides *.sql in global gitignore)
+!src/infra/repositories/adapters/supabase/sql/*.sql

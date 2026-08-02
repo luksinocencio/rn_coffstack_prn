@@ -1,0 +1,17 @@
+{
+  "extends": "@react-native/typescript-config",
+  "compilerOptions": {
+    "types": ["jest"],
+    "strict": true,
+    "noImplicitAny": false,
+    "baseUrl": "./src",
+    "paths": {
+      "@/*": ["./*"],
+      // Espelha o `moduleDirectories` do jest.config.js, que resolve
+      // `test-utils` a partir de `src/test`.
+      "test-utils": ["./test/test-utils"]
+    }
+  },
+  "include": ["**/*.ts", "**/*.tsx"],
+  "exclude": ["**/node_modules", "**/Pods"]
+}

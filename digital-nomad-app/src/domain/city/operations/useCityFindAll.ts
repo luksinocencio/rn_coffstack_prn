@@ -1,0 +1,12 @@
+import { useAppQuery } from '@/infra/operations/useAppQuery'
+import { useRepository } from '@/infra/repositories/RepositoryProvider'
+import { CityFindAllFilters } from '../ICityRepo'
+
+export function useCityFindAll(filters: CityFindAllFilters) {
+  const { city } = useRepository()
+
+  return useAppQuery({
+    queryKey: ['city', filters.name, filters.categoryId],
+    fetchData: () => city.findAll(filters),
+  })
+}

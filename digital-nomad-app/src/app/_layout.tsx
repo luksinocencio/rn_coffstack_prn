@@ -1,0 +1,70 @@
+import 'react-native-reanimated'
+
+import { ThemeProvider } from '@shopify/restyle'
+
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import { useFonts } from 'expo-font'
+import { StatusBar } from 'expo-status-bar'
+
+import { AuthProvider } from '@/domain/auth/AuthContext'
+import { AlertFeedback } from '@/infra/feedbackService/adapters/Alert/AlertFeedback'
+import { FeedbackProvider } from '@/infra/feedbackService/FeedbackProvider'
+import { SupabaseRepositories } from '@/infra/repositories/adapters/supabase'
+import { RepositoryProvider } from '@/infra/repositories/RepositoryProvider'
+import { AsyncStorage } from '@/infra/storage/adapters/AsyncStorage'
+import { StorageProvider } from '@/infra/storage/StorageContext'
+import { AppStack } from '@/ui/navigation/AppStack'
+import theme from '@/ui/theme/theme'
+
+const client = new QueryClient()
+
+if (__DEV__) {
+  require('../../ReactotronConfig')
+}
+
+export default function RootLayout() {
+  const [loaded] = useFonts({
+    IcoMoon: require('../../assets/icons/icomoon.ttf'),
+    MontserratBlack: require('../../assets/fonts/Montserrat-Black.ttf'),
+    MontserratBlackItalic: require('../../assets/fonts/Montserrat-BlackItalic.ttf'),
+    MontserratBold: require('../../assets/fonts/Montserrat-Bold.ttf'),
+    MontserratBoldItalic: require('../../assets/fonts/Montserrat-BoldItalic.ttf'),
+    MontserratExtraBold: require('../../assets/fonts/Montserrat-ExtraBold.ttf'),
+    MontserratExtraBoldItalic: require('../../assets/fonts/Montserrat-ExtraBoldItalic.ttf'),
+    MontserratExtraLight: require('../../assets/fonts/Montserrat-ExtraLight.ttf'),
+    MontserratExtraLightItalic: require('../../assets/fonts/Montserrat-ExtraLightItalic.ttf'),
+    MontserratItalic: require('../../assets/fonts/Montserrat-Italic.ttf'),
+    MontserratLight: require('../../assets/fonts/Montserrat-Light.ttf'),
+    MontserratLightItalic: require('../../assets/fonts/Montserrat-LightItalic.ttf'),
+    MontserratMedium: require('../../assets/fonts/Montserrat-Medium.ttf'),
+    MontserratMediumItalic: require('../../assets/fonts/Montserrat-MediumItalic.ttf'),
+    MontserratRegular: require('../../assets/fonts/Montserrat-Regular.ttf'),
+    MontserratSemiBold: require('../../assets/fonts/Montserrat-SemiBold.ttf'),
+    MontserratSemiBoldItalic: require('../../assets/fonts/Montserrat-SemiBoldItalic.ttf'),
+    MontserratThin: require('../../assets/fonts/Montserrat-Thin.ttf'),
+    MontserratThinItalic: require('../../assets/fonts/Montserrat-ThinItalic.ttf'),
+  })
+
+  if (!loaded) {
+    // Async font loading only occurs in development.
+    return null
+  }
+
+  return (
+    <QueryClientProvider client={client}>
+      <StorageProvider storage={AsyncStorage}>
+        <AuthProvider>
+          <FeedbackProvider value={AlertFeedback}>
+            {/* <RepositoryProvider value={InMemoryRepository}> */}
+            <RepositoryProvider value={SupabaseRepositories}>
+              <ThemeProvider theme={theme}>
+                <AppStack />
+                <StatusBar style="light" />
+              </ThemeProvider>
+            </RepositoryProvider>
+          </FeedbackProvider>
+        </AuthProvider>
+      </StorageProvider>
+    </QueryClientProvider>
+  )
+}

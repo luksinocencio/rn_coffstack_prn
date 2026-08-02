@@ -1,0 +1,35 @@
+name: Keep Supabase Alive
+
+# Faz uma query real no banco a cada poucos dias para evitar que o Supabase
+# pause o projeto por inatividade (o limite do plano free é 7 dias sem uso).
+on:
+  schedule:
+    - cron: '0 9 * * 1,4' # toda segunda e quinta, 9h UTC
+  workflow_dispatch: {} # permite rodar manualmente pela aba Actions do GitHub
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Query real numa tabela do projeto
+        env:
+          SUPABASE_URL: "https://rkbkjwiwzxenbliplojy.supabase.co"
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+        run: |
+          # Chaves novas (sb_secret_...) só aceitam o header "apikey".
+          # Mandar também "Authorization: Bearer" faz a Supabase tentar
+          # interpretar como JWT e rejeitar com "Invalid API key".
+          response=$(curl -s -w "\n%{http_code}" \
+            "${SUPABASE_URL}/rest/v1/categories?select=id&limit=1" \
+            -H "apikey: ${SUPABASE_SERVICE_ROLE_KEY}")
+
+          http_code=$(echo "$response" | tail -n1)
+          body=$(echo "$response" | sed '$d')
+
+          echo "HTTP status: $http_code"
+          echo "Resposta: $body"
+
+          if [ "$http_code" -ge 400 ]; then
+            echo "Erro ao consultar o Supabase." >&2
+            exit 1
+          fi
