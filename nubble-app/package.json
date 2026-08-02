@@ -6,6 +6,9 @@
     "android": "react-native run-android",
     "ios": "react-native run-ios",
     "lint": "eslint .",
+    "pods": "./scripts/reset-pods.sh",
+    "pods:deep": "./scripts/reset-pods.sh --deep",
+    "pods:full": "./scripts/reset-pods.sh --full",
     "start": "react-native start",
     "test": "jest"
   },
